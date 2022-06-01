@@ -131,10 +131,32 @@ const getAllProductByType = (req, res) => {
     });
   });
 };
+// msh zaaaaaaaaaaaaaaaaaaabt
+const getProductsByTitle = (req, res) => {
+  let productName = req.query.productName;
+  const query = `SELECT * FROM products WHERE is_deleted=0 AND productName=?;`;
+  const data = [productName];
+  connection.query(query, data, (err, result) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        massage: "server error",
+        err: err,
+      });
+    }
+    return res.status(200).json({
+      success: true,
+      massage: "All the product",
+      result: result,
+    });
+  });
+
+};
 module.exports = {
   getAllProduct,
   createNewProduct,
   deleteProductById,
   getAllProductByType,
   updateProductById,
+  getProductsByTitle
 };
