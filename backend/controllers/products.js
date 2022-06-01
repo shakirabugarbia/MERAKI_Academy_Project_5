@@ -43,4 +43,28 @@ const getAllProduct = (req, res) => {
   });
 };
 
-module.exports = { getAllProduct, createNewProduct };
+const deleteProductById = (req, res) => {
+    const id = req.params.id;
+  console.log(id);
+    const query = `UPDATE products SET is_deleted=1 WHERE id=?;`;
+    const data = [id];
+  
+    connection.query(query, data, (err, result) => {
+      if (err) {
+        res.status(404).json({ err });
+      }
+      if (!result.changedRows) {
+        return res.status(404).json({
+          success: false,
+          massage: `!! No product deleted`,
+        });
+      }
+      return res.status(200).json({
+        success: true,
+        massage: `Deleted product`,
+        result: result,
+      });
+    });
+  };
+  
+module.exports = { getAllProduct, createNewProduct,deleteProductById };
