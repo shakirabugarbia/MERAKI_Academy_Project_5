@@ -22,8 +22,29 @@ const createCategory = (req, res) => {
   });
 };
 
+const getAllCategories = (req, res) => {
+  const query = `SELECT  category_title,category_img 
+FROM  foodCategories
+WHERE is_deleted = 0;`;
+  connection.query(query, (err, result) => {
+    if (err) {
+    return  res.status(500).json({
+        success: false,
+        massage: "server error",
+        err: err,
+      });
+    }
+   return res.status(200).json({
+      success: true,
+      massage: "All categoryies",
+      result: result,
+    });
+  });
+};
+
 module.exports = {
   createCategory,
+  getAllCategories,
 };
 
 //------------------------------------------------------ marah
