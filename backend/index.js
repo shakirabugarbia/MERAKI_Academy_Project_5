@@ -31,7 +31,7 @@ app.use("/permission", permissionRouter);
 
 app.use("/category", categoryRouter);
 app.use("/product", productRouter);
-app,use("/basket", basketRouter)
+app.use("/basket", basketRouter)
 
 
 

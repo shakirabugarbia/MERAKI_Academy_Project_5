@@ -1,16 +1,16 @@
 const connection = require("../models/db");
-
 const bcrypt = require("bcrypt");
 const salt = 10;
 
 const register = async (req, res) => {
-  const {  email, password, role_id } =
+  const { userName,phoneNumber,address, email, password, role_id } =
     req.body;
 
   const encryptedPassword = await bcrypt.hash(password, salt);
 
-  const query = `INSERT INTO users ( email, password, role_id) VALUES (?,?,?)`;
+  const query = `INSERT INTO users ( userName,phoneNumber,address, email, password, role_id) VALUES (?,?,?,?,?)`;
   const data = [
+    userName,phoneNumber,address,
     email.toLowerCase(),
     encryptedPassword,
     role_id,
