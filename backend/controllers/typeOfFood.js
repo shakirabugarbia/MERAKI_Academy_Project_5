@@ -55,10 +55,6 @@ const deleteCategoryById = (req, res) => {
 
 
 
-
-
-
-
 module.exports = {
     createTypeOfFood,deleteCategoryById
   };
