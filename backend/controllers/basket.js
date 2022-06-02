@@ -14,7 +14,7 @@ const addAndUpdateToCart = (req, res) => {
       found = true;
       result[0].amount = quantity + result[0].amount;
       const query = `UPDATE basket SET amount=? WHERE product_id=?`;
-      const data = [result[0].amount]; //???????????????????????????????????????????
+      const data = [result[0].amount,prducut_id]
       connection.query(query, data, (err, result) => {
         if (result.affectedRows != 0) {
           res.status(201).json({
