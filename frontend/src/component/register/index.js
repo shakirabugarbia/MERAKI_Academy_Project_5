@@ -10,13 +10,13 @@ const [message,setMessage]=useState("");
 
     return (
         <div className="register">
-<h1>Register</h1>
+<br/>
 <input type={'email'} placeholder="Email..." onChange={(e)=>{
     setEmail(e.target.value);
-}} />
+}} /><br/>
 <input type={'password'} placeholder="Password..." onChange={(e)=>{
     setPassword(e.target.value);
-}} />
+}} /><br/>
 <button onClick={()=>{
      axios.post("http://localhost:5000/register", {
         email,
