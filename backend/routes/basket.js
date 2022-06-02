@@ -1,10 +1,11 @@
 const express = require("express");
+const authentication = require("../middlewares/authentication");
 
  const { addAndUpdateToCart, viewCart, removefromcart } = require("../controllers/basket");
 
 const basketRouter = express.Router();
 
- basketRouter.post("/:prducut_id", addAndUpdateToCart);
+ basketRouter.post("/:product_id",authentication, addAndUpdateToCart);
  basketRouter.get("/", viewCart);
  basketRouter.delete("/", removefromcart);
 
