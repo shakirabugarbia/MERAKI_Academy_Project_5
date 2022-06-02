@@ -1,9 +1,12 @@
 const express = require("express");
 
-// const { basket } = require("../controllers/basket");
+ const { addAndUpdateToCart, viewCart, removefromcart } = require("../controllers/basket");
 
 const basketRouter = express.Router();
 
-// basketRouter.post("/", basket);
+ basketRouter.post("/:prducut_id", addAndUpdateToCart);
+ basketRouter.get("/", viewCart);
+ basketRouter.delete("/", removefromcart);
+
 
 module.exports = basketRouter;
