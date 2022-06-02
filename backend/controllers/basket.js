@@ -9,15 +9,14 @@ const addAndUpdateToCart = (req, res) => {
 
   const query = `SELECT * FROM basket WHERE product_id=? AND user_id=?`;
   const data = [product_id, user_id];
-  console.log("data",data);
+  console.log("data", data);
   connection.query(query, data, (err, result) => {
     console.log(result);
     if (result.length) {
-      
       found = true;
       result[0].amount = quantity + result[0].amount;
       const query = `UPDATE basket SET amount=? WHERE product_id=? `;
-      const data = [result[0].amount,result[0].product_id]
+      const data = [result[0].amount, result[0].product_id];
       connection.query(query, data, (err, results) => {
         if (results.affectedRows != 0) {
           res.status(201).json({
@@ -56,23 +55,23 @@ const addAndUpdateToCart = (req, res) => {
 
 //View Cart
 const viewCart = (req, res) => {
-  const id = req.params.prducut_id;
   const user_id = req.token.userId;
 
-  const query = `SELECT * FROM basket WHERE (product_id ,user_id) VALUES (?,?);`;
-  const data = [id, user_id];
+  const query = `SELECT productName,img,price FROM basket INNER JOIN  products ON  basket.product_id =products.id WHERE user_id=? ;`;
+  const data = [user_id];
 
   connection.query(query, data, (err, result) => {
+    console.log("userid :", user_id);
     if (err) {
-      res.status(500).json({
+      return res.status(500).json({
         success: false,
         massage: "Server error",
         err: err,
       });
     }
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
-      massage: `Product In Cart with id : ${id}`,
+      massage: `Products In Cart `,
       result: result,
     });
   });
@@ -99,4 +98,3 @@ module.exports = {
   viewCart,
   removefromcart,
 };
-
