@@ -178,9 +178,6 @@ const getAllProductsByCategory = (req, res) => {
 
 
 
-
-
-
 module.exports = {
   getAllProduct,
   createNewProduct,

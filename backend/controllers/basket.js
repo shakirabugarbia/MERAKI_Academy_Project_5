@@ -2,7 +2,6 @@ const connection = require("../models/db");
 
 //add to cart  depend on the login | token userId
 const addAndUpdateToCart = (req, res) => {
-  let found = false;
   let quantity = 1;
   const product_id = req.params.product_id;
   const user_id = req.token.userId;
@@ -13,7 +12,6 @@ const addAndUpdateToCart = (req, res) => {
   connection.query(query, data, (err, result) => {
     console.log(result);
     if (result.length) {
-      found = true;
       result[0].amount = quantity + result[0].amount;
       const query = `UPDATE basket SET amount=? WHERE product_id=? `;
       const data = [result[0].amount, result[0].product_id];
@@ -106,10 +104,45 @@ const removefromcart = (req, res) => {
   });
 };
 
-//checkout
+const removeAndDecreas = (req, res) => {
+  let quantity = 1;
+  const product_id = req.params.product_id;
+  const user_id = req.token.userId;
+
+  const query = `SELECT * FROM basket WHERE product_id=? AND user_id=?`;
+  const data = [product_id, user_id];
+  console.log("data", data);
+  connection.query(query, data, (err, result) => {
+    console.log(result);
+    if (result.length) {
+      result[0].amount = result[0].amount - quantity;
+      const query = `UPDATE basket SET amount=? WHERE product_id=? `;
+      const data = [result[0].amount, result[0].product_id];
+      connection.query(query, data, (err, results) => {
+        if (result[0].amount === 0) {
+          removefromcart();
+        }
+        if (results.affectedRows != 0) {
+          res.status(201).json({
+            success: true,
+            massage: `Product Amount Updated +1`,
+            result: results,
+          });
+        } else {
+          res.status(500).json({
+            success: false,
+            massage: "Server error",
+            err: err,
+          });
+        }
+      });
+    }
+  });
+};
 
 module.exports = {
   addAndUpdateToCart,
   viewCart,
   removefromcart,
+  removeAndDecreas,
 };
