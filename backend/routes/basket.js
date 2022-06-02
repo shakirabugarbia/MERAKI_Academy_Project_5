@@ -11,6 +11,6 @@ const basketRouter = express.Router();
 
 basketRouter.post("/:product_id", authentication, addAndUpdateToCart);
 basketRouter.get("/", authentication, viewCart);
-basketRouter.delete("/", removefromcart);
+basketRouter.put("/:product_id",authentication, removefromcart);
 
 module.exports = basketRouter;
