@@ -55,7 +55,7 @@ const addAndUpdateToCart = (req, res) => {
 const viewCart = (req, res) => {
   const user_id = req.token.userId;
 
-  const query = `SELECT productName,img,price FROM basket INNER JOIN  products ON  basket.product_id =products.id WHERE user_id=? AND is_deleted = 0  ;`;
+  const query = `SELECT productName,img,price,amount FROM basket INNER JOIN  products ON  basket.product_id =products.id WHERE user_id=? AND basket.is_deleted = 0  ;`;
   const data = [user_id];
 
   connection.query(query, data, (err, result) => {
@@ -120,16 +120,31 @@ const removeAndDecreas = (req, res) => {
       const data = [result[0].amount, result[0].product_id];
       connection.query(query, data, (err, results) => {
         if (result[0].amount === 0) {
-          removefromcart();
+          const query = `UPDATE basket SET is_deleted = 1;`;
+          connection.query(query, (err, resultss) => {
+            if (err) {
+              return res.status(500).json({
+                success: false,
+                massage: "Server error",
+                err: err,
+              });
+            } else {
+              return res.status(201).json({
+                success: true,
+                message: "deleted from basket",
+                result: resultss,
+              });
+            }
+          });
         }
         if (results.affectedRows != 0) {
-          res.status(201).json({
+         return res.status(201).json({
             success: true,
-            massage: `Product Amount Updated +1`,
+            massage: `Product Amount Updated -1`,
             result: results,
           });
         } else {
-          res.status(500).json({
+         return res.status(500).json({
             success: false,
             massage: "Server error",
             err: err,
