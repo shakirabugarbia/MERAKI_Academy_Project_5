@@ -57,7 +57,7 @@ const addAndUpdateToCart = (req, res) => {
 const viewCart = (req, res) => {
   const user_id = req.token.userId;
 
-  const query = `SELECT productName,img,price FROM basket INNER JOIN  products ON  basket.product_id =products.id WHERE user_id=? ;`;
+  const query = `SELECT productName,img,price FROM basket INNER JOIN  products ON  basket.product_id =products.id WHERE user_id=? AND is_deleted = 0  ;`;
   const data = [user_id];
 
   connection.query(query, data, (err, result) => {
@@ -79,15 +79,30 @@ const viewCart = (req, res) => {
 
 // Remove product from Cart
 const removefromcart = (req, res) => {
-  const userId = req.query.userId;
-  const productId = request.query.productId;
+  const user_id = req.token.userId;
+  const product_id = req.params.product_id;
 
-  const query = "UPDATE FROM basket SET WHERE user_id =? and product_id =?";
-  const data = [userId, productId];
-
+  const query = `UPDATE basket SET is_deleted=1 
+    WHERE user_id=? AND product_id=?;`;
+  const data = [user_id, product_id];
+  console.log("data", data);
   connection.query(query, data, (error, result) => {
-    if (error) throw error;
-    res.status(200).send("Removed from Cart");
+    console.log(error);
+    if (error) {
+      return res.status(500).json({
+        success: false,
+        massage: "Server error",
+        err: error.message,
+      });
+    } else {
+      console.log(product_id);
+      console.log(user_id);
+      res.status(200).json({
+        success: true,
+        massage: `Product removed `,
+        result: result,
+      });
+    }
   });
 };
 
