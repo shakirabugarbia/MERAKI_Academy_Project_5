@@ -131,11 +131,14 @@ const getAllProductByType = (req, res) => {
     });
   });
 };
-// msh zaaaaaaaaaaaaaaaaaaabt
+
 const getProductsByTitle = (req, res) => {
   let productName = req.query.productName;
-  const query = `SELECT * FROM products WHERE is_deleted=0 AND productName=?;`;
-  const data = [productName];
+ 
+  const query = `SELECT * FROM products
+   WHERE is_deleted=0 AND 
+    productName LIKE ?;`
+  const data = [`${productName}%`];
   connection.query(query, data, (err, result) => {
     if (err) {
       return res.status(500).json({
