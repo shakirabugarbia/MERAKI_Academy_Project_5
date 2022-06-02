@@ -6,7 +6,7 @@ const addAndUpdateToCart = (req, res) => {
   const product_id = req.params.product_id;
   const user_id = req.token.userId;
 
-  const query = `SELECT * FROM basket WHERE product_id=? AND user_id=?`;
+  const query = `SELECT * FROM basket WHERE product_id=? AND user_id=? AND is_deleted = 0 `;
   const data = [product_id, user_id];
   console.log("data", data);
   connection.query(query, data, (err, result) => {
@@ -17,7 +17,7 @@ const addAndUpdateToCart = (req, res) => {
       const data = [result[0].amount, result[0].product_id];
       connection.query(query, data, (err, results) => {
         if (results.affectedRows != 0) {
-          res.status(201).json({
+        return  res.status(201).json({
             success: true,
             massage: `Product Amount Updated +1`,
             result: results,
