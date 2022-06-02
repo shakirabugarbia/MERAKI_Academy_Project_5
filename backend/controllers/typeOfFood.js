@@ -21,7 +21,7 @@ const createTypeOfFood = (req, res) => {
   });
 };
 
-const deleteCategoryById = (req, res) => {
+const deleteTypeOfFoodById = (req, res) => {
     const id = req.params.id;
   
     const query = `UPDATE typeOfFood SET is_deleted=1 WHERE id=?;`;
@@ -52,11 +52,28 @@ const deleteCategoryById = (req, res) => {
   };
 
 
-
+  const getAllTypeOfFood = (req, res) => {
+    const query = `SELECT * FROM typeOfFood WHERE is_deleted=0;`;
+    connection.query(query, (err, result) => {
+      if (err) {
+        res.status(500).json({
+          success: false,
+          massage: "server error",
+          err: err,
+        });
+      }
+      res.status(200).json({
+        success: true,
+        massage: "All the typeOfFood",
+        result: result,
+      });
+    });
+  };
+  
 
 
 module.exports = {
-    createTypeOfFood,deleteCategoryById
+    createTypeOfFood,deleteTypeOfFoodById,getAllTypeOfFood
   };
   
 

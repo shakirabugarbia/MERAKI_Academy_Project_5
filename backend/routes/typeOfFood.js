@@ -1,12 +1,13 @@
 const express = require("express");
 
 //controllers
-const { createTypeOfFood,deleteCategoryById} = require("../controllers/typeOfFood");
+const { createTypeOfFood,deleteTypeOfFoodById,getAllTypeOfFood} = require("../controllers/typeOfFood");
 
 const typeOfFoodRouter = express.Router();
 
 
 typeOfFoodRouter.post("/",createTypeOfFood);
-typeOfFoodRouter.delete ("/:id",deleteCategoryById);
+typeOfFoodRouter.delete ("/:id",deleteTypeOfFoodById);
+typeOfFoodRouter.get ("/",getAllTypeOfFood);
 
 module.exports = typeOfFoodRouter;
