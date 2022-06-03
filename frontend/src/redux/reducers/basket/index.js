@@ -3,35 +3,35 @@ import { createSlice } from "@reduxjs/toolkit";
 const basket = createSlice({
   name: "basket",
   initialState: {
-    baskest: [],
+    basket: [],
   },
   reducers: {
     addToBasket: (state, action) => {
-      state.baskest.push(action.payload);
+      state.basket.push(action.payload);
     },
 
     deleteFromBasket: (state, action) => {
-      state. baskest = state. baskest.filter((element, index) => {
+      state.basket = state.basket.filter((element, index) => {
         return element.id != action.payload;
       });
     },
 
     updateBasket: (state, action) => {
-      state.products = state.products.map((product, index) => {
-        if (product.id == action.payload.id) {
+      state.basket = state.basket.map((element, index) => {
+        if (element.id == action.payload.id) {
           return action.payload;
         }
-        return product;
+        return element;
       });
     },
 
-    setProducts: (state, action) => {
-      state.products = action.payload;
+    setBasket: (state, action) => {
+      state.basket = action.payload;
     },
   },
 });
 
-export const { addProductts, deleteproductts, updateproductts, setProducts } =
-  products.actions;
+export const {  setBasket,  updateBasket, deleteFromBasket, addToBasket } =
+basket.actions;
 
-export default products.reducer;
+export default basket.reducer;

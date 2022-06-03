@@ -15,6 +15,12 @@ import {
 } from "../../redux/reducers/categories";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import {
+  setBasket,
+  updateBasket,
+  deleteFromBasket,
+  addToBasket,
+} from "../../redux/reducers/basket/index";
 
 const Homepage = () => {
   const navigate = useNavigate();
@@ -37,17 +43,36 @@ const Homepage = () => {
       categories: state.categories.categories,
     };
   });
-  const   productByCategory=(String)=>{
-    axios.get(`http://localhost:5000/product/${String}`).then((result)=>{
-   
+  const basketState = useSelector((state) => {
+    return {
+      basket: state.basket.basket,
+    };
+  });
+  const productByCategory = (String) => {
+    axios.get(`http://localhost:5000/product/${String}`).then((result) => {
       dispatch(setProducts(result.data.result));
-   console.log(result.data.result);
-    })
-  }
+      console.log(result.data.result);
+    });
+  };
   const addToCart = (String) => {
     axios
-      .post(`http://localhost:5000/basket/${String.id}`)
-      .then((result) => {});
+      .post(
+        `http://localhost:5000/basket/${String}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((result) => {
+        setMessage("Added To Basket");
+      })
+      .catch((err) => {
+        console.log("header", token);
+        console.log(err);
+        setMessage(err.message);
+      });
   };
   const gatAllproducts = () => {
     axios
@@ -108,17 +133,19 @@ const Homepage = () => {
   return (
     <div>
       <h2>categories and products</h2>
-      <div className="categories">
+      <div className="categories" id="l">
         {categoriesState.categories.map((element, index) => {
           return (
             <div key={index}>
               <div>
+
                 <button onClick={() => {
                   productByCategory(element.id);
                 
                 }}>{element.category_title}</button>
+
+
               </div>
-              <div><img src={element.category_img}></img></div>
             </div>
           );
         })}
@@ -133,8 +160,7 @@ const Homepage = () => {
               <div>{element.price}</div>
               <button
                 onClick={() => {
-                  addToCart();
-                
+                  addToCart(element.id);
                 }}
               >
                 add to cart
@@ -143,21 +169,25 @@ const Homepage = () => {
           );
         })}
       </div>
-      <button
-        onClick={() => {
-          back();
-        }}
-      >
-        Back
-      </button>
+      <a href="#l">
+        <button
+          onClick={() => {
+            back();
+          }}
+        >
+          Back
+        </button>
+      </a>
       {page}
-      <button
-        onClick={() => {
-          next();
-        }}
-      >
-        Next
-      </button>
+      <a href="#l">
+        <button
+          onClick={() => {
+            next();
+          }}
+        >
+          Next
+        </button>
+      </a>
     </div>
   );
 };
