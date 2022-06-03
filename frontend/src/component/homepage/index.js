@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   addProductts,
   deleteproductts,
@@ -13,8 +14,10 @@ import {
   setCategories,
 } from "../../redux/reducers/categories";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Homepage = () => {
+  const navigate = useNavigate();
   const [page, setPage] = useState(1);
   const [message, setMessage] = useState("");
   const dispatch = useDispatch();
@@ -34,8 +37,10 @@ const Homepage = () => {
       categories: state.categories.categories,
     };
   });
-  const addToCart = () => {
-    console.log("add to cart");
+  const addToCart = (String) => {
+    axios
+      .post(`http://localhost:5000/basket/${String.id}`)
+      .then((result) => {});
   };
   const gatAllproducts = () => {
     axios
@@ -100,7 +105,11 @@ const Homepage = () => {
         {categoriesState.categories.map((element, index) => {
           return (
             <div key={index}>
-              <div> {element.category_title}</div>
+              <div>
+                <button onClick={() => {
+                    navigate("/foodbycategory")
+                }}>{element.category_title}</button>
+              </div>
               <div>{element.category_img}</div>
             </div>
           );
@@ -117,6 +126,7 @@ const Homepage = () => {
               <button
                 onClick={() => {
                   addToCart();
+                
                 }}
               >
                 add to cart
