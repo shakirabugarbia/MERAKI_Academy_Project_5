@@ -23,7 +23,7 @@ const createCategory = (req, res) => {
 };
 
 const getAllCategories = (req, res) => {
-  const query = `SELECT  category_title,category_img 
+  const query = `SELECT  id,category_title,category_img 
 FROM  foodCategories
 WHERE is_deleted = 0;`;
   connection.query(query, (err, result) => {
