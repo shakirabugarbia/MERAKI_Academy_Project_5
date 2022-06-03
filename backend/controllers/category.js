@@ -101,14 +101,14 @@ const updateCategoryByid = (req, res) => {
         id,
       ];
       connection.query(query, data, (err, results) => {
-          console.log("errr",err);
-          console.log(results);
+        console.log("errr", err);
+        console.log(results);
         if (results.affectedRows != 0)
-        res.status(201).json({
-          success: true,
-          massage: `product`,
-          result: results,
-        });
+          res.status(201).json({
+            success: true,
+            massage: `product`,
+            result: results,
+          });
       });
     }
   });
