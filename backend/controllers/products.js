@@ -1,14 +1,15 @@
 const connection = require("../models/db");
 
 const createNewProduct = (req, res) => {
-  const { productName, img, price, category_id } = req.body;
+  const { productName, img, price,description, category_id } = req.body;
   const type_id = req.params.type_id;
   const query = `INSERT INTO products (productName,
     img,
     price,
+    description,
     type_id,
     category_id) VALUES (?,?,?,?,?);`;
-  const data = [productName, img, price, type_id, category_id];
+  const data = [productName, img, price,description, type_id, category_id];
   connection.query(query, data, (err, result) => {
     if (err) {
       return res.status(500).json({
@@ -80,7 +81,7 @@ const deleteProductById = (req, res) => {
 };
 
 const updateProductById = (req, res) => {
-  const { productName, img, price } = req.body;
+  const { productName, img, price,description } = req.body;
   const id = req.params.id;
 
   const query = `SELECT * FROM products WHERE id=?;`;
@@ -108,6 +109,7 @@ const updateProductById = (req, res) => {
         productName || result[0].productName,
         img || result[0].img,
         price || result[0].price,
+        description||result[0].description,
         id,
       ];
 

@@ -46,6 +46,7 @@ CREATE TABLE products
 id INT AUTO_INCREMENT NOT NULL,
 productName VARCHAR(255),
 img VARCHAR(255),
+description VARCHAR(255),
 price INT,
 type_id INT,
 category_id INT,
