@@ -15,6 +15,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 
 const Homepage = () => {
+  const [page, setPage] = useState(1);
   const [message, setMessage] = useState("");
   const dispatch = useDispatch();
   const { token, isLoggedIn } = useSelector((state) => {
@@ -33,12 +34,12 @@ const Homepage = () => {
       categories: state.categories.categories,
     };
   });
-  const addToCart =()=>{
-      console.log("add to cart");
-  }
+  const addToCart = () => {
+    console.log("add to cart");
+  };
   const gatAllproducts = () => {
     axios
-      .get(`http://localhost:5000/product/?page=1`)
+      .get(`http://localhost:5000/product/?page=${page}`)
       .then((result) => {
         dispatch(setProducts(result.data.result.result));
         setMessage(result.data.message);
@@ -57,6 +58,36 @@ const Homepage = () => {
       .catch((err) => {
         setMessage(err.message);
       });
+  };
+  const next = () => {
+    axios
+      .get(`http://localhost:5000/product/?page=${page + 1}`)
+      .then((result) => {
+        if (result.data.result.result.length !== 0) {
+          dispatch(setProducts(result.data.result.result));
+          setPage(page + 1);
+          console.log(page);
+        } else {
+          return setPage(page);
+        }
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
+  const back = () => {
+    axios
+      .get(`http://localhost:5000/product/?page=${page - 1}`)
+      .then((result) => {
+        if (result.data.result.result.length !== 0) {
+          dispatch(setProducts(result.data.result.result));
+          setPage(page - 1);
+          console.log(page);
+        } else {
+          return setPage(page);
+        }
+      })
+      .catch((err) => {});
   };
   useEffect(() => {
     gatAllCategories();
@@ -94,6 +125,21 @@ const Homepage = () => {
           );
         })}
       </div>
+      <button
+        onClick={() => {
+          back();
+        }}
+      >
+        Back
+      </button>
+      {page}
+      <button
+        onClick={() => {
+          next();
+        }}
+      >
+        Next
+      </button>
     </div>
   );
 };
