@@ -23,7 +23,7 @@ const Homepage = () => {
       isLoggedIn: state.auth.isLoggedIn,
     };
   });
-  const ProductsState = useSelector((state) => {
+  const productsState = useSelector((state) => {
     return {
       products: state.products.products,
     };
@@ -33,6 +33,20 @@ const Homepage = () => {
       categories: state.categories.categories,
     };
   });
+  const addToCart =()=>{
+      console.log("add to cart");
+  }
+  const gatAllproducts = () => {
+    axios
+      .get(`http://localhost:5000/product/?page=1`)
+      .then((result) => {
+        dispatch(setProducts(result.data.result.result));
+        setMessage(result.data.message);
+      })
+      .catch((err) => {
+        setMessage(err.message);
+      });
+  };
   const gatAllCategories = () => {
     axios
       .get(`http://localhost:5000/category/allCategories`)
@@ -46,11 +60,12 @@ const Homepage = () => {
   };
   useEffect(() => {
     gatAllCategories();
+    gatAllproducts();
   }, []);
   return (
     <div>
       <h2>categories and products</h2>
-      <>
+      <div className="categories">
         {categoriesState.categories.map((element, index) => {
           return (
             <div key={index}>
@@ -59,7 +74,26 @@ const Homepage = () => {
             </div>
           );
         })}
-      </>
+      </div>
+      <h2>products</h2>
+      <div className="products">
+        {productsState.products.map((element, index) => {
+          return (
+            <div key={index}>
+              <div> {element.productName}</div>
+              <div>{element.img}</div>
+              <div>{element.price}</div>
+              <button
+                onClick={() => {
+                  addToCart();
+                }}
+              >
+                add to cart
+              </button>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

@@ -27,27 +27,30 @@ const createNewProduct = (req, res) => {
 
 const getAllProduct = (req, res) => {
   // limit as 20
-  const limit = 10
+  const limit = 10;
   // page number
-  const page = req.query.page
+  const page = req.query.page;
   // calculate offset
-  const offset = (page - 1) * limit
+  const offset = (page - 1) * limit;
 
   const query = `SELECT * FROM products WHERE is_deleted=0  limit ${limit} OFFSET ${offset};`;
   connection.query(query, (err, result) => {
-
     if (err) {
-      res.status(500).json({
+      return res.status(500).json({
         success: false,
         massage: "server error",
         err: err,
       });
     }
-    res.status(200).json({
+    if (result.length === 0) {
+      return res.status(404).json({
+        massage:"final page"
+      })
+    }
+    return res.status(200).json({
       success: true,
       massage: "All the product",
-      result: {result,
-      'page_number':page},
+      result: { result, page_number: page },
     });
   });
 };
@@ -77,15 +80,15 @@ const deleteProductById = (req, res) => {
 };
 
 const updateProductById = (req, res) => {
-    const { productName, img, price } = req.body;
-    const id = req.params.id;
-    
-    const query = `SELECT * FROM products WHERE id=?;`;
-    const data = [id];
-    
-    console.log("hello");
+  const { productName, img, price } = req.body;
+  const id = req.params.id;
+
+  const query = `SELECT * FROM products WHERE id=?;`;
+  const data = [id];
+
+  console.log("hello");
   connection.query(query, data, (err, result) => {
-      console.log(result);
+    console.log(result);
     if (err) {
       return res.status(404).json({
         success: false,
@@ -105,11 +108,11 @@ const updateProductById = (req, res) => {
         productName || result[0].productName,
         img || result[0].img,
         price || result[0].price,
-        id
+        id,
       ];
 
       connection.query(query, data, (err, result) => {
-          console.log(err);
+        console.log(err);
         if (result.affectedRows != 0)
           res.status(201).json({
             success: true,
@@ -143,10 +146,10 @@ const getAllProductByType = (req, res) => {
 
 const getProductsByTitle = (req, res) => {
   let productName = req.query.productName;
- 
+
   const query = `SELECT * FROM products
    WHERE is_deleted=0 AND 
-    productName LIKE ?;`
+    productName LIKE ?;`;
   const data = [`${productName}%`];
   connection.query(query, data, (err, result) => {
     if (err) {
@@ -162,11 +165,10 @@ const getProductsByTitle = (req, res) => {
       result: result,
     });
   });
-
 };
 
 const getAllProductsByCategory = (req, res) => {
-  const category_id  = req.params.category_id;
+  const category_id = req.params.category_id;
   const query = `SELECT * FROM products WHERE is_deleted=0 AND category_id=?;`;
   const data = [category_id];
   connection.query(query, data, (err, result) => {
@@ -185,8 +187,6 @@ const getAllProductsByCategory = (req, res) => {
   });
 };
 
-
-
 module.exports = {
   getAllProduct,
   createNewProduct,
@@ -194,5 +194,5 @@ module.exports = {
   getAllProductByType,
   updateProductById,
   getProductsByTitle,
-  getAllProductsByCategory
+  getAllProductsByCategory,
 };
