@@ -6,7 +6,7 @@ import { Login } from "./component/login";
 import NavBar from "./component/navbar";
 import Homepage from "./component/homepage";
 import Basket from "./component/basket";
-import FoodByCategory from "./component/Foodbycategory";
+
 function App() {
   return (
     <div className="App">
@@ -18,7 +18,7 @@ function App() {
         <Route path={"/login"} element={<Login />} />
 
         <Route path={"/basket"} element={<Basket />} />
-        <Route path={"/foodbycategory"} element={<FoodByCategory />} />
+    
       </Routes>
     </div>
   );

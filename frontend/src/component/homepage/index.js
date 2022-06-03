@@ -115,7 +115,7 @@ const Homepage = () => {
               <div>
                 <button onClick={() => {
                   productByCategory(element.id);
-                    navigate("/foodbycategory")
+                
                 }}>{element.category_title}</button>
               </div>
               <div><img src={element.category_img}></img></div>
