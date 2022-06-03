@@ -25,8 +25,8 @@ const NavBar = () => {
           <Link className="Link" to="/">
             Home
           </Link>
-          <Link className="Link" to="/register">
-            Register
+          <Link className="Link" to="/basket">
+            basket
           </Link>
           <button
             className="logout"
@@ -54,30 +54,3 @@ const NavBar = () => {
 };
 
 export default NavBar;
-
-// {state.isloggedIn ? (
-//   <>
-//     <Link className="Link" to="/tasks">
-//       Tasks
-//     </Link>
-//     <Link className="Link" to="/complete tasks">
-//       copmlete task
-//     </Link>
-//     <button
-//       className="logout"
-//       onClick={() => {
-//         dispatch(logout());
-//         navigate("/");
-//       }}
-//     >
-//       Logout
-//     </button>
-//   </>
-// ) : (
-//   <>
-//     <Link className="Link" to="/">
-//       Register
-//     </Link>
-//     <Link to="/login">Login</Link>
-//   </>
-// )}
