@@ -37,6 +37,13 @@ const Homepage = () => {
       categories: state.categories.categories,
     };
   });
+  const   productByCategory=(String)=>{
+    axios.get(`http://localhost:5000/product/${String}`).then((result)=>{
+   
+      dispatch(setProducts(result.data.result));
+   console.log(result.data.result);
+    })
+  }
   const addToCart = (String) => {
     axios
       .post(`http://localhost:5000/basket/${String.id}`)
@@ -107,10 +114,11 @@ const Homepage = () => {
             <div key={index}>
               <div>
                 <button onClick={() => {
+                  productByCategory(element.id);
                     navigate("/foodbycategory")
                 }}>{element.category_title}</button>
               </div>
-              <div>{element.category_img}</div>
+              <div><img src={element.category_img}></img></div>
             </div>
           );
         })}
