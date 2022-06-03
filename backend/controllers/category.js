@@ -42,35 +42,7 @@ WHERE is_deleted = 0;`;
   });
 };
 
-// const updateCategoryByid = (req, res) => {
-//   const id = req.params.id;
-//   const category_title = req.body.category_title;
-//   const category_img = req.body.category_img;
-//   const query = `UPDATE foodCategories SET
-//   category_title = ? ,
-//   category_img = ?
-//    WHERE id = ? ; `;
-//   const data = [category_title, category_img, id];
-//   connection.query(query, data, (err, result) => {
-//     if (err) {
-//       return res.status(404).json({
-//         err,
-//       });
-//     }
-//     if (result.affectedRows != 0) {
-//       return res.status(201).json({
-//         success: true,
-//         massage: `category updated`,
-//         result: result,
-//       });
-//     } else {
-//       return res.status(201).json({
-//         success: false,
-//         massage: `The Article is Not Found`,
-//       });
-//     }
-//   });
-// };
+
 const updateCategoryByid = (req, res) => {
   const id = req.params.id;
   const category_title = req.body.category_title;
@@ -148,8 +120,4 @@ module.exports = {
   deleteCategoryByid,
 };
 
-//------------------------------------------------------ marah
 
-//-----------------------------------------------afgani
-
-//-------------------------------------------------------fouad
