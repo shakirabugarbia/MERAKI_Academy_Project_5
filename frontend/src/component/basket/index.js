@@ -67,7 +67,27 @@ const  removeFromCart=(id)=>{
   })
 }
 
-
+const increaseCart=(id)=>{
+  axios
+  .post(
+    `http://localhost:5000/basket/${id}`,
+    {},
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  )
+  .then((result) => {
+    viewBasket();
+    setMessage("Added To Basket");
+  })
+  .catch((err) => {
+    // console.log("header", token);
+    // console.log(err);
+    setMessage(err.message);
+  });
+}
   const decreaseAndRemoveFromBasket = (id) => {
     axios
       .put(
@@ -126,11 +146,14 @@ const  removeFromCart=(id)=>{
                       decreaseAndRemoveFromBasket(element.id);
                     }}
                   >
-                    remove from basket
+                   decrease
                   </button>
                   <button onClick={()=>{
                     removeFromCart(element.id);
-                  }}>remove</button>
+                  }}>Delete</button>
+                  <button onClick={()=>{
+                    increaseCart(element.id);
+                  }}>increase</button>
                   </>
                 ) : (
                   <></>
