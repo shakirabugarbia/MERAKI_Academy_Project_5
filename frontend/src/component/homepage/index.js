@@ -174,7 +174,7 @@ const Homepage = () => {
                     addToCart(element.id);
                   }}
                 >
-                  add to cart
+                  add to basket
                 </button>
               ) : (
                 <></>
