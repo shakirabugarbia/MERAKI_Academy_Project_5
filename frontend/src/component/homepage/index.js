@@ -51,7 +51,7 @@ const Homepage = () => {
       typesOffoods: state.typeoffood
     };
   });
-  const categoriesState = useSelector((state) => {
+  const {categories,category_id} = useSelector((state) => {
     return {
       categories: state.categories.categories,
       category_id:state.categories.category_id
@@ -64,7 +64,7 @@ const Homepage = () => {
   });
   const productByCategory = (String) => {
     axios.get(`http://localhost:5000/product/${String}`).then((result) => {
-      
+      console.log("result.data.result[0].category_id",result.data.result[0].category_id);
       dispatch(setProducts(result.data.result));dispatch(setCategoriesId(result.data.result[0].category_id))
       
     });
@@ -138,12 +138,14 @@ const getAllTypeOfFood = () =>{
         console.log(err.message);
       });
   };
-  const getProductsByTypeOf =(type_id,category_id)=>{
-   axios.get(`http://localehost:5000/product/bytype/${type_id}/categoryId?category_id=${categoriesState.categories}`).then((result)=>{
-     console.log(result);
+   const getProductsByTypeOf =(type_id,category_id)=>{
+   axios.get(`http://localhost:5000/product/bytype/${type_id}/categoryId?category_id=${category_id}`).then((result)=>{
+      dispatch(setProducts(result.data.result))
+      console.log(productsState.products);
    })
    .catch((err)=>{
-    console.log(err.message);
+ 
+    console.log(err);
    })
   } 
   const back = () => {
@@ -166,7 +168,7 @@ const getAllTypeOfFood = () =>{
     gatAllCategories();
     gatAllproducts();
     getAllTypeOfFood();
-  }, []);
+      }, []);
 
   return (
     <div>
@@ -179,7 +181,7 @@ const getAllTypeOfFood = () =>{
       }}>search</button>
       <h2>categories and products</h2>
       <div className="categories" id="l">
-        {categoriesState.categories.map((element, index) => {
+        {categories.map((element, index) => {
           return (
             <div key={index}>
               <div>
@@ -200,7 +202,7 @@ const getAllTypeOfFood = () =>{
         return(
           <div key={index}>
             <button onClick={()=>{
-              getProductsByTypeOf(element.id,)
+              getProductsByTypeOf(element.id)
             }}>{element.type} </button>
           </div>
 

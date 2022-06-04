@@ -134,7 +134,7 @@ const increaseCart=(id)=>{
           productsState.products.map((element, index) => {
             return (
               <div key={index}>
-                <div>{element.img}</div>
+                <img src={element.img}/>
                 <div> {element.productName}</div>
                 <div> {element.description}</div>
                 <div>{element.price}</div>
