@@ -6,6 +6,7 @@ import {
   deleteproductts,
   updateproductts,
   setProducts,
+  setProductName
 } from "../../redux/reducers/products/index";
 import {
   addCategoriess,
@@ -36,6 +37,7 @@ const Homepage = () => {
   const productsState = useSelector((state) => {
     return {
       products: state.products.products,
+      productName:state.products.productName
     };
   });
   const categoriesState = useSelector((state) => {
@@ -132,6 +134,13 @@ const Homepage = () => {
   }, []);
   return (
     <div>
+      <input type={'text'} placeholder="Search by Product Name" onChange={(e)=>{dispatch(setProductName(e.target.value)
+      )
+  
+
+      }} /><button onClick={()=>{
+           navigate("/search")
+      }}>search</button>
       <h2>categories and products</h2>
       <div className="categories" id="l">
         {categoriesState.categories.map((element, index) => {
