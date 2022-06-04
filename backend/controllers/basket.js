@@ -109,7 +109,7 @@ const removeAndDecreas = (req, res) => {
   const product_id = req.params.product_id;
   const user_id = req.token.userId;
 
-  const query = `SELECT * FROM basket WHERE product_id=? AND user_id=?`;
+  const query = `SELECT * FROM basket WHERE product_id=? AND user_id=? AND is_deleted=0`;
   const data = [product_id, user_id];
   console.log("data", data);
   connection.query(query, data, (err, result) => {

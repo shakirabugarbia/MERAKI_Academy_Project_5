@@ -52,6 +52,22 @@ const Basket = () => {
       basket: state.basket.basket,
     };
   });
+const  removeFromCart=(id)=>{
+  axios.put(`http://localhost:5000/basket/${id}`,{},
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+  
+  ).then((result)=>{
+    viewBasket();
+  }).catch((err)=>{
+    console.log(err.message);
+  })
+}
+
+
   const decreaseAndRemoveFromBasket = (id) => {
     axios
       .put(
@@ -104,6 +120,7 @@ const Basket = () => {
                 <div>{element.price}</div>
                 <div>{element.amount}</div>
                 {isLoggedIn ? (
+                  <>
                   <button
                     onClick={() => {
                       decreaseAndRemoveFromBasket(element.id);
@@ -111,6 +128,10 @@ const Basket = () => {
                   >
                     remove from basket
                   </button>
+                  <button onClick={()=>{
+                    removeFromCart(element.id);
+                  }}>remove</button>
+                  </>
                 ) : (
                   <></>
                 )}
