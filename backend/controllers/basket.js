@@ -59,7 +59,7 @@ const viewCart = (req, res) => {
   const data = [user_id];
 
   connection.query(query, data, (err, result) => {
-    console.log("userid :", user_id);
+ 
     if (err) {
       return res.status(500).json({
         success: false,

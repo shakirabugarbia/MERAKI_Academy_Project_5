@@ -127,8 +127,9 @@ const updateProductById = (req, res) => {
 };
 
 const getAllProductByType = (req, res) => {
-  const { type_id, category_id } = req.body;
-  const query = `SELECT * FROM products WHERE is_deleted=0 AND type_id=? AND category_id=?;`;
+  const { category_id } = req.query;
+  const {type_id}=req.params
+  const query = `SELECT * FROM products WHERE is_deleted=0 AND type_id=? AND category_id=?;`;    
   const data = [type_id, category_id];
   connection.query(query, data, (err, result) => {
     if (err) {

@@ -13,7 +13,7 @@ const {
 const productRouter = express.Router();
 
 productRouter.get("/", getAllProduct);
-productRouter.get("/bytype", getAllProductByType);
+productRouter.get("/bytype/:type_id/categoryId", getAllProductByType);
 productRouter.post("/:type_id", createNewProduct);
 productRouter.put("/:id", deleteProductById);
 productRouter.put("/update/:id", updateProductById);

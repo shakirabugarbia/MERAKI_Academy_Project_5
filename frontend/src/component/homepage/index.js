@@ -13,6 +13,7 @@ import {
   deleteCategoriess,
   updateCategoriess,
   setCategories,
+  setCategoriesId
 } from "../../redux/reducers/categories";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -22,6 +23,11 @@ import {
   deleteFromBasket,
   addToBasket,
 } from "../../redux/reducers/basket/index";
+
+import { addTypeOfFood,
+  deleteTypeOfFood,
+  updateTypeOfFood,
+  setTypeOfFood} from "../../redux/reducers/typeoffoods/index"
 
 const Homepage = () => {
   const navigate = useNavigate();
@@ -40,9 +46,15 @@ const Homepage = () => {
       productName:state.products.productName
     };
   });
+  const typesOffoodsState = useSelector((state) => {
+    return {
+      typesOffoods: state.typeoffood
+    };
+  });
   const categoriesState = useSelector((state) => {
     return {
       categories: state.categories.categories,
+      category_id:state.categories.category_id
     };
   });
   const basketState = useSelector((state) => {
@@ -52,8 +64,9 @@ const Homepage = () => {
   });
   const productByCategory = (String) => {
     axios.get(`http://localhost:5000/product/${String}`).then((result) => {
-      dispatch(setProducts(result.data.result));
-      console.log(result.data.result);
+      
+      dispatch(setProducts(result.data.result));dispatch(setCategoriesId(result.data.result[0].category_id))
+      
     });
   };
   const addToCart = (String) => {
@@ -98,6 +111,17 @@ const Homepage = () => {
         setMessage(err.message);
       });
   };
+
+const getAllTypeOfFood = () =>{
+  axios.get(`http://localhost:5000/typeOfFood`)
+  .then((result)=>{
+    dispatch(setTypeOfFood(result.data.result))
+  }) 
+  .catch((err)=>{
+    setMessage(err.message);
+  })
+}
+
   const next = () => {
     axios
       .get(`http://localhost:5000/product/?page=${page + 1}`)
@@ -114,6 +138,14 @@ const Homepage = () => {
         console.log(err.message);
       });
   };
+  const getProductsByTypeOf =(type_id,category_id)=>{
+   axios.get(`http://localehost:5000/product/bytype/${type_id}/categoryId?category_id=${categoriesState.categories}`).then((result)=>{
+     console.log(result);
+   })
+   .catch((err)=>{
+    console.log(err.message);
+   })
+  } 
   const back = () => {
     axios
       .get(`http://localhost:5000/product/?page=${page - 1}`)
@@ -126,12 +158,16 @@ const Homepage = () => {
           return setPage(page);
         }
       })
-      .catch((err) => {});
+      .catch((err) => {
+        console.log(err.message);
+      });
   };
   useEffect(() => {
     gatAllCategories();
     gatAllproducts();
+    getAllTypeOfFood();
   }, []);
+
   return (
     <div>
       <input type={'text'} placeholder="Search by Product Name" onChange={(e)=>{dispatch(setProductName(e.target.value)
@@ -159,12 +195,28 @@ const Homepage = () => {
           );
         })}
       </div>
-      <h2>products</h2>
+      <h2>Type of products</h2>
+      <div className="typeOfProduct"> {typesOffoodsState.typesOffoods.typeOfFood.map((element, index) =>{
+        return(
+          <div key={index}>
+            <button onClick={()=>{
+              getProductsByTypeOf(element.id,)
+            }}>{element.type} </button>
+          </div>
+
+
+      
+        )
+      })}</div>
+
+
+
+      <h2>Products</h2>
       <div className="products">
         {productsState.products.map((element, index) => {
           return (
             <div key={index}>
-              <div>{element.img}</div>
+              <div><img src={element.img}/></div>
               <div> {element.productName}</div>
               <div> {element.description}</div>
               <div>{element.price}</div>

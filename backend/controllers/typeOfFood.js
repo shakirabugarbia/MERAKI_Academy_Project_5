@@ -69,7 +69,6 @@ const deleteTypeOfFoodById = (req, res) => {
       });
     });
   };
-  
 
 
 module.exports = {

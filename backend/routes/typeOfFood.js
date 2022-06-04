@@ -7,7 +7,7 @@ const typeOfFoodRouter = express.Router();
 
 
 typeOfFoodRouter.post("/",createTypeOfFood);
-typeOfFoodRouter.delete ("/:id",deleteTypeOfFoodById);
-typeOfFoodRouter.get ("/",getAllTypeOfFood);
+typeOfFoodRouter.delete("/:id",deleteTypeOfFoodById);
+typeOfFoodRouter.get("/",getAllTypeOfFood);
 
 module.exports = typeOfFoodRouter;

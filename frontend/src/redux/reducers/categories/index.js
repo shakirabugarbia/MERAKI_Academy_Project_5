@@ -4,6 +4,7 @@ const categoriesSlice = createSlice({
   name: "categories",
   initialState: {
     categories: [],
+    category_id:""
   },
   reducers: {
     addCategoriess: (state, action) => {
@@ -28,10 +29,13 @@ const categoriesSlice = createSlice({
     setCategories: (state, action) => {
       state.categories = action.payload;
     },
+    setCategoriesId: (state, action) => {
+      state.category_id = action.payload;
+    },
   },
 });
 
-export const { addCategoriess, deleteCategoriess, updateCategoriess, setCategories } =
+export const { addCategoriess, deleteCategoriess, updateCategoriess, setCategories ,setCategoriesId} =
 categoriesSlice.actions;
 
 export default categoriesSlice.reducer;
