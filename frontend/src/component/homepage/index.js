@@ -138,13 +138,13 @@ const Homepage = () => {
           return (
             <div key={index}>
               <div>
-
-                <button onClick={() => {
-                  productByCategory(element.id);
-                
-                }}>{element.category_title}</button>
-
-
+                <button
+                  onClick={() => {
+                    productByCategory(element.id);
+                  }}
+                >
+                  {element.category_title}
+                </button>
               </div>
             </div>
           );
@@ -159,13 +159,17 @@ const Homepage = () => {
               <div> {element.productName}</div>
               <div> {element.description}</div>
               <div>{element.price}</div>
-              <button
-                onClick={() => {
-                  addToCart(element.id);
-                }}
-              >
-                add to cart
-              </button>
+              {isLoggedIn ? (
+                <button
+                  onClick={() => {
+                    addToCart(element.id);
+                  }}
+                >
+                  add to cart
+                </button>
+              ) : (
+                <></>
+              )}
             </div>
           );
         })}
