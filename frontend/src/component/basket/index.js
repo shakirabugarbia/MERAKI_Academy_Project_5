@@ -24,6 +24,8 @@ import {
 } from "../../redux/reducers/basket/index";
 
 const Basket = () => {
+  const [show, setShow] = useState(false);
+
   const navigate = useNavigate();
   const [page, setPage] = useState(1);
   const [message, setMessage] = useState("");
@@ -62,6 +64,7 @@ const Basket = () => {
         }
       )
       .then((result) => {
+          
         viewBasket();
       })
       .catch((err) => {
@@ -76,8 +79,10 @@ const Basket = () => {
         },
       })
       .then((result) => {
-        console.log(result.data.result);
-        dispatch(setProducts(result.data.result));
+        if (result.data.success) {
+          dispatch(setProducts(result.data.result));
+          setShow(true);
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -89,28 +94,29 @@ const Basket = () => {
   return (
     <div>
       <div className="products">
-        {productsState.products.map((element, index) => {
-          return (
-            <div key={index}>
-              <div>{element.img}</div>
-              <div> {element.productName}</div>
-              <div> {element.description}</div>
-              <div>{element.price}</div>
-              <div>{element.amount}</div>
-              {isLoggedIn ? (
-                <button
-                  onClick={() => {
-                    decreaseAndRemoveFromBasket(element.id);
-                  }}
-                >
-                  remove from basket
-                </button>
-              ) : (
-                <></>
-              )}
-            </div>
-          );
-        })}
+        {show &&
+          productsState.products.map((element, index) => {
+            return (
+              <div key={index}>
+                <div>{element.img}</div>
+                <div> {element.productName}</div>
+                <div> {element.description}</div>
+                <div>{element.price}</div>
+                <div>{element.amount}</div>
+                {isLoggedIn ? (
+                  <button
+                    onClick={() => {
+                      decreaseAndRemoveFromBasket(element.id);
+                    }}
+                  >
+                    remove from basket
+                  </button>
+                ) : (
+                  <></>
+                )}
+              </div>
+            );
+          })}
       </div>
     </div>
   );
