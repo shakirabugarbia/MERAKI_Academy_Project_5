@@ -17,7 +17,7 @@ const addAndUpdateToCart = (req, res) => {
       const data = [result[0].amount, result[0].product_id];
       connection.query(query, data, (err, results) => {
         if (results.affectedRows != 0) {
-        return  res.status(201).json({
+          return res.status(201).json({
             success: true,
             massage: `Product Amount Updated +1`,
             result: results,
@@ -116,12 +116,15 @@ const removeAndDecreas = (req, res) => {
     console.log(result);
     if (result.length) {
       result[0].amount = result[0].amount - quantity;
-      const query = `UPDATE basket SET amount=? WHERE product_id=? `;
+      const query = `UPDATE basket SET amount=? WHERE product_id=? AND is_deleted=0 `;
       const data = [result[0].amount, result[0].product_id];
       connection.query(query, data, (err, results) => {
         if (result[0].amount === 0) {
-          const query = `UPDATE basket SET is_deleted = 1;`;
-          connection.query(query, (err, resultss) => {
+          const product_id = req.params.product_id;
+
+          const query = `UPDATE basket SET is_deleted = 1 WHERE product_id = ?;`;
+          const data = [product_id];
+          connection.query(query, data, (err, resultss) => {
             if (err) {
               return res.status(500).json({
                 success: false,
@@ -129,22 +132,22 @@ const removeAndDecreas = (req, res) => {
                 err: err,
               });
             } else {
-              return res.status(201).json({
-                success: true,
-                message: "deleted from basket",
-                result: resultss,
-              });
+              // return res.status(201).json({
+              //   success: true,
+              //   message: "deleted from basket",
+              //   result: resultss,
+              // });
             }
           });
         }
         if (results.affectedRows != 0) {
-         return res.status(201).json({
+          return res.status(201).json({
             success: true,
             massage: `Product Amount Updated -1`,
             result: results,
           });
         } else {
-         return res.status(500).json({
+          return res.status(500).json({
             success: false,
             massage: "Server error",
             err: err,
