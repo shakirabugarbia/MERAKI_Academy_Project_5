@@ -1,5 +1,5 @@
 
--- DROP DATABASE restaurant;
+DROP DATABASE restaurant;
 CREATE DATABASE restaurant;
 
 use restaurant;

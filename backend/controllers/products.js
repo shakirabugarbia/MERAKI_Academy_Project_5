@@ -8,7 +8,7 @@ const createNewProduct = (req, res) => {
     price,
     description,
     type_id,
-    category_id) VALUES (?,?,?,?,?);`;
+    category_id) VALUES (?,?,?,?,?,?);`;
   const data = [productName, img, price,description, type_id, category_id];
   connection.query(query, data, (err, result) => {
     if (err) {
