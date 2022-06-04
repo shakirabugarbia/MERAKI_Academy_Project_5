@@ -55,7 +55,7 @@ const addAndUpdateToCart = (req, res) => {
 const viewCart = (req, res) => {
   const user_id = req.token.userId;
 
-  const query = `SELECT productName,img,price,amount FROM basket INNER JOIN  products ON  basket.product_id =products.id WHERE user_id=? AND basket.is_deleted = 0  ;`;
+  const query = `SELECT products.id, productName,img,price,amount FROM basket INNER JOIN  products ON  basket.product_id =products.id WHERE user_id=? AND basket.is_deleted = 0  ;`;
   const data = [user_id];
 
   connection.query(query, data, (err, result) => {
