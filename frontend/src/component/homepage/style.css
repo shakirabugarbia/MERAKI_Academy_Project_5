@@ -5,3 +5,30 @@
     justify-content: center;
     
 }
+.categories{
+    display: grid;
+    grid-template-columns: 25% 25% 25%;
+    align-items: center;
+    justify-content: center;
+    
+}
+button {
+    width: 150px;
+    margin: 5px;
+    height: 30px;
+    background-color: rgb(95, 95, 253);
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    color: seashell;
+    font-size: large;
+  }
+  .backtoallbutton{   width: 250px;
+    margin: 5px;
+    height: 30px;
+    background-color: rgb(95, 95, 253);
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    color: seashell;
+    font-size: large;}
