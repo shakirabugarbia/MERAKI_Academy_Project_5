@@ -4,6 +4,8 @@ const basket = createSlice({
   name: "basket",
   initialState: {
     basket: [],
+    amount: 0,
+    price: 0,
   },
   reducers: {
     addToBasket: (state, action) => {
@@ -28,10 +30,38 @@ const basket = createSlice({
     setBasket: (state, action) => {
       state.basket = action.payload;
     },
+    setAmount: (state, action) => {
+      state.amount = state.amount + 1;
+    },
+    decrease: (state, action) => {
+      state.amount = state.amount - 1;
+    },
+    zero: (state, action) => {
+      state.amount = 0;
+    },
+    setPrice: (state, action) => {
+      state.price = action.payload + state.price;
+    },
+    decreasePrice: (state, action) => {
+      state.price = state.price - action.payload;
+    },
+    zeroPrice: (state, action) => {
+      state.price = 0;
+    },
   },
 });
 
-export const {  setBasket,  updateBasket, deleteFromBasket, addToBasket } =
-basket.actions;
+export const {
+  setBasket,
+  updateBasket,
+  deleteFromBasket,
+  addToBasket,
+  setAmount,
+  decrease,
+  zero,
+  zeroPrice,
+  setPrice,
+  decreasePrice,
+} = basket.actions;
 
 export default basket.reducer;

@@ -23,6 +23,10 @@ import {
   updateBasket,
   deleteFromBasket,
   addToBasket,
+  setAmount,
+  zeroPrice,
+  setPrice,
+  decreasePrice,
 } from "../../redux/reducers/basket/index";
 
 import {
@@ -65,6 +69,8 @@ const Homepage = () => {
   const basketState = useSelector((state) => {
     return {
       basket: state.basket.basket,
+      amount: state.basket.amount,
+      price: state.basket.price,
     };
   });
   const productByCategory = (String) => {
@@ -229,7 +235,11 @@ const Homepage = () => {
             setHide(false);
           }}
         >
+
+        
+
           back to all product{" "}
+
         </button>
       ) : (
         <></>
@@ -239,6 +249,7 @@ const Homepage = () => {
           <h2>Type of products</h2>
           <div className="typeOfProduct">
             {" "}
+
             {show &&
               typesOffoodsState.typesOffoods.typeOfFood.map(
                 (element, index) => {
@@ -255,6 +266,7 @@ const Homepage = () => {
                   );
                 }
               )}
+
           </div>
         </>
       ) : (
@@ -285,8 +297,29 @@ const Homepage = () => {
                   <></>
                 )}
               </div>
-            );
-          })}
+
+              <div> {element.productName}</div>
+              <div> {element.description}</div>
+              <div>{element.price}</div>
+              {isLoggedIn ? (
+                <button
+                  onClick={() => {
+                    addToCart(element.id);
+                    dispatch(setAmount());
+                    dispatch(setPrice(element.price));
+                  }}
+                >
+                  add to basket
+                </button>
+              ) : (
+                <></>
+              )}
+            </div>
+          );
+        })}
+
+          
+
       </div>
       {hide ? (
         <></>

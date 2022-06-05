@@ -23,6 +23,12 @@ import {
   updateBasket,
   deleteFromBasket,
   addToBasket,
+  setAmount,
+  zeroPrice,
+  setPrice,
+  decreasePrice,
+  zero,
+  decrease,
 } from "../../redux/reducers/basket/index";
 
 const Basket = () => {
@@ -52,6 +58,8 @@ const Basket = () => {
   const basketState = useSelector((state) => {
     return {
       basket: state.basket.basket,
+      amount: state.basket.amount,
+      price: state.basket.price,
     };
   });
   const emptyBasket = () => {
@@ -63,6 +71,9 @@ const Basket = () => {
       })
       .then((result) => {
         viewBasket();
+
+        dispatch(zero());
+
       })
       .catch((err) => {
         console.log(err.message);
@@ -101,6 +112,9 @@ const Basket = () => {
       )
       .then((result) => {
         viewBasket();
+
+        dispatch(setAmount());
+
         setMessage("Added To Basket");
       })
       .catch((err) => {
@@ -122,6 +136,7 @@ const Basket = () => {
       )
       .then((result) => {
         viewBasket();
+        dispatch(decrease());
       })
       .catch((err) => {
         console.log(err);
@@ -153,7 +168,11 @@ const Basket = () => {
         {show &&
           productsState.products.map((element, index) => {
             return (
+
+         
+
               <div className="bask" key={index}>
+
                 <img src={element.img} />
                 <div> {element.productName}</div>
                 <div> {element.description}</div>
@@ -162,28 +181,44 @@ const Basket = () => {
                 {isLoggedIn ? (
                   <>
                     <button
+
                       className="dec"
+
                       onClick={() => {
                         decreaseAndRemoveFromBasket(element.id);
                       }}
                     >
-                      <AiOutlineMinusSquare className="ai" />
+
+                     
+                    </button>
+                    <button
+            <AiOutlineMinusSquare className="ai" />
                     </button>
                     <button
                       className="del"
+
                       onClick={() => {
                         removeFromCart(element.id);
                       }}
                     >
+
+                     
+                    </button>
+                    <button
+
                     <AiOutlineDelete/>
                     </button>
                     <button
                       className="inc"
+
                       onClick={() => {
                         increaseCart(element.id);
                       }}
                     >
+
+                     
                     <AiOutlinePlusSquare/>
+
                     </button>
                   </>
                 ) : (
@@ -207,6 +242,10 @@ const Basket = () => {
       ) : (
         <></>
       )}
+
+      total items : {basketState.amount}
+      <br />
+      total price : {basketState.price}
     </div>
   );
 };
