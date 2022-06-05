@@ -11,7 +11,6 @@ import SearchResult from "./component/searchResult";
 function App() {
   return (
     <div className="App">
-      Welcome APP
       <NavBar />
       <Routes>
         <Route path={"/register"} element={<Register />} />

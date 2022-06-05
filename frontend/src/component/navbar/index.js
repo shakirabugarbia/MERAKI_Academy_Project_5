@@ -20,6 +20,8 @@ const NavBar = () => {
 
   return (
     <div className="NavBar">
+      <div><h1>Restaurant</h1></div>
+    <div className="navv">
       {isLoggedIn ? (
         <>
           <Link className="Link" to="/">
@@ -49,6 +51,7 @@ const NavBar = () => {
           <Link to="/login">Login</Link>
         </>
       )}
+      </div>
     </div>
   );
 };

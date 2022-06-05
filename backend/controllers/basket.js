@@ -158,9 +158,38 @@ const removeAndDecreas = (req, res) => {
   });
 };
 
+
+// empty cart 
+
+const emptyCart=(req, res)=>{
+  const user_id = req.token.userId;
+  const query = `UPDATE basket SET is_deleted=1 
+    WHERE user_id=?;`;
+  const data = [user_id];
+  connection.query(query, data, (error, result) => {
+    console.log(error);
+    if (error) {
+      return res.status(500).json({
+        success: false,
+        massage: "Server error",
+        err: error.message,
+      });
+    } else {
+      res.status(200).json({
+        success: true,
+        massage: `Products removed `,
+        result: result,
+      });
+    }
+  });
+
+
+}
+
 module.exports = {
   addAndUpdateToCart,
   viewCart,
   removefromcart,
   removeAndDecreas,
+  emptyCart
 };
