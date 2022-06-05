@@ -6,14 +6,14 @@ import {
   deleteproductts,
   updateproductts,
   setProducts,
-  setProductName
+  setProductName,
 } from "../../redux/reducers/products/index";
 import {
   addCategoriess,
   deleteCategoriess,
   updateCategoriess,
   setCategories,
-  setCategoriesId
+  setCategoriesId,
 } from "../../redux/reducers/categories";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -24,16 +24,19 @@ import {
   addToBasket,
 } from "../../redux/reducers/basket/index";
 
-import { addTypeOfFood,
+import {
+  addTypeOfFood,
   deleteTypeOfFood,
   updateTypeOfFood,
-  setTypeOfFood} from "../../redux/reducers/typeoffoods/index"
+  setTypeOfFood,
+} from "../../redux/reducers/typeoffoods/index";
 
 const Homepage = () => {
   const navigate = useNavigate();
   const [page, setPage] = useState(1);
   const [message, setMessage] = useState("");
   const dispatch = useDispatch();
+  const [hide, setHide] = useState(false);
   const { token, isLoggedIn } = useSelector((state) => {
     return {
       token: state.auth.token,
@@ -43,18 +46,18 @@ const Homepage = () => {
   const productsState = useSelector((state) => {
     return {
       products: state.products.products,
-      productName:state.products.productName
+      productName: state.products.productName,
     };
   });
   const typesOffoodsState = useSelector((state) => {
     return {
-      typesOffoods: state.typeoffood
+      typesOffoods: state.typeoffood,
     };
   });
-  const {categories,category_id} = useSelector((state) => {
+  const { categories, category_id } = useSelector((state) => {
     return {
       categories: state.categories.categories,
-      category_id:state.categories.category_id
+      category_id: state.categories.category_id,
     };
   });
   const basketState = useSelector((state) => {
@@ -64,9 +67,8 @@ const Homepage = () => {
   });
   const productByCategory = (String) => {
     axios.get(`http://localhost:5000/product/${String}`).then((result) => {
-     
-      dispatch(setProducts(result.data.result));dispatch(setCategoriesId(result.data.result[0].category_id))
-      
+      dispatch(setProducts(result.data.result));
+      dispatch(setCategoriesId(result.data.result[0].category_id));
     });
   };
   const addToCart = (String) => {
@@ -112,15 +114,16 @@ const Homepage = () => {
       });
   };
 
-const getAllTypeOfFood = () =>{
-  axios.get(`http://localhost:5000/typeOfFood`)
-  .then((result)=>{
-    dispatch(setTypeOfFood(result.data.result))
-  }) 
-  .catch((err)=>{
-    setMessage(err.message);
-  })
-}
+  const getAllTypeOfFood = () => {
+    axios
+      .get(`http://localhost:5000/typeOfFood`)
+      .then((result) => {
+        dispatch(setTypeOfFood(result.data.result));
+      })
+      .catch((err) => {
+        setMessage(err.message);
+      });
+  };
 
   const next = () => {
     axios
@@ -138,16 +141,19 @@ const getAllTypeOfFood = () =>{
         console.log(err.message);
       });
   };
-   const getProductsByTypeOf =(type_id)=>{
-   axios.get(`http://localhost:5000/product/bytype/${type_id}/categoryId?category_id=${category_id}`).then((result)=>{
-      dispatch(setProducts(result.data.result))
-      console.log(result.data.result);
-   })
-   .catch((err)=>{
- 
-    console.log(err);
-   })
-  } 
+  const getProductsByTypeOf = (type_id) => {
+    axios
+      .get(
+        `http://localhost:5000/product/bytype/${type_id}/categoryId?category_id=${category_id}`
+      )
+      .then((result) => {
+        dispatch(setProducts(result.data.result));
+        console.log(result.data.result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   const back = () => {
     axios
       .get(`http://localhost:5000/product/?page=${page - 1}`)
@@ -164,21 +170,29 @@ const getAllTypeOfFood = () =>{
         console.log(err.message);
       });
   };
+
   useEffect(() => {
     gatAllCategories();
     gatAllproducts();
     getAllTypeOfFood();
-      }, []);
+  }, []);
 
   return (
     <div>
-      <input type={'text'} placeholder="Search by Product Name" onChange={(e)=>{dispatch(setProductName(e.target.value)
-      )
-  
-
-      }} /><button onClick={()=>{
-           navigate("/search")
-      }}>search</button>
+      <input
+        type={"text"}
+        placeholder="Search by Product Name"
+        onChange={(e) => {
+          dispatch(setProductName(e.target.value));
+        }}
+      />
+      <button
+        onClick={() => {
+          navigate("/search");
+        }}
+      >
+        search
+      </button>
       <h2>categories and products</h2>
       <div className="categories" id="l">
         {categories.map((element, index) => {
@@ -188,6 +202,7 @@ const getAllTypeOfFood = () =>{
                 <button
                   onClick={() => {
                     productByCategory(element.id);
+                    setHide(true);
                   }}
                 >
                   {element.category_title}
@@ -197,28 +212,48 @@ const getAllTypeOfFood = () =>{
           );
         })}
       </div>
-      <h2>Type of products</h2>
-      <div className="typeOfProduct"> {typesOffoodsState.typesOffoods.typeOfFood.map((element, index) =>{
-        return(
-          <div key={index}>
-            <button onClick={()=>{
-              getProductsByTypeOf(element.id)
-            }}>{element.type} </button>
+      {hide?(
+      <button
+        onClick={() => {
+          gatAllproducts();
+          setHide(false)
+        }}
+      >
+        back to all product{" "}
+      </button>):(<></>)}
+      {hide ? (
+        <>
+          <h2>Type of products</h2>
+          <div className="typeOfProduct">
+            {" "}
+            {typesOffoodsState.typesOffoods.typeOfFood.map((element, index) => {
+              return (
+                <div key={index}>
+                  <button
+                    onClick={() => {
+                      getProductsByTypeOf(element.id);
+                      
+                    }}
+                  >
+                    {element.type}{" "}
+                  </button>
+                </div>
+              );
+            })}
           </div>
-
-
-      
-        )
-      })}</div>
-
-
+        </>
+      ) : (
+        <></>
+      )}
 
       <h2>Products</h2>
       <div className="products">
         {productsState.products.map((element, index) => {
           return (
             <div key={index}>
-              <div><img src={element.img}/></div>
+              <div>
+                <img src={element.img} />
+              </div>
               <div> {element.productName}</div>
               <div> {element.description}</div>
               <div>{element.price}</div>
@@ -237,6 +272,7 @@ const getAllTypeOfFood = () =>{
           );
         })}
       </div>
+      {hide?(<></>):(<>
       <a href="#l">
         <button
           onClick={() => {
@@ -256,6 +292,7 @@ const getAllTypeOfFood = () =>{
           Next
         </button>
       </a>
+      </>)}
     </div>
   );
 };
