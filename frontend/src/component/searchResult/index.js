@@ -116,7 +116,12 @@ return(
         </div>
       );
     })}
-  </div></div>
+  </div>
+  <div>
+    {products.length===0?<p>Your search didn't match any product.</p>:<></>}
+  </div>
+  
+  </div>
 )
 
 
