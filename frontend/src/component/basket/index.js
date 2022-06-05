@@ -34,6 +34,7 @@ import {
   zero,
   decrease,
   erase,
+  erasePrice,
 } from "../../redux/reducers/basket/index";
 
 const Basket = () => {
@@ -184,6 +185,7 @@ const Basket = () => {
                       className="dec"
                       onClick={() => {
                         decreaseAndRemoveFromBasket(element.id);
+                        dispatch(decreasePrice(element.price));
                       }}
                     >
                       <AiOutlineMinusSquare className="ai" />
@@ -194,6 +196,7 @@ const Basket = () => {
                       onClick={() => {
                         removeFromCart(element.id);
                         dispatch(erase(element.amount));
+                        dispatch(erasePrice(element.price * element.amount));
                       }}
                     >
                       <AiOutlineDelete />
@@ -202,6 +205,7 @@ const Basket = () => {
                       className="inc"
                       onClick={() => {
                         increaseCart(element.id);
+                        dispatch(setPrice(element.price));
                       }}
                     >
                       <AiOutlinePlusSquare />
@@ -220,6 +224,7 @@ const Basket = () => {
             className="emptyButton"
             onClick={() => {
               emptyBasket();
+              dispatch(zeroPrice());
             }}
           >
             empty basket
