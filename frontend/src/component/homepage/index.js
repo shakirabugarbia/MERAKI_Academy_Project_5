@@ -287,40 +287,20 @@ const Homepage = () => {
                 <div>{element.price}</div>
                 {isLoggedIn ? (
                   <button
-                    onClick={() => {
-                      addToCart(element.id);
-                    }}
+                  onClick={() => {
+                    addToCart(element.id);
+                    dispatch(setAmount());
+                    dispatch(setPrice(element.price));
+                  }}
                   >
                     add to basket
                   </button>
                 ) : (
                   <></>
                 )}
+              </div>)})}
+
               </div>
-
-              <div> {element.productName}</div>
-              <div> {element.description}</div>
-              <div>{element.price}</div>
-              {isLoggedIn ? (
-                <button
-                  onClick={() => {
-                    addToCart(element.id);
-                    dispatch(setAmount());
-                    dispatch(setPrice(element.price));
-                  }}
-                >
-                  add to basket
-                </button>
-              ) : (
-                <></>
-              )}
-            </div>
-          );
-        })}
-
-          
-
-      </div>
       {hide ? (
         <></>
       ) : (

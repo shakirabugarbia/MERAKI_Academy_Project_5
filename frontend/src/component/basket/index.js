@@ -1,8 +1,12 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { AiOutlineMinusSquare, AiOutlinePlusSquare,AiOutlineDelete } from "react-icons/ai";
-import "./style.css"
+import {
+  AiOutlineMinusSquare,
+  AiOutlinePlusSquare,
+  AiOutlineDelete,
+} from "react-icons/ai";
+import "./style.css";
 import {
   addProductts,
   deleteproductts,
@@ -73,7 +77,6 @@ const Basket = () => {
         viewBasket();
 
         dispatch(zero());
-
       })
       .catch((err) => {
         console.log(err.message);
@@ -168,57 +171,38 @@ const Basket = () => {
         {show &&
           productsState.products.map((element, index) => {
             return (
-
-         
-
               <div className="bask" key={index}>
-
                 <img src={element.img} />
                 <div> {element.productName}</div>
                 <div> {element.description}</div>
-                <div>{element.price}</div>
-                <div>{element.amount}</div>
+                <div>amount: {element.amount}</div>
+                <div>price: {element.price * element.amount}</div>
                 {isLoggedIn ? (
                   <>
                     <button
-
                       className="dec"
-
                       onClick={() => {
                         decreaseAndRemoveFromBasket(element.id);
                       }}
                     >
+                      <AiOutlineMinusSquare className="ai" />
+                    </button>
 
-                     
-                    </button>
-                    <button
-            <AiOutlineMinusSquare className="ai" />
-                    </button>
                     <button
                       className="del"
-
                       onClick={() => {
                         removeFromCart(element.id);
                       }}
                     >
-
-                     
-                    </button>
-                    <button
-
-                    <AiOutlineDelete/>
+                      <AiOutlineDelete />
                     </button>
                     <button
                       className="inc"
-
                       onClick={() => {
                         increaseCart(element.id);
                       }}
                     >
-
-                     
-                    <AiOutlinePlusSquare/>
-
+                      <AiOutlinePlusSquare />
                     </button>
                   </>
                 ) : (
@@ -242,7 +226,6 @@ const Basket = () => {
       ) : (
         <></>
       )}
-
       total items : {basketState.amount}
       <br />
       total price : {basketState.price}
