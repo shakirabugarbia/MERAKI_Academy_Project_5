@@ -36,6 +36,9 @@ const basket = createSlice({
     decrease: (state, action) => {
       state.amount = state.amount - 1;
     },
+    erase: (state, action) => {
+      state.amount = state.amount - action.payload;
+    },
     zero: (state, action) => {
       state.amount = 0;
     },
@@ -62,6 +65,7 @@ export const {
   zeroPrice,
   setPrice,
   decreasePrice,
+  erase,
 } = basket.actions;
 
 export default basket.reducer;
