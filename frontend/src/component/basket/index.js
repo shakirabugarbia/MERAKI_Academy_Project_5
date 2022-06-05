@@ -119,6 +119,7 @@ const Basket = () => {
         viewBasket();
 
         dispatch(setAmount());
+        console.log(basketState.amount);
 
         setMessage("Added To Basket");
       })
@@ -225,6 +226,7 @@ const Basket = () => {
             onClick={() => {
               emptyBasket();
               dispatch(zeroPrice());
+              console.log(typeof basketState.price);
             }}
           >
             empty basket
