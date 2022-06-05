@@ -215,7 +215,7 @@ const Homepage = () => {
             return (
               <div key={index}>
                 <div><div>
-                  <img src={element.img}/></div>
+                  <img src={element.category_img}/></div>
                   <button
                     onClick={() => {
                       productByCategory(element.id);
