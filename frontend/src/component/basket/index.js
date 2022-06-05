@@ -21,6 +21,12 @@ import {
   updateBasket,
   deleteFromBasket,
   addToBasket,
+  setAmount,
+  zeroPrice,
+  setPrice,
+  decreasePrice,
+  zero,
+  decrease,
 } from "../../redux/reducers/basket/index";
 
 const Basket = () => {
@@ -50,57 +56,67 @@ const Basket = () => {
   const basketState = useSelector((state) => {
     return {
       basket: state.basket.basket,
+      amount: state.basket.amount,
+      price: state.basket.price,
     };
   });
-const emptyBasket=()=>{
-  axios.delete(`http://localhost:5000/basket/empty`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  }).then((result)=>{
-    viewBasket();
-  }).catch((err)=>{
-    console.log(err.message);
-  })
-}
+  const emptyBasket = () => {
+    axios
+      .delete(`http://localhost:5000/basket/empty`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((result) => {
+        viewBasket();
+        dispatch(zero());
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
 
+  const removeFromCart = (id) => {
+    axios
+      .put(
+        `http://localhost:5000/basket/${id}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((result) => {
+        viewBasket();
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
 
-const  removeFromCart=(id)=>{
-  axios.put(`http://localhost:5000/basket/${id}`,{},
-  {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  }
-  
-  ).then((result)=>{
-    viewBasket();
-  }).catch((err)=>{
-    console.log(err.message);
-  })
-}
-
-const increaseCart=(id)=>{
-  axios
-  .post(
-    `http://localhost:5000/basket/${id}`,
-    {},
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  )
-  .then((result) => {
-    viewBasket();
-    setMessage("Added To Basket");
-  })
-  .catch((err) => {
-    // console.log("header", token);
-    // console.log(err);
-    setMessage(err.message);
-  });
-}
+  const increaseCart = (id) => {
+    axios
+      .post(
+        `http://localhost:5000/basket/${id}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((result) => {
+        viewBasket();
+        dispatch(setAmount());
+        setMessage("Added To Basket");
+      })
+      .catch((err) => {
+        // console.log("header", token);
+        // console.log(err);
+        setMessage(err.message);
+      });
+  };
   const decreaseAndRemoveFromBasket = (id) => {
     axios
       .put(
@@ -113,8 +129,8 @@ const increaseCart=(id)=>{
         }
       )
       .then((result) => {
-          
         viewBasket();
+        dispatch(decrease());
       })
       .catch((err) => {
         console.log(err);
@@ -147,26 +163,34 @@ const increaseCart=(id)=>{
           productsState.products.map((element, index) => {
             return (
               <div key={index}>
-                <img src={element.img}/>
+                <img src={element.img} />
                 <div> {element.productName}</div>
                 <div> {element.description}</div>
                 <div>{element.price}</div>
                 <div>{element.amount}</div>
                 {isLoggedIn ? (
                   <>
-                  <button
-                    onClick={() => {
-                      decreaseAndRemoveFromBasket(element.id);
-                    }}
-                  >
-                   decrease
-                  </button>
-                  <button onClick={()=>{
-                    removeFromCart(element.id);
-                  }}>Delete</button>
-                  <button onClick={()=>{
-                    increaseCart(element.id);
-                  }}>increase</button>
+                    <button
+                      onClick={() => {
+                        decreaseAndRemoveFromBasket(element.id);
+                      }}
+                    >
+                      decrease
+                    </button>
+                    <button
+                      onClick={() => {
+                        removeFromCart(element.id);
+                      }}
+                    >
+                      Delete
+                    </button>
+                    <button
+                      onClick={() => {
+                        increaseCart(element.id);
+                      }}
+                    >
+                      increase
+                    </button>
                   </>
                 ) : (
                   <></>
@@ -175,13 +199,25 @@ const increaseCart=(id)=>{
             );
           })}
       </div>
-      {productsState.products.length? <div ><button className="emptyButton" onClick={()=>{
-        emptyBasket();
-      }}>empty basket</button></div>:<></>}
-     
+      {productsState.products.length ? (
+        <div>
+          <button
+            className="emptyButton"
+            onClick={() => {
+              emptyBasket();
+            }}
+          >
+            empty basket
+          </button>
+        </div>
+      ) : (
+        <></>
+      )}
+      total items : {basketState.amount}
+      <br />
+      total price : {basketState.price}
     </div>
   );
 };
 
 export default Basket;
- 

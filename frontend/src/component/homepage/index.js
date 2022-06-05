@@ -22,6 +22,10 @@ import {
   updateBasket,
   deleteFromBasket,
   addToBasket,
+  setAmount,
+  zeroPrice,
+  setPrice,
+  decreasePrice,
 } from "../../redux/reducers/basket/index";
 
 import {
@@ -63,6 +67,8 @@ const Homepage = () => {
   const basketState = useSelector((state) => {
     return {
       basket: state.basket.basket,
+      amount: state.basket.amount,
+      price: state.basket.price,
     };
   });
   const productByCategory = (String) => {
@@ -212,15 +218,18 @@ const Homepage = () => {
           );
         })}
       </div>
-      {hide?(
-      <button
-        onClick={() => {
-          gatAllproducts();
-          setHide(false)
-        }}
-      >
-        back to all product{" "}
-      </button>):(<></>)}
+      {hide ? (
+        <button
+          onClick={() => {
+            gatAllproducts();
+            setHide(false);
+          }}
+        >
+          back to all product
+        </button>
+      ) : (
+        <></>
+      )}
       {hide ? (
         <>
           <h2>Type of products</h2>
@@ -232,7 +241,6 @@ const Homepage = () => {
                   <button
                     onClick={() => {
                       getProductsByTypeOf(element.id);
-                      
                     }}
                   >
                     {element.type}{" "}
@@ -261,6 +269,8 @@ const Homepage = () => {
                 <button
                   onClick={() => {
                     addToCart(element.id);
+                    dispatch(setAmount());
+                    dispatch(setPrice(element.price));
                   }}
                 >
                   add to basket
@@ -272,27 +282,31 @@ const Homepage = () => {
           );
         })}
       </div>
-      {hide?(<></>):(<>
-      <a href="#l">
-        <button
-          onClick={() => {
-            back();
-          }}
-        >
-          Back
-        </button>
-      </a>
-      {page}
-      <a href="#l">
-        <button
-          onClick={() => {
-            next();
-          }}
-        >
-          Next
-        </button>
-      </a>
-      </>)}
+      {hide ? (
+        <></>
+      ) : (
+        <>
+          <a href="#l">
+            <button
+              onClick={() => {
+                back();
+              }}
+            >
+              Back
+            </button>
+          </a>
+          {page}
+          <a href="#l">
+            <button
+              onClick={() => {
+                next();
+              }}
+            >
+              Next
+            </button>
+          </a>
+        </>
+      )}
     </div>
   );
 };
