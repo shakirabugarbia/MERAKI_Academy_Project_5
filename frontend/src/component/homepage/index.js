@@ -64,7 +64,7 @@ const Homepage = () => {
   });
   const productByCategory = (String) => {
     axios.get(`http://localhost:5000/product/${String}`).then((result) => {
-      console.log("result.data.result[0].category_id",result.data.result[0].category_id);
+     
       dispatch(setProducts(result.data.result));dispatch(setCategoriesId(result.data.result[0].category_id))
       
     });
@@ -138,10 +138,10 @@ const getAllTypeOfFood = () =>{
         console.log(err.message);
       });
   };
-   const getProductsByTypeOf =(type_id,category_id)=>{
+   const getProductsByTypeOf =(type_id)=>{
    axios.get(`http://localhost:5000/product/bytype/${type_id}/categoryId?category_id=${category_id}`).then((result)=>{
       dispatch(setProducts(result.data.result))
-      console.log(productsState.products);
+      console.log(result.data.result);
    })
    .catch((err)=>{
  
