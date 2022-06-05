@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { AiOutlineMinusSquare, AiOutlinePlusSquare,AiOutlineDelete } from "react-icons/ai";
+import "./style.css"
 import {
   addProductts,
   deleteproductts,
@@ -52,55 +54,61 @@ const Basket = () => {
       basket: state.basket.basket,
     };
   });
-const emptyBasket=()=>{
-  axios.delete(`http://localhost:5000/basket/empty`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  }).then((result)=>{
-    viewBasket();
-  }).catch((err)=>{
-    console.log(err.message);
-  })
-}
+  const emptyBasket = () => {
+    axios
+      .delete(`http://localhost:5000/basket/empty`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((result) => {
+        viewBasket();
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
 
+  const removeFromCart = (id) => {
+    axios
+      .put(
+        `http://localhost:5000/basket/${id}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((result) => {
+        viewBasket();
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
 
-const  removeFromCart=(id)=>{
-  axios.put(`http://localhost:5000/basket/${id}`,{},
-  {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  }
-  
-  ).then((result)=>{
-    viewBasket();
-  }).catch((err)=>{
-    console.log(err.message);
-  })
-}
-
-const increaseCart=(id)=>{
-  axios
-  .post(
-    `http://localhost:5000/basket/${id}`,
-    {},
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  )
-  .then((result) => {
-    viewBasket();
-    setMessage("Added To Basket");
-  })
-  .catch((err) => {
-    // console.log("header", token);
-    // console.log(err);
-    setMessage(err.message);
-  });
-}
+  const increaseCart = (id) => {
+    axios
+      .post(
+        `http://localhost:5000/basket/${id}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((result) => {
+        viewBasket();
+        setMessage("Added To Basket");
+      })
+      .catch((err) => {
+        // console.log("header", token);
+        // console.log(err);
+        setMessage(err.message);
+      });
+  };
   const decreaseAndRemoveFromBasket = (id) => {
     axios
       .put(
@@ -113,7 +121,6 @@ const increaseCart=(id)=>{
         }
       )
       .then((result) => {
-          
         viewBasket();
       })
       .catch((err) => {
@@ -146,27 +153,38 @@ const increaseCart=(id)=>{
         {show &&
           productsState.products.map((element, index) => {
             return (
-              <div key={index}>
-                <img src={element.img}/>
+              <div className="bask" key={index}>
+                <img src={element.img} />
                 <div> {element.productName}</div>
                 <div> {element.description}</div>
                 <div>{element.price}</div>
                 <div>{element.amount}</div>
                 {isLoggedIn ? (
                   <>
-                  <button
-                    onClick={() => {
-                      decreaseAndRemoveFromBasket(element.id);
-                    }}
-                  >
-                   decrease
-                  </button>
-                  <button onClick={()=>{
-                    removeFromCart(element.id);
-                  }}>Delete</button>
-                  <button onClick={()=>{
-                    increaseCart(element.id);
-                  }}>increase</button>
+                    <button
+                      className="dec"
+                      onClick={() => {
+                        decreaseAndRemoveFromBasket(element.id);
+                      }}
+                    >
+                      <AiOutlineMinusSquare className="ai" />
+                    </button>
+                    <button
+                      className="del"
+                      onClick={() => {
+                        removeFromCart(element.id);
+                      }}
+                    >
+                    <AiOutlineDelete/>
+                    </button>
+                    <button
+                      className="inc"
+                      onClick={() => {
+                        increaseCart(element.id);
+                      }}
+                    >
+                    <AiOutlinePlusSquare/>
+                    </button>
                   </>
                 ) : (
                   <></>
@@ -175,13 +193,22 @@ const increaseCart=(id)=>{
             );
           })}
       </div>
-      {productsState.products.length? <div ><button className="emptyButton" onClick={()=>{
-        emptyBasket();
-      }}>empty basket</button></div>:<></>}
-     
+      {productsState.products.length ? (
+        <div>
+          <button
+            className="emptyButton"
+            onClick={() => {
+              emptyBasket();
+            }}
+          >
+            empty basket
+          </button>
+        </div>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };
 
 export default Basket;
- 
