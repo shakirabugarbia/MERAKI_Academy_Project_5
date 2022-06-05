@@ -1,8 +1,8 @@
 
-DROP DATABASE restaurant;
+/* DROP DATABASE restaurant;
 CREATE DATABASE restaurant;
-
-use restaurant;
+ */
+use sql11497812;
 
 CREATE TABLE roles (
     id INT AUTO_INCREMENT NOT NULL,
