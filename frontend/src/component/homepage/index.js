@@ -214,7 +214,8 @@ const Homepage = () => {
           categories.map((element, index) => {
             return (
               <div key={index}>
-                <div>
+                <div><div>
+                  <img src={element.img}/></div>
                   <button
                     onClick={() => {
                       productByCategory(element.id);
