@@ -52,6 +52,19 @@ const Basket = () => {
       basket: state.basket.basket,
     };
   });
+const emptyBasket=()=>{
+  axios.delete(`http://localhost:5000/basket/empty`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }).then((result)=>{
+    viewBasket();
+  }).catch((err)=>{
+    console.log(err.message);
+  })
+}
+
+
 const  removeFromCart=(id)=>{
   axios.put(`http://localhost:5000/basket/${id}`,{},
   {
@@ -162,8 +175,13 @@ const increaseCart=(id)=>{
             );
           })}
       </div>
+      {productsState.products.length? <div ><button className="emptyButton" onClick={()=>{
+        emptyBasket();
+      }}>empty basket</button></div>:<></>}
+     
     </div>
   );
 };
 
 export default Basket;
+ 
