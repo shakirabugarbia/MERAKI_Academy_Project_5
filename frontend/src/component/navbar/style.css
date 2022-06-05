@@ -1,0 +1,25 @@
+.NavBar{
+    /* width: 100%; */
+    border-bottom: .1em solid orange;
+    display:flex;
+    /* justify-content: center; */
+    align-items: center;
+
+}
+
+.navv{
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-self: start;
+margin-left:30% ;
+
+}
+
+
+.logout{
+    border: 0ch solid rgba(255, 255, 255, 0);
+    background-color: rgba(240, 248, 255, 0);
+    margin-top: .5%;
+
+}
