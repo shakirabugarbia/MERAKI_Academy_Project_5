@@ -230,7 +230,7 @@ const Homepage = () => {
           })}
       </div>
       {hide ? (
-        <button
+        <button className="backtoallbutton"
           onClick={() => {
             gatAllproducts();
             setHide(false);
