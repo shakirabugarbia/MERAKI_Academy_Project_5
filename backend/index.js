@@ -18,6 +18,8 @@ const typeOfFoodRouter = require("./routes/typeOfFood");
 
 const app = express();
 
+/* app.use(express.static(path.resolve(__dirname, "./client/build"))); */
+
 //built-in middleware
 app.use(express.json());
 app.use(cors());
