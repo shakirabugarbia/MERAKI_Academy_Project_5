@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import "./style.css"
 import {
   addProductts,
   deleteproductts,
@@ -41,6 +42,7 @@ const Homepage = () => {
   const [message, setMessage] = useState("");
   const dispatch = useDispatch();
   const [hide, setHide] = useState(false);
+  const [show, setShow] = useState(false);
   const { token, isLoggedIn } = useSelector((state) => {
     return {
       token: state.auth.token,
@@ -89,6 +91,7 @@ const Homepage = () => {
         }
       )
       .then((result) => {
+        setShow(true);
         setMessage("Added To Basket");
       })
       .catch((err) => {
@@ -105,6 +108,7 @@ const Homepage = () => {
         setMessage(result.data.message);
       })
       .catch((err) => {
+        setShow(true);
         setMessage(err.message);
       });
   };
@@ -114,6 +118,7 @@ const Homepage = () => {
       .then((result) => {
         dispatch(setCategories(result.data.result));
         setMessage(result.data.message);
+        setShow(true);
       })
       .catch((err) => {
         setMessage(err.message);
@@ -125,6 +130,7 @@ const Homepage = () => {
       .get(`http://localhost:5000/typeOfFood`)
       .then((result) => {
         dispatch(setTypeOfFood(result.data.result));
+        setShow(true);
       })
       .catch((err) => {
         setMessage(err.message);
@@ -138,6 +144,7 @@ const Homepage = () => {
         if (result.data.result.result.length !== 0) {
           dispatch(setProducts(result.data.result.result));
           setPage(page + 1);
+          setShow(true);
           console.log(page);
         } else {
           return setPage(page);
@@ -154,6 +161,7 @@ const Homepage = () => {
       )
       .then((result) => {
         dispatch(setProducts(result.data.result));
+        setShow(true);
         console.log(result.data.result);
       })
       .catch((err) => {
@@ -167,6 +175,7 @@ const Homepage = () => {
         if (result.data.result.result.length !== 0) {
           dispatch(setProducts(result.data.result.result));
           setPage(page - 1);
+          setShow(true);
           console.log(page);
         } else {
           return setPage(page);
@@ -201,22 +210,23 @@ const Homepage = () => {
       </button>
       <h2>categories and products</h2>
       <div className="categories" id="l">
-        {categories.map((element, index) => {
-          return (
-            <div key={index}>
-              <div>
-                <button
-                  onClick={() => {
-                    productByCategory(element.id);
-                    setHide(true);
-                  }}
-                >
-                  {element.category_title}
-                </button>
+        {show &&
+          categories.map((element, index) => {
+            return (
+              <div key={index}>
+                <div>
+                  <button
+                    onClick={() => {
+                      productByCategory(element.id);
+                      setHide(true);
+                    }}
+                  >
+                    {element.category_title}
+                  </button>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
       </div>
       {hide ? (
         <button
@@ -225,7 +235,11 @@ const Homepage = () => {
             setHide(false);
           }}
         >
-          back to all product
+
+        
+
+          back to all product{" "}
+
         </button>
       ) : (
         <></>
@@ -235,19 +249,24 @@ const Homepage = () => {
           <h2>Type of products</h2>
           <div className="typeOfProduct">
             {" "}
-            {typesOffoodsState.typesOffoods.typeOfFood.map((element, index) => {
-              return (
-                <div key={index}>
-                  <button
-                    onClick={() => {
-                      getProductsByTypeOf(element.id);
-                    }}
-                  >
-                    {element.type}{" "}
-                  </button>
-                </div>
-              );
-            })}
+
+            {show &&
+              typesOffoodsState.typesOffoods.typeOfFood.map(
+                (element, index) => {
+                  return (
+                    <div key={index}>
+                      <button
+                        onClick={() => {
+                          getProductsByTypeOf(element.id);
+                        }}
+                      >
+                        {element.type}{" "}
+                      </button>
+                    </div>
+                  );
+                }
+              )}
+
           </div>
         </>
       ) : (
@@ -256,12 +275,29 @@ const Homepage = () => {
 
       <h2>Products</h2>
       <div className="products">
-        {productsState.products.map((element, index) => {
-          return (
-            <div key={index}>
-              <div>
-                <img src={element.img} />
+        {show &&
+          productsState.products.map((element, index) => {
+            return (
+              <div key={index}>
+                <div>
+                  <img src={element.img} />
+                </div>
+                <div> {element.productName}</div>
+                <div> {element.description}</div>
+                <div>{element.price}</div>
+                {isLoggedIn ? (
+                  <button
+                    onClick={() => {
+                      addToCart(element.id);
+                    }}
+                  >
+                    add to basket
+                  </button>
+                ) : (
+                  <></>
+                )}
               </div>
+
               <div> {element.productName}</div>
               <div> {element.description}</div>
               <div>{element.price}</div>
@@ -281,6 +317,9 @@ const Homepage = () => {
             </div>
           );
         })}
+
+          
+
       </div>
       {hide ? (
         <></>

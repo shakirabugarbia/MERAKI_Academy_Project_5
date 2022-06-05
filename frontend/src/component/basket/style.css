@@ -1,0 +1,24 @@
+.dec{
+border: 0ch solid rgba(245, 222, 179, 0);
+background-color: rgba(240, 248, 255, 0);
+
+}
+
+.inc{
+    border: 0ch solid rgba(245, 222, 179, 0);
+    background-color: rgba(240, 248, 255, 0);  
+}
+
+
+.del{
+    border: 0ch solid rgba(245, 222, 179, 0);
+    background-color: rgba(240, 248, 255, 0);   
+}
+
+/* .products{
+    display: grid;
+    grid-template-columns: 25% 25% 25%;
+    align-items: center;
+    justify-content: center;
+    
+} */
