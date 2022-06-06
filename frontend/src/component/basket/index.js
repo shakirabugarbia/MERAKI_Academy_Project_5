@@ -35,6 +35,8 @@ import {
   decrease,
   erase,
   erasePrice,
+  renderPrice,
+  renderamount,
 } from "../../redux/reducers/basket/index";
 
 const Basket = () => {
@@ -165,6 +167,18 @@ const Basket = () => {
         console.log(err);
       });
   };
+  const storgesolve = () => {
+    let x = 0;
+    let y = 0;
+    productsState.products.forEach((element) => {
+      console.log(element.amount);
+      x = x + parseInt(element.amount);
+      y = y + parseInt(element.price * element.amount);
+    });
+    dispatch(renderamount(x));
+    dispatch(renderPrice(y));
+  };
+  storgesolve();
   useEffect(() => {
     viewBasket();
   }, []);
