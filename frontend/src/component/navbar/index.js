@@ -24,12 +24,7 @@ const NavBar = () => {
   return (
     <div className="NavBar">
       <div>
-    
-        <Link className="title" to="/">
-        {/* <img className="titlee" src="https://i.ibb.co/Q8JkN9P/Untitled-design-removebg-preview.png" alt="Untitled-design-removebg-preview" border="0"/> */}
 
-
-          Big <span className="span">Bite</span>
         </Link>
       </div>
       <div className="navv">
@@ -45,19 +40,19 @@ const NavBar = () => {
                 navigate("/");
               }}
             >
-              <GrLogout className="log"/> Logout
+              <GrLogout className="log" /> Logout
             </button>
           </>
         ) : (
           <>
-         <div className="d">
-            <Link className="Link" to="/register">
-              <AiOutlineUserAdd />
-              Register
-            </Link>
-            <Link  className="Link" to="/login">
-              <AiOutlineUser /> Login
-            </Link>
+            <div className="d">
+              <Link className="Link" to="/register">
+                <AiOutlineUserAdd />
+                Register
+              </Link>
+              <Link className="Link" to="/login">
+                <AiOutlineUser /> Login
+              </Link>
             </div>
           </>
         )}

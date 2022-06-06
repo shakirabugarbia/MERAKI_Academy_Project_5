@@ -1,34 +1,78 @@
-.products{
-    display: grid;
-    grid-template-columns: 25% 25% 25%;
-    align-items: center;
-    justify-content: center;
-    
+.products {
+  display: grid;
+  grid-template-columns: 25% 25% 25%;
+  align-items: center;
+  justify-content: center;
 }
-.categories{
-    display: grid;
-    grid-template-columns: 25% 25% 25%;
-    align-items: center;
-    justify-content: center;
-    
+.categories {
+  display: flex;
+  animation: scrolling 120s linear infinite;
+
+  gap: 1rem;
+  position: relative;
+  height: 100%;
+  margin: 1rem;
 }
+
 button {
-    width: 150px;
-    margin: 5px;
-    height: 30px;
-    background-color: rgb(95, 95, 253);
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    color: seashell;
-    font-size: large;
+  width: 150px;
+  margin: 5px;
+  height: 30px;
+  background-color: rgba(251, 159, 0, 0.723);
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  color: seashell;
+  font-size: large;
+}
+.backtoallbutton {
+  width: 250px;
+  margin: 5px;
+  height: 30px;
+  background-color: rgb(95, 95, 253);
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  color: seashell;
+  font-size: large;
+}
+
+.Serch {
+  display: flex;
+  display: -webkit-inline-box;
+  -webkit-box-align: center;
+  -webkit-algin-items: center;
+  align-items: center;
+  z-index: 2;
+  margin: 20px;
+  border: 1px solid #fff;
+  border-radius: 8px;
+  box-sizing: border-box;
+  background-color: #fff;
+  color: coral;
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  width: 40rem;
+}
+
+
+.moveUl {
+  list-style: none;
+  height: 100%;
+  display: flex;
+  gap: 10px;
+
+  animation: scrolling 25s linear infinite;
+}
+
+@keyframes scrolling {
+  0% {
+      transform: translateX(0);
   }
-  .backtoallbutton{   width: 250px;
-    margin: 5px;
-    height: 30px;
-    background-color: rgb(95, 95, 253);
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    color: seashell;
-    font-size: large;}
+
+  100% {
+      transform: translateX(-180vw);
+  }
+}
+

@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "./style.css"
+import "./style.css";
 import Video from "../Video/video";
 import {
   addProductts,
@@ -195,32 +195,38 @@ const Homepage = () => {
 
   return (
     <div>
-      <Video/>
-  
+      <Video />
 
-      <input
-        type={"text"}
-        placeholder="Search by Product Name"
-        onChange={(e) => {
-          dispatch(setProductName(e.target.value));
-        }}
-      />
-      <button
-        onClick={() => {
-          navigate("/search");
-        }}
-      >
-        search
-      </button>
-      <h2>categories and products</h2>
+      <div className="Serch">
+        <input
+          type={"text"}
+          placeholder="Search by Product Name"
+          onChange={(e) => {
+            dispatch(setProductName(e.target.value));
+          }}
+        />
+        <button
+          onClick={() => {
+            navigate("/search");
+          }}
+        >
+          search
+        </button>
+      </div>
+
+      <h2>Kitchen</h2>
       <div className="categories" id="l">
         {show &&
           categories.map((element, index) => {
             return (
               <div key={index}>
-                <div><div>
-                  <img src={element.category_img}/></div>
+                <div>
+                  <div class="pic-slideshow-continer">
+                    <img class="pic-slideshow" src={element.category_img} />
+                  </div>
+
                   <button
+                    class="Srech-Btn"
                     onClick={() => {
                       productByCategory(element.id);
                       setHide(true);
@@ -234,17 +240,14 @@ const Homepage = () => {
           })}
       </div>
       {hide ? (
-        <button className="backtoallbutton"
+        <button
+          className="back-to-all-button"
           onClick={() => {
             gatAllproducts();
             setHide(false);
           }}
         >
-
-        
-
           back to all product{" "}
-
         </button>
       ) : (
         <></>
@@ -254,7 +257,6 @@ const Homepage = () => {
           <h2>Type of products</h2>
           <div className="typeOfProduct">
             {" "}
-
             {show &&
               typesOffoodsState.typesOffoods.typeOfFood.map(
                 (element, index) => {
@@ -271,7 +273,6 @@ const Homepage = () => {
                   );
                 }
               )}
-
           </div>
         </>
       ) : (
@@ -292,20 +293,21 @@ const Homepage = () => {
                 <div>{element.price}</div>
                 {isLoggedIn ? (
                   <button
-                  onClick={() => {
-                    addToCart(element.id);
-                    dispatch(setAmount());
-                    dispatch(setPrice(element.price));
-                  }}
+                    onClick={() => {
+                      addToCart(element.id);
+                      dispatch(setAmount());
+                      dispatch(setPrice(element.price));
+                    }}
                   >
                     add to basket
                   </button>
                 ) : (
                   <></>
                 )}
-              </div>)})}
-
               </div>
+            );
+          })}
+      </div>
       {hide ? (
         <></>
       ) : (

@@ -1,39 +1,32 @@
-.NavBar{
-    border-bottom: .1em solid rgba(239, 244, 235, 0);
-    display:flex;
-}
-imgpg{
-    /* justify-content: center; */
-    align-items: center;
-    justify-content: space-between;
-    background-color: rgba(228, 241, 228, 0);
-    font-family: 'ABeeZee', sans-serif;
-    color: rgba(24, 21, 21, 0.682);
-    margin-top: 1%;
-}
 
-.navv{
-display: flex;
-flex-direction: row;
-justify-content: center;
-align-self: start;
-margin-left:30% ;
-
+.NavBar {
+  border-bottom: 0.1em solid rgba(239, 244, 235, 0);
+  display: flex;
+  height: 3.5rem;
+  background: linear-gradient(
+    90deg,
+    rgb(255, 255, 255) 30%,
+    #F26716 300%)
 
 }
-
-
-.logout{
-    border: 0ch solid rgba(255, 255, 255, 0);
-    background-color: rgba(240, 248, 255, 0);
-    margin-top: 4%;
-    color: rgba(0, 0, 0, 0.633);
-    font-family: 'ABeeZee', sans-serif;
-    font-size: 1em;
-
-
-
+.imgpg {
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(228, 241, 228, 0);
+  font-family: "ABeeZee", sans-serif;
+  color: rgba(24, 21, 21, 0.682);
+  margin-top: 1%;
 }
+
+.navv {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-self: start;
+  margin-left: 30%;
+  height: 4rem;
+}
+
 
 .titlee{
     width: 3em;
@@ -41,24 +34,34 @@ margin-left:30% ;
     margin-left: 5%;
 }
 
-.title{
-    font-size: 2em;
- text-decoration: none;
- /* text-decoration: underline; */
 
-    color: rgb(240, 121, 9);
-    font-family: 'Satisfy', cursive;
 
+.logout {
+  border: 0ch solid rgba(255, 255, 255, 0);
+  background-color: rgba(240, 248, 255, 0);
+  margin-top: 4%;
+  color: rgba(0, 0, 0, 0.633);
+  font-family: "ABeeZee", sans-serif;
+  font-size: 1em;
 
 }
 
-.span{
-    color: rgba(24, 21, 21, 0.682);
-   
+.title {
+  margin-left: 2rem;
+margin-top: -2.2rem;
+  height: 8rem;
+  width: 9rem;
+  font-size: 2em;
+  text-decoration: none;
+  color: rgb(240, 121, 9);
+  font-family: "Satisfy", cursive;
 }
 
+.span {
+  color: rgba(122, 93, 93, 0.682);
+}
 
-.Link{
-    text-decoration: none;
-    font-size: 1em;
+.Link {
+  text-decoration: none;
+  font-size: 1em;
 }

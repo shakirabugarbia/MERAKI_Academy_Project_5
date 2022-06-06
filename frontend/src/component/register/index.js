@@ -12,12 +12,8 @@ export const Register = () => {
 
   return (
     <div className="register-Pg">
-      
-        <img className="register-Pic"
-          src="https://i.ibb.co/1dzGwfZ/Black-And-White-Modern-Menu-Template.png"
-          alt="Black-And-White-Modern-Menu-Template"
-          border="0"
-        />
+       
+       <div><img className="register-Pic" src="https://i.ibb.co/4T8TwDH/Black-And-White-Modern-Menu-Template-1.png" alt="Black-And-White-Modern-Menu-Template-1" border="0"/></div>
         
       <div className="register">
         <input
