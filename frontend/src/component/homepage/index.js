@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./style.css"
+import Video from "../Video/video";
 import {
   addProductts,
   deleteproductts,
@@ -194,6 +195,9 @@ const Homepage = () => {
 
   return (
     <div>
+      <Video/>
+  
+
       <input
         type={"text"}
         placeholder="Search by Product Name"

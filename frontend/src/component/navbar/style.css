@@ -4,6 +4,8 @@
     display:flex;
     /* justify-content: center; */
     align-items: center;
+    
+
 
 }
 
@@ -13,6 +15,7 @@ flex-direction: row;
 justify-content: center;
 align-self: start;
 margin-left:30% ;
+
 
 }
 
