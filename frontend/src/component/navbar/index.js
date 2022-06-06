@@ -23,10 +23,12 @@ const NavBar = () => {
 
   return (
     <div className="NavBar">
-      <div>
-
+     <div>
+        <Link children to="/">
+          <img className="title" src="https://i.ibb.co/RDmggP2/Bite-removebg-preview.png" alt="Bite-removebg-preview" border="0"/>
         </Link>
       </div>
+
       <div className="navv">
         {isLoggedIn ? (
           <>
