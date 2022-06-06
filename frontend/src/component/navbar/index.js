@@ -4,7 +4,9 @@ import "./style.css";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/reducers/auth";
 import { useNavigate } from "react-router-dom";
-import {AiOutlineUser,AiOutlineUserAdd} from "react-icons/ai";
+import { AiOutlineUser, AiOutlineUserAdd } from "react-icons/ai";
+import { GrLogout } from "react-icons/gr";
+
 //===============================================================
 
 const NavBar = () => {
@@ -22,14 +24,14 @@ const NavBar = () => {
   return (
     <div className="NavBar">
       <div>
-        <h1>Restaurant</h1>
+    
+        <Link className="title" to="/">
+          Big <span className="span">Bite</span>
+        </Link>
       </div>
       <div className="navv">
         {isLoggedIn ? (
           <>
-            <Link className="Link" to="/">
-              Home
-            </Link>
             <Link className="Link" to="/basket">
               basket
             </Link>
@@ -40,18 +42,20 @@ const NavBar = () => {
                 navigate("/");
               }}
             >
-              Logout
+              <GrLogout className="log"/> Logout
             </button>
           </>
         ) : (
           <>
-            <Link className="Link" to="/">
-              Home
-            </Link>
-            <Link className="Link" to="/register"><AiOutlineUserAdd/>
+         <div className="d">
+            <Link className="Link" to="/register">
+              <AiOutlineUserAdd />
               Register
             </Link>
-            <Link to="/login"><AiOutlineUser/> {" "} Login</Link>
+            <Link  className="Link" to="/login">
+              <AiOutlineUser /> Login
+            </Link>
+            </div>
           </>
         )}
       </div>
