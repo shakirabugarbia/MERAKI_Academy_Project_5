@@ -2,6 +2,7 @@
 .NavBar {
   border-bottom: 0.1em solid rgba(239, 244, 235, 0);
   display: flex;
+  justify-content: space-between;
   height: 3.5rem;
   background: linear-gradient(
     90deg,
@@ -25,6 +26,8 @@
   align-self: start;
   margin-left: 30%;
   height: 4rem;
+  margin-top: 1%;
+  margin-right: 2.5%;
 }
 
 
