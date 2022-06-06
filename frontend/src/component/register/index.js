@@ -12,14 +12,13 @@ export const Register = () => {
 
   return (
     <div className="register-Pg">
-      <div>
-        <img
-          className="register-Pic"
+      
+        <img className="register-Pic"
           src="https://i.ibb.co/1dzGwfZ/Black-And-White-Modern-Menu-Template.png"
           alt="Black-And-White-Modern-Menu-Template"
           border="0"
         />
-      </div>
+        
       <div className="register">
         <input
           className="input"
