@@ -24,11 +24,8 @@ const NavBar = () => {
   return (
     <div className="NavBar">
       <div>
-    
-        <Link className="title" to="/">
-          {/* <img src="https://i.ibb.co/C8F8GF3/Minimalist-Elegant-Circle-Logo-removebg-preview.png" alt="Minimalist-Elegant-Circle-Logo-removebg-preview" border="0"/> */}
-
-          Big <span className="span">Bite</span>
+        <Link children to="/">
+          <img className="title" src="https://i.ibb.co/RDmggP2/Bite-removebg-preview.png" alt="Bite-removebg-preview" border="0"/>
         </Link>
       </div>
       <div className="navv">
@@ -44,19 +41,19 @@ const NavBar = () => {
                 navigate("/");
               }}
             >
-              <GrLogout className="log"/> Logout
+              <GrLogout className="log" /> Logout
             </button>
           </>
         ) : (
           <>
-         <div className="d">
-            <Link className="Link" to="/register">
-              <AiOutlineUserAdd />
-              Register
-            </Link>
-            <Link  className="Link" to="/login">
-              <AiOutlineUser /> Login
-            </Link>
+            <div className="d">
+              <Link className="Link" to="/register">
+                <AiOutlineUserAdd />
+                Register
+              </Link>
+              <Link className="Link" to="/login">
+                <AiOutlineUser /> Login
+              </Link>
             </div>
           </>
         )}
