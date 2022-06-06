@@ -24,3 +24,17 @@ video{
   width:100%;
   height:100%;
 }
+
+.button {
+  width: 10em;
+  margin: 1em;
+  height: 2em;
+  background-color: coral;
+  border-radius: 0.9rem;
+  border: none;
+  cursor: pointer;
+  color: seashell;
+  font-size: large;
+}
+
+
