@@ -4,6 +4,7 @@ import "./style.css";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/reducers/auth";
 import { useNavigate } from "react-router-dom";
+import {AiOutlineUser,AiOutlineUserAdd} from "react-icons/ai";
 //===============================================================
 
 const NavBar = () => {
@@ -20,37 +21,39 @@ const NavBar = () => {
 
   return (
     <div className="NavBar">
-      <div><h1>Restaurant</h1></div>
-    <div className="navv">
-      {isLoggedIn ? (
-        <>
-          <Link className="Link" to="/">
-            Home
-          </Link>
-          <Link className="Link" to="/basket">
-            basket
-          </Link>
-          <button
-            className="logout"
-            onClick={() => {
-              dispatch(logout());
-              navigate("/");
-            }}
-          >
-            Logout
-          </button>
-        </>
-      ) : (
-        <>
-          <Link className="Link" to="/">
-            Home
-          </Link>
-          <Link className="Link" to="/register">
-            Register
-          </Link>
-          <Link to="/login">Login</Link>
-        </>
-      )}
+      <div>
+        <h1>Restaurant</h1>
+      </div>
+      <div className="navv">
+        {isLoggedIn ? (
+          <>
+            <Link className="Link" to="/">
+              Home
+            </Link>
+            <Link className="Link" to="/basket">
+              basket
+            </Link>
+            <button
+              className="logout"
+              onClick={() => {
+                dispatch(logout());
+                navigate("/");
+              }}
+            >
+              Logout
+            </button>
+          </>
+        ) : (
+          <>
+            <Link className="Link" to="/">
+              Home
+            </Link>
+            <Link className="Link" to="/register"><AiOutlineUserAdd/>
+              Register
+            </Link>
+            <Link to="/login"><AiOutlineUser/> {" "} Login</Link>
+          </>
+        )}
       </div>
     </div>
   );
