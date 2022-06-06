@@ -36,7 +36,6 @@ export const Login = () => {
       .then((result) => {
         if (result.data.success) {
           setMessage("login succefull");
-          console.log("hiii");
           dispatch(login(result.data.token));
           navigate("/");
         }
@@ -52,14 +51,14 @@ export const Login = () => {
   return (
     <>
       <div className="Form">
-      <div>
+     
         <img
           className="register-Pic"
           src="https://i.ibb.co/1dzGwfZ/Black-And-White-Modern-Menu-Template.png"
           alt="Black-And-White-Modern-Menu-Template"
           border="0"
         />
-      </div>
+     
 <div className="loginns">
         <input className="input"
           type="email"
