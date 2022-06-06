@@ -4,6 +4,9 @@ import "./style.css";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/reducers/auth";
 import { useNavigate } from "react-router-dom";
+import { AiOutlineUser, AiOutlineUserAdd } from "react-icons/ai";
+import { GrLogout } from "react-icons/gr";
+
 //===============================================================
 
 const NavBar = () => {
@@ -20,37 +23,43 @@ const NavBar = () => {
 
   return (
     <div className="NavBar">
-      <div><h1>Restaurant</h1></div>
-    <div className="navv">
-      {isLoggedIn ? (
-        <>
-          <Link className="Link" to="/">
-            Home
-          </Link>
-          <Link className="Link" to="/basket">
-            basket
-          </Link>
-          <button
-            className="logout"
-            onClick={() => {
-              dispatch(logout());
-              navigate("/");
-            }}
-          >
-            Logout
-          </button>
-        </>
-      ) : (
-        <>
-          <Link className="Link" to="/">
-            Home
-          </Link>
-          <Link className="Link" to="/register">
-            Register
-          </Link>
-          <Link to="/login">Login</Link>
-        </>
-      )}
+      <div>
+    
+        <Link className="title" to="/">
+          {/* <img src="https://i.ibb.co/C8F8GF3/Minimalist-Elegant-Circle-Logo-removebg-preview.png" alt="Minimalist-Elegant-Circle-Logo-removebg-preview" border="0"/> */}
+
+          Big <span className="span">Bite</span>
+        </Link>
+      </div>
+      <div className="navv">
+        {isLoggedIn ? (
+          <>
+            <Link className="Link" to="/basket">
+              basket
+            </Link>
+            <button
+              className="logout"
+              onClick={() => {
+                dispatch(logout());
+                navigate("/");
+              }}
+            >
+              <GrLogout className="log"/> Logout
+            </button>
+          </>
+        ) : (
+          <>
+         <div className="d">
+            <Link className="Link" to="/register">
+              <AiOutlineUserAdd />
+              Register
+            </Link>
+            <Link  className="Link" to="/login">
+              <AiOutlineUser /> Login
+            </Link>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

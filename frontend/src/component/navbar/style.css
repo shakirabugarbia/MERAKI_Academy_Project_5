@@ -1,12 +1,14 @@
 .NavBar{
-    /* width: 100%; */
-    border-bottom: .1em solid orange;
+    border-bottom: .1em solid rgba(239, 244, 235, 0);
     display:flex;
+imgpg{
     /* justify-content: center; */
     align-items: center;
-    
-
-
+    justify-content: space-between;
+    background-color: rgba(228, 241, 228, 0);
+    font-family: 'ABeeZee', sans-serif;
+    color: rgba(24, 21, 21, 0.682);
+    margin-top: 1%;
 }
 
 .navv{
@@ -23,6 +25,33 @@ margin-left:30% ;
 .logout{
     border: 0ch solid rgba(255, 255, 255, 0);
     background-color: rgba(240, 248, 255, 0);
-    margin-top: .5%;
+    margin-top: 4%;
+    color: rgba(0, 0, 0, 0.633);
+    font-family: 'ABeeZee', sans-serif;
+    font-size: 1em;
 
+
+
+}
+
+.title{
+    font-size: 2em;
+ text-decoration: none;
+ /* text-decoration: underline; */
+
+    color: rgb(240, 121, 9);
+    font-family: 'Satisfy', cursive;
+
+
+}
+
+.span{
+    color: rgba(24, 21, 21, 0.682);
+   
+}
+
+
+.Link{
+    text-decoration: none;
+    font-size: 1em;
 }

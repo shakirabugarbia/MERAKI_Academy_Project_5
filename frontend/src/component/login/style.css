@@ -1,9 +1,52 @@
-input {
-    width: 250px;
-    margin-top: 5px;
-    height: 30px;
-    padding: 2px;
-    font-size: 15px;
-    border: solid 1px rgba(128, 128, 128, 0.376);
+.Form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  max-height: 100%;
+  max-width: 100%;
+
+}
+
+.loginns {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  margin-right: 15%;
+
+ 
+ 
+ }
+ .register-Pic{
+  
+  height: 90vh;
+width: 50%;
+  border-right: .025em solid coral;
+}
+
+
+
+  .input {
+    border-radius: .5em;
+    width: 18em;
+    height: 2em;
+    font-size: 1em;
+    border: solid 1px rgba(128, 128, 128, 0.275);
     resize: none;
   }
+
+
+  .button {
+    width: 10em;
+    margin: 1em;
+    height: 2em;
+    background-color: coral;
+    border-radius: .5em;
+    border: none;
+    cursor: pointer;
+    color: seashell;
+    font-size: large;
+  }
+  

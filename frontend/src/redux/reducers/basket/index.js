@@ -4,8 +4,8 @@ const basket = createSlice({
   name: "basket",
   initialState: {
     basket: [],
-    amount: localStorage.getItem("amount") || 0,
-    price: localStorage.getItem("price") || 0,
+    amount: parseInt(localStorage.getItem("amount")) || 0,
+    price: parseInt(localStorage.getItem("price")) || 0,
   },
   reducers: {
     addToBasket: (state, action) => {
