@@ -26,7 +26,8 @@ const NavBar = () => {
       <div>
     
         <Link className="title" to="/">
-          {/* <img src="https://i.ibb.co/C8F8GF3/Minimalist-Elegant-Circle-Logo-removebg-preview.png" alt="Minimalist-Elegant-Circle-Logo-removebg-preview" border="0"/> */}
+        {/* <img className="titlee" src="https://i.ibb.co/Q8JkN9P/Untitled-design-removebg-preview.png" alt="Untitled-design-removebg-preview" border="0"/> */}
+
 
           Big <span className="span">Bite</span>
         </Link>
