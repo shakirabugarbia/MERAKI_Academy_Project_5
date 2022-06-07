@@ -221,12 +221,12 @@ const Homepage = () => {
             return (
               <div key={index}>
                 <div>
-                  <div class="pic-slideshow-continer">
-                    <img class="pic-slideshow" src={element.category_img} />
+                  <div className="pic-slideshow-continer">
+                    <img className="pic-slideshow" src={element.category_img} />
                   </div>
 
                   <button
-                    class="Srech-Btn"
+                    className="Srech-Btn"
                     onClick={() => {
                       productByCategory(element.id);
                       setHide(true);
