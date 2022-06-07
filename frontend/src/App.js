@@ -8,6 +8,7 @@ import Homepage from "./component/homepage";
 import Basket from "./component/basket";
 import SearchResult from "./component/searchResult";
 import Admin from "./component/AdminPanale";
+import Contact from "./component/contactUs";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path={"/adminPanel"} element={<Admin />} />
 
         <Route path={"/basket"} element={<Basket />} />
+        <Route path={"/contactUS"} element={<Contact />} />
       </Routes>
     </div>
   );
