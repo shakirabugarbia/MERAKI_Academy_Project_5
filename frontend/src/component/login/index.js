@@ -52,14 +52,14 @@ export const Login = () => {
   return (
     <>
       <div className="Form">
-        <div>
+        
           <img
             className="register-Pic"
             src="https://i.ibb.co/4T8TwDH/Black-And-White-Modern-Menu-Template-1.png"
             alt="Black-And-White-Modern-Menu-Template-1"
             border="0"
           />
-        </div>
+        
 
         <div className="loginns">
           <input
