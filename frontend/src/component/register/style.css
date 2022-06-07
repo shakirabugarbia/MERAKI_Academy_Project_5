@@ -1,7 +1,6 @@
 .register-Pg {
   display: flex;
   flex-direction: row;
-
   justify-content: space-between;
   align-items: center;
   margin-top: 5%;
@@ -14,7 +13,7 @@
 .register-Pic {
 
   height: 90vh;
-width: 50%;
+width: 40%;
   border-right: .025em solid coral;
 }
 
@@ -28,15 +27,9 @@ width: 50%;
   align-items: center;
   gap: 1em;
 
-  margin-right: 15%;
+  margin-right: 20%;
 
 }
-
-/* .register-Pic{
-  height: 100vh;
-  width: 100%;
-} */
-
 
 
 
