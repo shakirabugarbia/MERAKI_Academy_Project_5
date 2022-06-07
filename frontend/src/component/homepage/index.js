@@ -198,14 +198,14 @@ const Homepage = () => {
       <Video />
 
       <div className="Serch">
-        <input
+        <input className="searchBar"
           type={"text"}
           placeholder="Search by Product Name"
           onChange={(e) => {
             dispatch(setProductName(e.target.value));
           }}
         />
-        <button
+        <button className="searchButton"
           onClick={() => {
             navigate("/search");
           }}
