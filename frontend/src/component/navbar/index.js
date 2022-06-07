@@ -49,7 +49,7 @@ const NavBar = () => {
             >
               <GrLogout className="log" /> Logout
             </button>
-            <Link to={"/contactUS"}>contact US</Link>
+            <Link to={"/contactUS"}>suggestion</Link>
           </>
         ) : (
           <>
