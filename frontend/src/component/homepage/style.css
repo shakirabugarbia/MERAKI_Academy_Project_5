@@ -1,21 +1,54 @@
 .productts{
     display: grid;
   grid-template-columns: 25% 25% ;
-  grid-template-rows: auto; 
+  grid-template-rows:auto; 
   /* align-items: center;
   justify-content: center; */
 /* border: 1px solid rgba(128, 128, 128, 0.426); */
+gap: 2rem;
+margin-left: 5rem;
    
+}
+.basketButton{
+  width: 8rem;
+  margin-top: 2.4rem;
+  margin-left: 1rem;
+  background-color: rgb(227, 183, 125);
+  color: rgba(0, 0, 0, 0.473);
 }
 .product {
  
 border: 1px solid wheat;
   margin-right: 35rem;
-  width: 30rem;
-  height: 6rem;
-  padding: 1rem;
+  width: 38rem;
+  height: 8rem;
+  /* padding: 1rem; */
   gap: 1rem;
  
+}
+.pppp{
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+display: flex;
+flex-direction: row;
+margin-left: .5rem;
+margin-top: .5rem;
+}
+.t{
+text-align: left;
+
+}
+.pName{
+  font-size: large;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: rgba(210, 105, 30, 0.673);
+}
+.price{
+  margin-top: .5rem;
+  color: rgba(210, 105, 30, 0.647);
+}
+.desc{
+  color: rgba(0, 0, 0, 0.612);
 }
 .pr{
   display: flex;
@@ -30,7 +63,18 @@ border: 1px solid wheat;
   height: 100%;
   margin: 1rem;
 }
-
+.t{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color:chocolate;
+}
+.typees{
+  width: 8rem;
+  background-color: rgb(227, 183, 125);
+  background-color: rgba(240, 248, 255, 0);
+  color:chocolate;
+  border-bottom: .25rem solid bisque;
+  margin-top: 4rem;
+}
 button {
   width: 150px;
   margin: 5px;
@@ -102,7 +146,7 @@ margin-top: 1.5em;
 .title_ofCategory{
   background-color: rgba(240, 248, 255, 0);
   border-color: rgba(240, 248, 255, 0);
-  color:rgb(206, 64, 13);
+  color:rgb(228, 122, 84);
   text-decoration: underline;
 
 
@@ -143,6 +187,7 @@ margin-top: 1.5em;
 .imgg{
   width: 100px;
   height: 100px;
+  margin-top: 1rem;
 }
 /* 
 @keyframes scrolling {

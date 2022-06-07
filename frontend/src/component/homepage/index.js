@@ -253,7 +253,7 @@ const Homepage = () => {
         <div className="ttypeOffProductt">
           {hide ? (
             <>
-              <h2>Type of products</h2>
+              <h3 className="t">Types of products</h3>
               <div className="typeOfProduct">
                 {" "}
                 {show &&
@@ -262,6 +262,7 @@ const Homepage = () => {
                       return (
                         <div key={index}>
                           <button
+                            className="typees"
                             onClick={() => {
                               getProductsByTypeOf(element.id);
                             }}
@@ -297,27 +298,32 @@ const Homepage = () => {
               return (
                 <div className="product" key={index}>
                   <div className="pr">
-                  <div className="imge">
-                    <img className="imgg" src={element.img} />
-                  </div>
-                  <div className="pppp">
-                  <div> {element.productName}</div>
-                  <div> {element.description}</div>
-                  <div>{element.price}</div>
-                  {isLoggedIn ? (
-                    <button
-                      onClick={() => {
-                        addToCart(element.id);
-                        dispatch(setAmount());
-                        dispatch(setPrice(element.price));
-                      }}
-                    >
-                      add to basket
-                    </button>
-                  ) : (
-                    <></>
-                  )}
-                  </div>
+                    <div className="imge">
+                      <img className="imgg" src={element.img} />
+                    </div>
+                    <div className="pppp">
+                      <div className="t">
+                        <div className="pName"> {element.productName}</div>
+                        <div className="desc"> {element.description}</div>
+                        <div className="price">{element.price}JD</div>
+                      </div>
+                      {isLoggedIn ? (
+                        <div>
+                          <button
+                            className="basketButton"
+                            onClick={() => {
+                              addToCart(element.id);
+                              dispatch(setAmount());
+                              dispatch(setPrice(element.price));
+                            }}
+                          >
+                            Add to basket
+                          </button>
+                        </div>
+                      ) : (
+                        <></>
+                      )}
+                    </div>
                   </div>
                 </div>
               );
