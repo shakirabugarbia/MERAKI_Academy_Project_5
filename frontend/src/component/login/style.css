@@ -1,7 +1,7 @@
 .Form {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   margin-top: 5%;
   max-height: 90vh;
@@ -16,12 +16,12 @@
   justify-content: center;
   align-items: center;
   gap: 1em;
-  margin-right: 15%;
+  margin-left: 15%;
  }
- .register-Pic{
+ .login-Pic{
   height: 90vh;
 width: 50%;
-  border-right: .025em solid coral;
+  border-left: .025em solid coral;
 }
 
 

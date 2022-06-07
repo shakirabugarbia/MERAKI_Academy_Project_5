@@ -90,7 +90,7 @@ const SearchResult = () => {
   return (
    
     
-      <div className="productts">
+      <div className="producttss">
         {products.map((element, index) => {
           return (
             <div className="product" key={index}>
