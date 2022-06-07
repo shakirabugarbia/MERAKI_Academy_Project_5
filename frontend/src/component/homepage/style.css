@@ -45,18 +45,29 @@ button {
   align-items: center;
   z-index: 2;
   margin: 20px;
-  border: 1px solid #fff;
+  border: 1px solid rgba(255, 255, 255, 0);
   border-radius: 8px;
   box-sizing: border-box;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.541);
   color: coral;
   position: absolute;
   top: 50%;
-  left: 40%;
+  left: 33%;
   width: 40rem;
+  padding: 1rem;
+
 }
+.searchBar{
+  border-radius: .5em;
+  width:29em;
+  background-color: rgba(240, 248, 255, 0.347);
+border-color:rgba(255, 255, 255, 0);
+}
+.searchButton{
+  background-color: rgba(255, 127, 80, 0.367);
+  border-color:rgba(255, 255, 255, 0);
 
-
+}
 .moveUl {
   list-style: none;
   height: 100%;
