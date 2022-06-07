@@ -23,9 +23,12 @@ const Contact = () => {
         }
       );
     e.target.reset();
+    alert("email has been sent");
   };
 
   return (
+      <div>
+          <h2>Send Us Your Suggestion And Notes Via Email</h2>
     <form ref={form} onSubmit={sendEmail}>
       <label>Name</label>
       <input type="text" name="user_name" />
@@ -33,6 +36,7 @@ const Contact = () => {
       <textarea name="message" />
       <input type="submit" value="Send" />
     </form>
+    </div>
   );
 };
 export default Contact;
