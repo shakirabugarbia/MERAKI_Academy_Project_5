@@ -9,6 +9,7 @@ import Basket from "./component/basket";
 import SearchResult from "./component/searchResult";
 import Admin from "./component/AdminPanale";
 import Contact from "./component/contactUs";
+import Footer from "./component/Footer";
 
 import ProductsAdminSide from "./component/ProdusctsAdmin";
 import UserAdminSide from "./component/UserAdmin";
@@ -30,6 +31,7 @@ function App() {
         <Route path={"/ProductAdminPanel"} element={<ProductsAdminSide />} />
         <Route path={"/UserAdminPanel"} element={<UserAdminSide />} />
       </Routes>
+      <Footer />
     </div>
   );
 }

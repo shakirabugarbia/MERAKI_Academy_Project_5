@@ -1,0 +1,39 @@
+.Footer{
+    color: aliceblue;
+  background-color:#0B0C0D ;
+    height: 10em;
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    justify-content: space-around;
+margin-top: .75em;
+padding-top: 2.5%;
+    position:static;
+    bottom: 0;
+    right: 0;
+    left: 0;
+  
+
+}
+
+.about{
+    /* border:.025rem solid chocolate; */
+    margin-right: 7%;
+}
+.contact{
+    margin-right: 15%;
+   
+}
+.info{
+  display: flex;
+  margin-top: 2%;
+
+
+
+}
+.fb{
+    margin-right: .75%;
+}
+.tw{
+    margin-left:1%;
+}
