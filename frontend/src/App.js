@@ -10,6 +10,9 @@ import SearchResult from "./component/searchResult";
 import Admin from "./component/AdminPanale";
 import Contact from "./component/contactUs";
 
+import ProductsAdminSide from "./component/ProdusctsAdmin";
+import UserAdminSide from "./component/UserAdmin";
+
 function App() {
   return (
     <div className="App">
@@ -23,6 +26,9 @@ function App() {
 
         <Route path={"/basket"} element={<Basket />} />
         <Route path={"/contactUS"} element={<Contact />} />
+
+        <Route path={"/ProductAdminPanel"} element={<ProductsAdminSide />} />
+        <Route path={"/UserAdminPanel"} element={<UserAdminSide />} />
       </Routes>
     </div>
   );
