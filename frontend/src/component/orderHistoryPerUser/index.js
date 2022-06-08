@@ -47,11 +47,17 @@ const UserOrder = () => {
             return (
               <div key={index}>
                 <div>{element.orderdate}</div>
-                <div>{dispatch(setItems(JSON.parse(element.ORDERhisory)))}</div>
+                <div>
+                  {JSON.parse(element.ORDERhisory).map((elements, indexs) => {
+                    return <div id={indexs}>{elements.productName}</div>;
+                  })}
+                </div>
+                ----------
               </div>
             );
           })}
       </div>
+      <div>{/* {orderState.items} */}</div>
     </div>
   );
 };
