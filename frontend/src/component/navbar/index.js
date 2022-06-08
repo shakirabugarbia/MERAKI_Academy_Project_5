@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,6 +10,7 @@ import { GrLogout } from "react-icons/gr";
 //===============================================================
 
 const NavBar = () => {
+  const [view, setView] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { token, isLoggedIn } = useSelector((state) => {
@@ -24,7 +25,13 @@ const NavBar = () => {
   return (
     <div className="NavBar">
       <div>
-        <Link children to="/">
+        <Link
+          children
+          to="/"
+          onClick={() => {
+            setView(false);
+          }}
+        >
           <img
             className="title"
             src="https://i.ibb.co/RDmggP2/Bite-removebg-preview.png"
@@ -37,11 +44,17 @@ const NavBar = () => {
       <div className="navv">
         {isLoggedIn ? (
           <>
-            <Link className="Link" to="/basket">
+            <Link
+              className="Link"
+              to="/basket"
+              onClick={() => {
+                setView(true);
+              }}
+            >
               basket
             </Link>
             <a
-             className="Link"
+              className="Link"
               onClick={() => {
                 dispatch(logout());
                 navigate("/");
@@ -56,13 +69,20 @@ const NavBar = () => {
             <div className="d">
               <Link className="Link" to="/register">
                 <AiOutlineUserAdd />
-                   Register
+                Register
               </Link>
               <Link className="Link" to="/login">
                 <AiOutlineUser /> Login
               </Link>
             </div>
           </>
+        )}
+        {view ? (
+          <Link className="Link" to="/Userorder">
+            My Orders
+          </Link>
+        ) : (
+          <></>
         )}
       </div>
     </div>
