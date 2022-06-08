@@ -259,7 +259,6 @@ const Basket = () => {
             onClick={() => {
               emptyBasket();
               dispatch(zeroPrice());
-              console.log(typeof basketState.price);
             }}
           >
             empty basket
@@ -274,8 +273,9 @@ const Basket = () => {
       <div>
         <button
           onClick={() => {
+            emptyBasket();
+            dispatch(zeroPrice());
             orderToHistory();
-            
           }}
         >
           check out after paying
