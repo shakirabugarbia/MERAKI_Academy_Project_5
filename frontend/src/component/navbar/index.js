@@ -41,7 +41,7 @@ const NavBar = () => {
               basket
             </Link>
             <button
-              className="logout"
+             className="Link"
               onClick={() => {
                 dispatch(logout());
                 navigate("/");
