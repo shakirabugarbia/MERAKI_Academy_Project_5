@@ -275,6 +275,7 @@ const Basket = () => {
         <button
           onClick={() => {
             orderToHistory();
+            
           }}
         >
           check out after paying
