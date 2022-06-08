@@ -218,35 +218,29 @@ const Homepage = () => {
       </div>
 
       <div className="kitchen-Continer">
-        <div>
-          {" "}
-          <h2 className="kitchen-titele">Kitchen</h2>
-        </div>
+        <h2 className="kitchen-titele">Kitchen</h2>
+      </div>
 
-        <div className="Categories-Slider-Container" id="l">
-          {show &&
-            categories.map((element, index) => {
-              return (
-                <div key={index}>
-
-                  <div className="Slider-Show-continer">
-                    <img className="pic-slideshow" src={element.category_img} />
-
-                    <button
-                      className="Category-title-slider-btn"
-                      onClick={() => {
-                        productByCategory(element.id);
-                        setHide(true);
-                      }}
-                    >
-                      {element.category_title}
-                    </button>
-                  </div>
-
+      <div className="Categories-Slider-Container" id="l">
+        {show &&
+          categories.map((element, index) => {
+            return (
+              <div key={index}>
+                <div className="Slider-Show-continer">
+                  <img className="pic-slideshow" src={element.category_img} />
+                  <button
+                    className="Category-title-slider-btn"
+                    onClick={() => {
+                      productByCategory(element.id);
+                      setHide(true);
+                    }}
+                  >
+                    {element.category_title}
+                  </button>
                 </div>
-              );
-            })}
-        </div>
+              </div>
+            );
+          })}
       </div>
       <div className="Products-Continer-Home">
         <div className="Types-of-products-continer">
@@ -279,7 +273,7 @@ const Homepage = () => {
           )}
           {hide ? (
             <button
-            className="types-Of-Food-btn"
+              className="types-Of-Food-btn"
               onClick={() => {
                 gatAllproducts();
                 setHide(false);

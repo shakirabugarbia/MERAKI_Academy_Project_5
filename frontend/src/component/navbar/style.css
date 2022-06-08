@@ -6,9 +6,8 @@
   height: 3.5rem;
   background: linear-gradient(
     90deg,
-    #0B0C0D 30%
-    #F26D3D 800%);
-    border-bottom: .1rem solid #F26D3D;;
+    rgb(255, 255, 255) 30%,
+    #F26716 300%)
 
 }
 .imgpg {
@@ -29,7 +28,6 @@
   height: 4rem;
   margin-top: 1%;
   margin-right: 2.5%;
-  background-color: #0B0C0D;
 }
 
 
@@ -41,11 +39,11 @@
 
 
 
-.logout {
+.Link{
   border: 0ch solid rgba(255, 255, 255, 0);
   background-color: rgba(240, 248, 255, 0);
   margin-top: 4%;
-
+  color: rgba(0, 0, 0, 0.633);
   font-family: "ABeeZee", sans-serif;
   font-size: 1em;
 
