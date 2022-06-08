@@ -1,0 +1,29 @@
+.footer {
+  position: relative;
+  margin: 0px;
+  background-color: rgb(227, 183, 125);
+  padding: 2rem;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  text-align: left;
+  margin: 10px;
+}
+
+.sub {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.sub p {
+  margin: 5px;
+}
+
+@media screen and (max-width: 720px) {
+  .sub {
+    flex-direction: column;
+  }
+}

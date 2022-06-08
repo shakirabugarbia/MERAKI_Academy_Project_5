@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: 'Courgette', cursive;
 }
 
 .App {
@@ -30,7 +31,7 @@ video{
   width: 10em;
   margin: 1em;
   height: 2em;
-  background-color: coral;
+  background-color: rgba(210, 105, 30, 0.659);
   border-radius: 0.9rem;
   border: none;
   cursor: pointer;
@@ -39,3 +40,6 @@ video{
 }
 
 
+button{
+  background-color: rgba(210, 105, 30, 0.659);
+}

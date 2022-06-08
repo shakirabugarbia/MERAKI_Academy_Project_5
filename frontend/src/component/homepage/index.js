@@ -228,7 +228,7 @@ const Homepage = () => {
               <div key={index}>
                 <div className="Slider-Show-continer">
                   <img className="pic-slideshow" src={element.category_img} />
-                  <button
+                  <a
                     className="Category-title-slider-btn"
                     onClick={() => {
                       productByCategory(element.id);
@@ -236,7 +236,7 @@ const Homepage = () => {
                     }}
                   >
                     {element.category_title}
-                  </button>
+                  </a>
                 </div>
               </div>
             );

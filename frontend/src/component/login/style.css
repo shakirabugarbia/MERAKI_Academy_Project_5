@@ -3,44 +3,43 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-top: 5%;
   max-height: 90vh;
   max-width: 100%;
+  margin-left: 5rem;
 }
 
 .loginns {
   display: flex;
- flex-direction: column-reverse;
+  flex-direction: column-reverse;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 1em;
   margin-left: 15%;
- }
- .login-Pic{
+}
+.login-Pic {
   height: 90vh;
-width: 50%;
-  border-left: .025em solid coral;
+  width: 45%;
+  border-left: 0.025em solid coral;
 }
 
-
-  .input {
-    border-radius: .5em;
-    width: 18em;
-    height: 2em;
-    font-size: 1em;
-    border: solid 1px rgba(128, 128, 128, 0.275);
-    resize: none;
-  }
-  .button {
-    width: 10em;
-    margin: 1em;
-    height: 2em;
-    background-color: coral;
-    border-radius: .5em;
-    border: none;
-    cursor: pointer;
-    color: seashell;
-    font-size: large;
-  }
+.input {
+  border-radius: 0.5em;
+  width: 18em;
+  height: 2em;
+  font-size: 1em;
+  border: solid 1px rgba(128, 128, 128, 0.275);
+  resize: none;
+}
+.button {
+  width: 10em;
+  margin: 1em;
+  height: 2em;
+  background-color: rgba(210, 105, 30, 0.659);
+  border-radius: 0.5em;
+  border: none;
+  cursor: pointer;
+  color: seashell;
+  font-size: large;
+}
