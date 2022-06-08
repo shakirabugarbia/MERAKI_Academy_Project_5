@@ -9,6 +9,7 @@ import Basket from "./component/basket";
 import SearchResult from "./component/searchResult";
 import Admin from "./component/AdminPanale";
 import Contact from "./component/contactUs";
+import Footer from "./component/Footer";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path={"/basket"} element={<Basket />} />
         <Route path={"/contactUS"} element={<Contact />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
