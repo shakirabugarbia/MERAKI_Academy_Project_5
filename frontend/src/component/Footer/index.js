@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import {
   AiFillFacebook,
   AiFillTwitterCircle,
@@ -19,6 +21,7 @@ export const Footer = () => {
               <b>Company</b>
               <p>About</p>
               <p>Blog</p>
+              <Link className="suggestions" to={"/contactUS"}>suggestion</Link>
             </div>
             <div>
               <b>For Foodies</b>

@@ -47,7 +47,7 @@
 /* ================================*/
 .Categories-Slider-Container {
   display: grid;
-  grid-template-columns: 15% 15% 15% 15% 15% 15% ;
+  grid-template-columns: 15% 15% 15% 15% ;
   justify-content: center;
   align-items: flex-start;
   height: 100%;

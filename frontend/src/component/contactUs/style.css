@@ -23,7 +23,7 @@
   }
   
   .contact-form {
-    background-color: rgba(8, 0, 255, 0.533);
+    background-color: rgba(218, 152, 8, 0.533);
     position: relative;
   }
   
@@ -48,12 +48,12 @@
   }
   
   .input {
-    width: 100%;
+    width: 80%;
     outline: none;
     border: 2px solid #fafafa;
     background: none;
     padding: 0.6rem 1.2rem;
-    color: #fff;
+    color: rgba(181, 80, 8, 0.914);
     font-weight: 500;
     font-size: 0.95rem;
     letter-spacing: 0.5px;
