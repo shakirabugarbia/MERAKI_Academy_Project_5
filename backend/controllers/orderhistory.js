@@ -42,8 +42,28 @@ const orderhistoryByUser = (req, res) => {
     }
   });
 };
+const allOrders = (req, res) => {
+  const query = `SELECT userName,email,phoneNumber,orderdate ,ORDERhisory FROM ORDERHISTORY INNER JOIN users ON user_id = users.id  ;`;
+
+  connection.query(query, (err, result) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        massage: "Server error",
+        err: error.message,
+      });
+    } else {
+      res.status(200).json({
+        success: true,
+        massage: `order history `,
+        result: result,
+      });
+    }
+  });
+};
 
 module.exports = {
   order,
   orderhistoryByUser,
+  allOrders,
 };
