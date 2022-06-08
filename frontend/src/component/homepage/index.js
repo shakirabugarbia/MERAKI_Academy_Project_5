@@ -44,6 +44,7 @@ const Homepage = () => {
   const dispatch = useDispatch();
   const [hide, setHide] = useState(false);
   const [show, setShow] = useState(false);
+
   const { token, isLoggedIn } = useSelector((state) => {
     return {
       token: state.auth.token,
@@ -197,11 +198,11 @@ const Homepage = () => {
     <div>
       <Video />
 
-      <div className="Serch">
+      <div className="Search-Continer">
         <input
-          className="searchBar"
+          className="searchBarInput"
           type={"text"}
-          placeholder="Search by Product Name"
+          placeholder="      Search Here For Your Food"
           onChange={(e) => {
             dispatch(setProductName(e.target.value));
           }}
@@ -215,27 +216,24 @@ const Homepage = () => {
           search
         </button>
       </div>
-      <div className="ct">
+
+      <div className="kitchen-Continer">
         <div>
           {" "}
-          <h2 className="kitchen">Kitchen</h2>
+          <h2 className="kitchen-titele">Kitchen</h2>
         </div>
 
-        <div className="categories" id="l">
+        <div className="Categories-Slider-Container" id="l">
           {show &&
             categories.map((element, index) => {
               return (
                 <div key={index}>
-                  <div>
-                    <div className="pic-slideshow-continer">
-                      <img
-                        className="pic-slideshow"
-                        src={element.category_img}
-                      />
-                    </div>
+
+                  <div className="Slider-Show-continer">
+                    <img className="pic-slideshow" src={element.category_img} />
 
                     <button
-                      className="title_ofCategory"
+                      className="Category-title-slider-btn"
                       onClick={() => {
                         productByCategory(element.id);
                         setHide(true);
@@ -244,17 +242,18 @@ const Homepage = () => {
                       {element.category_title}
                     </button>
                   </div>
+
                 </div>
               );
             })}
         </div>
       </div>
-      <div className="hoome">
-        <div className="ttypeOffProductt">
+      <div className="Products-Continer-Home">
+        <div className="Types-of-products-continer">
           {hide ? (
             <>
-              <h3 className="t">Types of products</h3>
-              <div className="typeOfProduct">
+              <h3 className="Types-of-products-title">Types of products</h3>
+              <div className="">
                 {" "}
                 {show &&
                   typesOffoodsState.typesOffoods.typeOfFood.map(
@@ -262,7 +261,7 @@ const Homepage = () => {
                       return (
                         <div key={index}>
                           <button
-                            className="typees"
+                            className="types-Of-Food"
                             onClick={() => {
                               getProductsByTypeOf(element.id);
                             }}
@@ -280,7 +279,7 @@ const Homepage = () => {
           )}
           {hide ? (
             <button
-              className="back-to-all-button"
+            className="types-Of-Food-btn"
               onClick={() => {
                 gatAllproducts();
                 setHide(false);
@@ -292,13 +291,13 @@ const Homepage = () => {
             <></>
           )}
         </div>
-        <div className="productts">
+        <div className="Products-Container">
           {show &&
             productsState.products.map((element, index) => {
               return (
-                <div className="product" key={index}>
-                  <div className="pr">
-                    <div className="imge">
+                <div className="Product-Container" key={index}>
+                  <div className="product-All-Detiles">
+                    <div className="Product-Img-Dev">
                       <img className="imgg" src={element.img} />
                     </div>
                     <div className="pppp">

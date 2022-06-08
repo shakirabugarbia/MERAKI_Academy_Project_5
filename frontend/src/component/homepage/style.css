@@ -1,80 +1,169 @@
-.productts{
-    display: grid;
-  grid-template-columns: 45% 45% ;
-  grid-template-rows:auto; 
-  /* align-items: center;
-  justify-content: center; */
-/* border: 1px solid rgba(128, 128, 128, 0.426); */
-gap: 2rem;
-margin-left: 4rem;
-   
+.Search-Continer {
+  display: flex;
+  align-items: center;
+  z-index: 2;
+  margin: 30px;
+  border: 1px solid rgba(255, 255, 255, 0);
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0.57);
+  color: #f26d3d;
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  width: 42rem;
+  padding: 0.5rem;
 }
-.basketButton{
+
+.searchBarInput {
+  border-radius: 0.5em;
+  width: 31rem;
+  height: 2rem;
+  background-color: rgba(255, 255, 255, 0.671);
+  border-color: rgba(255, 255, 255, 0.631);
+}
+.searchButton {
+  background-color: #f26d3d;
+  border-color: rgba(255, 255, 255, 0);
+  height: 2rem;
+  margin-left: 0.5rem;
+}
+/* ================================*/
+.basketButton {
   width: 8rem;
   margin-top: 2.4rem;
   margin-left: 1rem;
   background-color: rgb(227, 183, 125);
   color: rgba(0, 0, 0, 0.473);
 }
-.product {
- 
-border: 1px solid wheat;
-  margin-right: 1.5rem;
-  width: 38rem;
-  height: 8rem;
-  gap: .5rem;
- 
+/* ================================*/
+.kitchen-Continer {
+  display: grid;
+  grid-template-columns: min-content;
+  justify-content: flex-start;
+  max-width: 20%;
 }
-.pppp{
-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-display: flex;
-flex-direction: row;
-margin-left: .5rem;
-margin-top: .5rem;
-}
-.t{
-text-align: left;
 
+.kitchen-titele {
+  display: flex;
+  justify-content: left;
+  align-items: flex-start;
+  margin-top: 0.5rem;
+  margin-left: 2rem;
 }
-.pName{
+/* ================================*/
+.Categories-Slider-Container {
+  display: flex;
+  position: relative;
+  height: 100%;
+  margin: 1rem;
+}
+.Slider-Show-continer {
+  display: grid;
+
+  margin-left: 0.5em;
+  border: 0.06rem solid #f26d3d;
+  padding: 0.6rem;
+  box-shadow: 0.1rem 0.1rem 0.9rem;
+}
+.pic-slideshow {
+  width: 9em;
+  height: 9em;
+  border: 0.06rem solid #f26d3d;
+}
+.Category-title-slider-btn {
+  background-color: rgba(240, 248, 255, 0);
+  border-color: rgba(240, 248, 255, 0);
+  color: rgb(228, 122, 84);
+}
+/* ================================*/
+.Types-of-products-continer {
+  margin-left: 1em;
+}
+.Types-of-products-title {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  color: chocolate;
+  margin-left: 1em;
+}
+.types-Of-Food {
+  width: 8rem;
+  background-color: rgb(227, 183, 125);
+  background-color: rgba(240, 248, 255, 0);
+  color: #f26d3d;
+  border-bottom: 0.25rem solid bisque;
+  margin-top: 4rem;
+}
+
+.types-Of-Food-btn {
+  width: 8rem;
+  background-color: rgb(227, 183, 125);
+  background-color: rgba(240, 248, 255, 0);
+  color: #f26d3d;;
+  border-bottom: 0.25rem solid bisque;
+  margin-top: 4rem;
+  height: 3rem;
+}
+/* ================================*/
+.Products-Continer-Home {
+  display: flex;
+  flex-direction: row;
+  margin-top: 5rem;
+  box-shadow: 2rem 2rem 2rem;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.Products-Container {
+  display: grid;
+  grid-template-columns: 45% 45%;
+  justify-content: center;
+  grid-template-rows: auto;
+  gap: 2.5rem;
+ 
+}
+
+.Product-Container {
+  border: 1px solid wheat;
+  margin-right: 1.5rem;
+  width: 29rem;
+  padding: 2%;
+  
+}
+
+.Product-Img-Dev{
+  border: 0.25rem solid bisque;
+  height: 8rem;
+}
+.pppp {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: row;
+  margin-left: 0.5rem;
+  margin-top: 0.5rem;
+}
+.t {
+  text-align: left;
+}
+.pName {
   font-size: large;
   font-weight: 600;
   margin-bottom: 1rem;
   color: rgba(210, 105, 30, 0.673);
 }
-.price{
-  margin-top: .5rem;
+.price {
+  margin-top: 0.5rem;
   color: rgba(210, 105, 30, 0.647);
 }
-.desc{
+.desc {
   color: rgba(0, 0, 0, 0.612);
 }
-.pr{
+.product-All-Detiles {
   display: flex;
   flex-direction: row;
 }
-.categories {
-  display: flex;
-  animation: scrolling 20s linear infinite;
 
-  /* gap: 1rem; */
-  position: relative;
-  height: 100%;
-  margin: 1rem;
-}
-.t{
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  color:chocolate;
-  margin-left: 1em;
-}
-.typees{
-  width: 8rem;
-  background-color: rgb(227, 183, 125);
-  background-color: rgba(240, 248, 255, 0);
-  color:chocolate;
-  border-bottom: .25rem solid bisque;
-  margin-top: 4rem;
-}
+
+
 button {
   width: 150px;
   margin: 5px;
@@ -86,115 +175,20 @@ button {
   color: seashell;
   font-size: large;
 }
-.back-to-all-button{
-  width: 8rem;
-  background-color: rgb(227, 183, 125);
-  background-color: rgba(240, 248, 255, 0);
-  color:chocolate;
-  border-bottom: .25rem solid bisque;
-  margin-top: 4rem;
-  height: 3rem;
-}
-
-.Serch {
-  display: flex;
-  display: -webkit-inline-box;
-  -webkit-box-align: center;
-  -webkit-algin-items: center;
-  align-items: center;
-  z-index: 2;
-  margin: 20px;
-  border: 1px solid rgba(255, 255, 255, 0);
-  border-radius: 8px;
-  box-sizing: border-box;
-  background-color: rgba(255, 255, 255, 0.541);
-  color: coral;
-  position: absolute;
-  top: 50%;
-  left: 45%;
-  width: 40rem;
-  padding: 1rem;
-
-}
-.searchBar{
-  border-radius: .5em;
-  width:29em;
-  background-color: rgba(240, 248, 255, 0.347);
-border-color:rgba(255, 255, 255, 0);
-}
-.searchButton{
-  background-color: rgba(255, 127, 80, 0.827);
-  border-color:rgba(255, 255, 255, 0);
-  height: 2em;
-  border-radius: .6em;
-
-}
-
-.ct{
-display: flex;
-flex-direction:column;
-gap: 1rem;
-}
-.kitchen{
-  float: left;
-padding: 1rem;
-margin-left: 1em;
-margin-top: 1.5em;
-}
-.title_ofCategory{
-  background-color: rgba(240, 248, 255, 0);
-  border-color: rgba(240, 248, 255, 0);
-  color:rgb(228, 122, 84);
-  text-decoration: underline;
 
 
-}
-.categories{
-  display: flex;
-  flex-direction: row;
-
-}
-
-.pic-slideshow{
-  width: 7em;
-  height: 7em;
-}
-
-.pic-slideshow-continer{
-  margin-left: 1em;
-}
 .moveUl {
   list-style: none;
   height: 100%;
   display: flex;
   gap: 10px;
-
-  animation: scrolling 25s linear infinite;
 }
 
-.hoome{
-  display:flex ;
-  flex-direction: row;
-  margin-top: 5rem;
-}
 
-.ttypeOffProductt{
-  margin-left: 1em;
-}
-
-.imgg{
+.imgg {
   width: 100px;
   height: 100px;
   margin-top: 1rem;
 }
-/* 
-@keyframes scrolling {
-  50% {
-      transform: translateX(0);
-  }
 
-  100% {
-      transform: translateX(-180vw);
-  }
-}
- */
+
