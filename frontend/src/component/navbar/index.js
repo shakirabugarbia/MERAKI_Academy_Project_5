@@ -40,7 +40,7 @@ const NavBar = () => {
             <Link className="Link" to="/basket">
               basket
             </Link>
-            <button
+            <a
              className="Link"
               onClick={() => {
                 dispatch(logout());
@@ -48,7 +48,7 @@ const NavBar = () => {
               }}
             >
               <GrLogout className="log" /> Logout
-            </button>
+            </a>
             <Link to={"/contactUS"}>suggestion</Link>
           </>
         ) : (
@@ -56,7 +56,7 @@ const NavBar = () => {
             <div className="d">
               <Link className="Link" to="/register">
                 <AiOutlineUserAdd />
-                Register
+                   Register
               </Link>
               <Link className="Link" to="/login">
                 <AiOutlineUser /> Login

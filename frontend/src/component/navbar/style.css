@@ -1,14 +1,9 @@
-
 .NavBar {
   border-bottom: 0.1em solid rgba(239, 244, 235, 0);
   display: flex;
   justify-content: space-between;
   height: 3.5rem;
-  background: linear-gradient(
-    90deg,
-    rgb(255, 255, 255) 30%,
-    #F26716 300%)
-
+  background: linear-gradient(90deg, rgb(255, 255, 255) 30%, #f26716 300%);
 }
 .imgpg {
   align-items: center;
@@ -30,28 +25,24 @@
   margin-right: 2.5%;
 }
 
-
-.titlee{
-    width: 3em;
-    height: 3em;
-    margin-left: 5%;
+.titlee {
+  width: 3em;
+  height: 3em;
+  margin-left: 5%;
 }
 
-
-
-.Link{
+.Link {
   border: 0ch solid rgba(255, 255, 255, 0);
   background-color: rgba(240, 248, 255, 0);
   margin-top: 4%;
   color: rgba(0, 0, 0, 0.633);
-  font-family: "ABeeZee", sans-serif;
-  font-size: 1em;
-
+  font-size:x-large;
+  font-family: "Satisfy", cursive;
 }
 
 .title {
   margin-left: 2rem;
-margin-top: -2.2rem;
+  margin-top: -2.2rem;
   height: 8rem;
   width: 9rem;
   font-size: 2em;
@@ -67,4 +58,5 @@ margin-top: -2.2rem;
 .Link {
   text-decoration: none;
   font-size: 1em;
+  font-family: 'Courgette', cursive
 }

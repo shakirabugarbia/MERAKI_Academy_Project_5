@@ -1,48 +1,56 @@
-import React, { useState, useContext, useEffect, useParams } from "react";
-import { AiOutlineHome } from "react-icons/ai";
-import { AiOutlineMail } from "react-icons/ai";
-import { AiOutlinePhone } from "react-icons/ai";
-import { AiFillFacebook } from "react-icons/ai";
-import { FiTwitter } from "react-icons/fi";
-import { BsInstagram } from "react-icons/bs";
-import "./style.css";
+import React from "react";
+import {
+  AiFillFacebook,
+  AiFillTwitterCircle,
+  AiFillInstagram,
+  AiFillApple
+} from "react-icons/ai";
+import { FaGooglePlay } from "react-icons/fa";
+import "./foodStoresStyle.css";
 
-// component for footer
-const Footer = () => {
+export const Footer = () => {
   return (
-    <div className="Footer">
-      <div className="about">
-        <h4>About us</h4>
-        <p>
-          Beauty recipe is a a store where you <br />
-          can find your beauty in all ways you need{" "}
-        </p>
-      </div>
-
-      <div className="contact">
-        <h4>Contact</h4>
-        <h4>
-          <AiOutlineHome /> Amman-Jordan
-        </h4>
-        <p>
-          <AiOutlineMail /> beauty.recipe@gmail.com{" "}
-        </p>
-
-        <p>
-          <AiOutlinePhone /> +9679666669{" "}
-        </p>
-      </div>
-      <div className="info">
-        <h1 className="fb">
-          <AiFillFacebook />
-        </h1>
-        <h1 className="tw">
-          <FiTwitter />
-        </h1>
-        <h1>
-          <BsInstagram />
-        </h1>
-      </div>
+    <div className="footer">
+      
+        <div className="footer-content">
+          
+          <div className="sub">
+            <div>
+              <b>Company</b>
+              <p>About</p>
+              <p>Blog</p>
+            </div>
+            <div>
+              <b>For Foodies</b>
+              <p>Code of conduct</p>
+              <p>Community</p>
+            </div>
+            <div>
+              <b>For Restaurant</b>
+              <p>Restaurant</p>
+              <p>Business</p>
+            </div>
+            <div>
+              <b>For You</b>
+              <p>Privacy</p>
+              <p>Security</p>
+              <p>Terms</p>
+            </div>
+            <div>
+              <b>Social links</b>
+              <div>
+                <AiFillFacebook />
+                <AiFillTwitterCircle />
+                <AiFillInstagram />
+              </div>
+              <div>
+                <AiFillApple />
+                <FaGooglePlay />
+              </div>
+            </div>
+          </div>
+        </div>
+      
     </div>
   );
 };
