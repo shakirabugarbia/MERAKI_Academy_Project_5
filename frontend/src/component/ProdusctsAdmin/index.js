@@ -62,10 +62,11 @@ const ProductsAdminSide = () => {
   const [message, setMessage] = useState("");
   const [userId, setUserId] = useState("");
   const [hide, setHide] = useState(false);
+  const [page, setPage] = useState(1);
 
   const gatAllproducts = () => {
     axios
-      .get(`http://localhost:5000/product`)
+      .get(`http://localhost:5000/product/?page=${page}`)
       .then((result) => {
         dispatch(setProducts(result.data.result.result));
         setMessage(result.data.message);
@@ -75,6 +76,43 @@ const ProductsAdminSide = () => {
         setMessage(err.message);
       });
   };
+
+  const next = () => {
+    axios
+      .get(`http://localhost:5000/product/?page=${page + 1}`)
+      .then((result) => {
+        if (result.data.result.result.length !== 0) {
+          dispatch(setProducts(result.data.result.result));
+          setPage(page + 1);
+          setShow(true);
+          console.log(page);
+        } else {
+          return setPage(page);
+        }
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
+
+  const back = () => {
+    axios
+      .get(`http://localhost:5000/product/?page=${page - 1}`)
+      .then((result) => {
+        if (result.data.result.result.length !== 0) {
+          dispatch(setProducts(result.data.result.result));
+          setPage(page - 1);
+          setShow(true);
+          console.log(page);
+        } else {
+          return setPage(page);
+        }
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
+
   const gatAllCategories = () => {
     axios
       .get(`http://localhost:5000/category/allCategories`)
@@ -152,6 +190,32 @@ const ProductsAdminSide = () => {
             );
           })}
       </div>
+
+      {hide ? (
+        <></>
+      ) : (
+        <>
+          <a href="#l">
+            <button
+              onClick={() => {
+                back();
+              }}
+            >
+              Back
+            </button>
+          </a>
+          {page}
+          <a href="#l">
+            <button
+              onClick={() => {
+                next();
+              }}
+            >
+              Next
+            </button>
+          </a>
+        </>
+      )}
     </div>
   );
 };
