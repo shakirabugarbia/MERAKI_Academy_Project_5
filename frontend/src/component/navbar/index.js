@@ -14,13 +14,11 @@ const NavBar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { token, isLoggedIn } = useSelector((state) => {
-    // specify which state to subscribe to (state tree => reducer => state name )
     return {
       token: state.auth.token,
       isLoggedIn: state.auth.isLoggedIn,
     };
   });
-  //===============================================================
 
   return (
     <div className="NavBar">

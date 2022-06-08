@@ -4,6 +4,7 @@ import products from "./reducers/products";
 import categories from "./reducers/categories";
 import basket from "./reducers/basket";
 import typeoffoods from "./reducers/typeoffoods";
+import order from "./reducers/order";
 
 export default configureStore({
   reducer: {
@@ -12,5 +13,6 @@ export default configureStore({
     categories: categories,
     basket: basket,
     typeoffood: typeoffoods,
+    order: order,
   },
 });
