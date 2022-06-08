@@ -59,7 +59,6 @@ const viewCart = (req, res) => {
   const data = [user_id];
 
   connection.query(query, data, (err, result) => {
- 
     if (err) {
       return res.status(500).json({
         success: false,
@@ -93,8 +92,6 @@ const removefromcart = (req, res) => {
         err: error.message,
       });
     } else {
-      console.log(product_id);
-      console.log(user_id);
       res.status(200).json({
         success: true,
         massage: `Product removed `,
@@ -158,10 +155,9 @@ const removeAndDecreas = (req, res) => {
   });
 };
 
+// empty cart
 
-// empty cart 
-
-const emptyCart=(req, res)=>{
+const emptyCart = (req, res) => {
   const user_id = req.token.userId;
   const query = `UPDATE basket SET is_deleted=1 
     WHERE user_id=?;`;
@@ -182,14 +178,12 @@ const emptyCart=(req, res)=>{
       });
     }
   });
-
-
-}
+};
 
 module.exports = {
   addAndUpdateToCart,
   viewCart,
   removefromcart,
   removeAndDecreas,
-  emptyCart
+  emptyCart,
 };
