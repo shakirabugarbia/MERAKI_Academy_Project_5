@@ -46,12 +46,7 @@ const Contact = () => {
 
             <span>Message</span>
           </div>
-          <input
-            type="submit"
-            value="Send"
-            class="btn"
-            onClick={alert("the message has been sent")}
-          />
+          <input type="submit" value="Send" class="btn" />
         </form>
       </div>
     </div>
