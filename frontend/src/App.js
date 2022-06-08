@@ -13,6 +13,7 @@ import Footer from "./component/Footer";
 
 import ProductsAdminSide from "./component/ProdusctsAdmin";
 import UserAdminSide from "./component/UserAdmin";
+import UserOrder from "./component/orderHistoryPerUser";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
 
         <Route path={"/ProductAdminPanel"} element={<ProductsAdminSide />} />
         <Route path={"/UserAdminPanel"} element={<UserAdminSide />} />
+        <Route path={"/Userorder"} element={<UserOrder />} />
       </Routes>
       <Footer />
     </div>
