@@ -1,4 +1,5 @@
 import "./App.css";
+import React, { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Register } from "./component/register";
 import { Login } from "./component/login";
@@ -14,8 +15,25 @@ import Footer from "./component/Footer";
 import ProductsAdminSide from "./component/ProdusctsAdmin";
 import UserAdminSide from "./component/UserAdmin";
 import UserOrder from "./component/orderHistoryPerUser";
+import Map from "./component/Map/map";
+import PayPal from "./component/PayPal/PayPal";
+
+
+
+
+
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 function App() {
+  
+  const initialOptions = {
+    "client-id": "test",
+    currency: "USD",
+    intent: "capture",
+    "data-client-token": "abc123xyz==",
+};
+  const [checkout, setCheckout] = useState(false);
+
   return (
     <div className="App">
       <NavBar />
@@ -32,7 +50,23 @@ function App() {
         <Route path={"/ProductAdminPanel"} element={<ProductsAdminSide />} />
         <Route path={"/UserAdminPanel"} element={<UserAdminSide />} />
         <Route path={"/Userorder"} element={<UserOrder />} />
+        <Route path={"/location"} element={<Map />} />
       </Routes>
+
+      {checkout ? (
+         <PayPalScriptProvider options={{ "client-id": "test" }}>
+         <PayPalButtons style={{ layout: "horizontal" }} />
+     </PayPalScriptProvider>
+      ) : (
+        <button
+          onClick={() => {
+            setCheckout(true);
+          }}
+        >
+          Checkout
+        </button>
+      )}
+      
       <Footer />
     </div>
   );
