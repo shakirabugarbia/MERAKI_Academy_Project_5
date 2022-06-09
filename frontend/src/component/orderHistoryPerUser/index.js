@@ -18,17 +18,17 @@ const UserOrder = () => {
     };
   });
 
-  const getOrders = () => {
-    axios
+  const getOrders = async () => {
+    await axios
       .get("http://localhost:5000/order", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
       .then((result) => {
-        dispatch(addOrder(result.data.result));
         console.log(result.data.result);
         setShow(true);
+        dispatch(addOrder(result.data.result));
       })
       .catch((err) => {
         console.log(err);
@@ -36,20 +36,29 @@ const UserOrder = () => {
   };
   useEffect(() => {
     getOrders();
+    return()=>{
+      dispatch(addOrder([]))
+    }
   }, []);
-  console.log("test", orderState.order);
+
   return (
     <div>
       <h2>user history</h2>
       <div>
-        {show &&
-          orderState.order[0].map((element, index) => {
+        {orderState.order.length &&
+          orderState.order.map((element, index) => {
             return (
               <div key={index}>
-                <div>{element.orderdate}</div>
+                <div>order date : {element.orderdate}</div>
                 <div>
+                  {console.log(JSON.parse(element.ORDERhisory))}
                   {JSON.parse(element.ORDERhisory).map((elements, indexs) => {
-                    return <div id={indexs}>{elements.productName}</div>;
+                    return (
+                      <div key={indexs} id={indexs}>
+                        food class:{elements.productName} , price:{" "}
+                        {elements.price}, amount : {elements.amount}
+                      </div>
+                    );
                   })}
                 </div>
                 ----------
@@ -57,7 +66,6 @@ const UserOrder = () => {
             );
           })}
       </div>
-      <div>{/* {orderState.items} */}</div>
     </div>
   );
 };
