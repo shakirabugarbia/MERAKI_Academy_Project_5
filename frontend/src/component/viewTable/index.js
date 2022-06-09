@@ -3,6 +3,8 @@ import { addOrder, setItems, setId } from "../../redux/reducers/order";
 import { useDispatch, useSelector } from "react-redux";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "./style.css";
+
 const ViewTable = () => {
   const dispatch = useDispatch();
   const orderState = useSelector((state) => {
@@ -31,7 +33,7 @@ const ViewTable = () => {
     };
   }, []);
   return (
-    <div>
+    <div className="views">
       <div>
         <table>
           {" "}
@@ -60,7 +62,7 @@ const ViewTable = () => {
             })}
         </table>
       </div>
-      <button
+      <button className="back"
         onClick={() => {
           navigate("/UserAdminPanel");
         }}
