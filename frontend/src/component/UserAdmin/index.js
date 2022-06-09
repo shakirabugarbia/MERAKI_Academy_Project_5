@@ -35,32 +35,37 @@ const UserAdminSide = () => {
 
   return (
     <div className="All_Users">
-<table className="tabel">
-  <tr>
-    <th>userName</th>
-    <th>Email</th>
-    <th>phoneNumber</th>
-    <th>Order History</th>
+      <table className="tabel">
+        <tr>
+          <th>userName</th>
+          <th>Email</th>
+          <th>phoneNumber</th>
+          <th>Order History</th>
+        </tr>
 
-  </tr>
-  
-  
+        {show &&
+          users.map((element, index) => {
+            return (
+              <tr key={index}>
+                <td>{element.userName}</td>
+                <td>{element.email}</td>
 
-      {show &&
-        users.map((element, index) => {
-          return (
-        
-             <tr key={index}>
-    <td>{element.userName}</td>
-    <td>{element.email}</td>
- 
-    <td>   {element.phoneNumber}</td>
-    <td><button className="OrderH">view</button></td>
-  </tr>
-        
-          );
-        })}
-        </table>
+                <td> {element.phoneNumber}</td>
+                <td>
+                  <button
+                    className="OrderH"
+                    onClick={() => {
+                      console.log(element.id);
+                      navigate("/viewTable");
+                    }}
+                  >
+                    view
+                  </button>
+                </td>
+              </tr>
+            );
+          })}
+      </table>
     </div>
   );
 };
