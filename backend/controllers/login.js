@@ -6,7 +6,7 @@ const login = (req, res) => {
   const password = req.body.password;
   const email = req.body.email.toLowerCase();
 
-  const query = `SELECT * FROM users WHERE email=?`;
+  const query = `SELECT * FROM users WHERE email=? AND is_deleted =0`;
   const data = [email];
   connection.query(query, data, (err, result) => {
     if (err) throw err;
