@@ -5,7 +5,7 @@ import "./style.css";
 import { setUsers } from "../../redux/reducers/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-
+import { addOrder, setItems, setId } from "../../redux/reducers/order";
 const UserAdminSide = () => {
   const navigate = useNavigate();
 
@@ -20,6 +20,13 @@ const UserAdminSide = () => {
       token: state.auth.token,
       isLoggedIn: state.auth.isLoggedIn,
       users: state.auth.users,
+    };
+  });
+  const orderState = useSelector((state) => {
+    return {
+      order: state.order.order,
+      items: state.order.items,
+      id: state.order.id,
     };
   });
 
@@ -56,6 +63,7 @@ const UserAdminSide = () => {
                     className="OrderH"
                     onClick={() => {
                       console.log(element.id);
+                      dispatch(setId(element.id));
                       navigate("/viewTable");
                     }}
                   >

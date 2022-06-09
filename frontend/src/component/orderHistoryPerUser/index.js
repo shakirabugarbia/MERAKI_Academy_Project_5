@@ -17,6 +17,7 @@ const UserOrder = () => {
     return {
       order: state.order.order,
       items: state.order.items,
+      id: state.order.id,
     };
   });
 
