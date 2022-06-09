@@ -45,10 +45,10 @@ const UserOrder = () => {
   }, []);
 
   return (
-    <div>
-      <h2>user history</h2>
+    <div className="USER-HISTORY">
+      <h2 className="userss">user history</h2>
       <div>
-        <table>
+        <table className="tabells">
           {" "}
           <tr>
             <th>order date</th>
