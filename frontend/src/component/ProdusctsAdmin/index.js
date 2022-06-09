@@ -76,7 +76,19 @@ const ProductsAdminSide = () => {
         setMessage(err.message);
       });
   };
-
+  const deleteProductById = (product_id) => {
+    axios
+      .put(`http://localhost:5000/product/${product_id}`)
+      .then((result) => {
+        console.log(result.data.result);
+        dispatch(deleteproductts(result.data.result));
+        gatAllproducts();
+      })
+      .catch((err) => {
+        setMessage(err.message);
+        console.log(err);
+      });
+  };
   const next = () => {
     axios
       .get(`http://localhost:5000/product/?page=${page + 1}`)
@@ -140,26 +152,23 @@ const ProductsAdminSide = () => {
   // const createProduct = ()=>{
   //   axios.post(`http://localhost:5000/product/${}`,{}).then({}).catch({})
   // }
-  const updateproducttss = async (id) => {
-    try {
-      await axios.put(`http://localhost:5000/product/update/${id}`, {
+  const updateproducttss = (id) => {
+    axios
+      .put(`http://localhost:5000/product/update/${id}`, {
         productName,
         img,
         description,
         price,
+      })
+      .then((result) => {
+        console.log(result.data);
+        gatAllproducts()
+      })
+      .catch((error) => {
+        console.log(error);
       });
-      dispatch(
-        updateproductts({
-          productName: productName,
-          img: img,
-          description: description,
-          price: price,
-        })
-      );
-    } catch (error) {
-      console.log(error);
-    }
   };
+
   useEffect(() => {
     gatAllCategories();
     gatAllproducts();
@@ -182,7 +191,20 @@ const ProductsAdminSide = () => {
                     <div className="t">
                       <div className="pName"> {element.productName}</div>
                       <div className="desc"> {element.description}</div>
-                      <div className="price">{element.price}JD</div>
+                      <div className="price">{element.price} JD</div>
+                      <button
+                        className="delete"
+                        onClick={() => {
+                          deleteProductById(element.id);
+                        }}
+                      >
+                        Delete
+                      </button>
+                      <input type="text" placeholder="productName" onChange={(e)=>{setProductName(e.target.value)}}/>
+                      <input type="file" placeholder="imge input" onChange={(e)=>{setProductName(e.target.value)}}/>
+                      <input type="text" placeholder="Desciption input" onChange={(e)=>{setProductName(e.target.value)}}/>
+                      <input type="text" placeholder="Price" onChange={(e)=>{setProductName(e.target.value)}}/>
+                      <button className="update" onClick={()=>{updateproducttss(element.product_id)}}>Update</button>
                     </div>
                   </div>
                 </div>
