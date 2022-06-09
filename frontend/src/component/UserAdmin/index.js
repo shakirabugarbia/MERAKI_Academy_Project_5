@@ -6,6 +6,7 @@ import { setUsers } from "../../redux/reducers/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { addOrder, setItems, setId } from "../../redux/reducers/order";
+
 const UserAdminSide = () => {
   const navigate = useNavigate();
 
@@ -29,7 +30,22 @@ const UserAdminSide = () => {
       id: state.order.id,
     };
   });
-
+  const block = (id) => {
+    axios
+      .put(`http://localhost:5000/user/${id}`)
+      .then((result) => {
+        getUsers();
+      })
+      .catch((err) => {});
+  };
+  const active = (id) => {
+    axios
+      .put(`http://localhost:5000/user/active/${id}`)
+      .then((result) => {
+        getUsers();
+      })
+      .catch((err) => {});
+  };
   const getUsers = (String) => {
     axios.get(`http://localhost:5000/user/`).then((result) => {
       dispatch(setUsers(result.data.result));
@@ -48,6 +64,8 @@ const UserAdminSide = () => {
           <th>Email</th>
           <th>phoneNumber</th>
           <th>Order History</th>
+          <th>User status</th>
+          <th>Change User status</th>
         </tr>
 
         {show &&
@@ -69,6 +87,28 @@ const UserAdminSide = () => {
                   >
                     view
                   </button>
+                </td>
+                <td>{element.is_deleted === 0 ? <>active</> : <>blocked</>}</td>
+                <td>
+                  {element.is_deleted === 0 ? (
+                    <button
+                      className="OrderH"
+                      onClick={() => {
+                        block(element.id);
+                      }}
+                    >
+                      block OR active
+                    </button>
+                  ) : (
+                    <button
+                      className="OrderH"
+                      onClick={() => {
+                        active(element.id);
+                      }}
+                    >
+                      block OR active
+                    </button>
+                  )}
                 </td>
               </tr>
             );

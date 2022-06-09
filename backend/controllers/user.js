@@ -1,7 +1,7 @@
 const connection = require("../models/db");
 
 const getAllUsers = (req, res) => {
-  const query = `SELECT id,userName,email,phoneNumber FROM users WHERE Role_id =1 ;`;
+  const query = `SELECT id,userName,email,phoneNumber,is_deleted  FROM users WHERE Role_id =1 ;`;
 
   connection.query(query, (err, result) => {
     if (err) {
