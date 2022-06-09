@@ -58,7 +58,7 @@ const getAllProduct = (req, res) => {
 
 const deleteProductById = (req, res) => {
   const id = req.params.id;
-  console.log(id);
+  // console.log(id);
   const query = `UPDATE products SET is_deleted=1 WHERE id=?;`;
   const data = [id];
 

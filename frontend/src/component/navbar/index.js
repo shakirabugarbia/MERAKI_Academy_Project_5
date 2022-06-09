@@ -56,11 +56,11 @@ const NavBar = () => {
               onClick={() => {
                 dispatch(logout());
                 navigate("/");
+                setView(false);
               }}
             >
               <GrLogout className="log" /> Logout
             </a>
-            <Link to={"/contactUS"}>suggestion</Link>
           </>
         ) : (
           <>

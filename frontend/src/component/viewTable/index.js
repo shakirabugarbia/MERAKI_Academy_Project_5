@@ -1,18 +1,12 @@
-import { addOrder, setItems } from "../../redux/reducers/order";
+import { useNavigate } from "react-router-dom";
+import { addOrder, setItems, setId } from "../../redux/reducers/order";
 import { useDispatch, useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./style.css";
 
-import React, { useState, useEffect } from "react";
-const UserOrder = () => {
-  const [show, setShow] = useState(false);
+const ViewTable = () => {
   const dispatch = useDispatch();
-  const { token, isLoggedIn } = useSelector((state) => {
-    return {
-      token: state.auth.token,
-      isLoggedIn: state.auth.isLoggedIn,
-    };
-  });
   const orderState = useSelector((state) => {
     return {
       order: state.order.order,
@@ -20,17 +14,12 @@ const UserOrder = () => {
       id: state.order.id,
     };
   });
-
-  const getOrders = async () => {
-    await axios
-      .get("http://localhost:5000/order", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+  const navigate = useNavigate();
+  const getOrders = () => {
+    axios
+      .get(`http://localhost:5000/order/users/${orderState.id}`)
       .then((result) => {
         console.log(result.data.result);
-        setShow(true);
         dispatch(addOrder(result.data.result));
       })
       .catch((err) => {
@@ -43,12 +32,10 @@ const UserOrder = () => {
       dispatch(addOrder([]));
     };
   }, []);
-
   return (
-    <div className="USER-HISTORY">
-      <h2 className="userss">user history</h2>
+    <div className="views">
       <div>
-        <table className="tabells">
+        <table>
           {" "}
           <tr>
             <th>order date</th>
@@ -75,8 +62,15 @@ const UserOrder = () => {
             })}
         </table>
       </div>
+      <button className="back"
+        onClick={() => {
+          navigate("/UserAdminPanel");
+        }}
+      >
+        Back to user AdminPanel
+      </button>
     </div>
   );
 };
-export default UserOrder;
-// "orderdate":
+
+export default ViewTable;

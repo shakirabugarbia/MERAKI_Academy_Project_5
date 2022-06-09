@@ -15,6 +15,7 @@ const roleRouter = require("./routes/roles");
 const permissionRouter = require("./routes/permission");
 const typeOfFoodRouter = require("./routes/typeOfFood");
 const orderRouter = require("./routes/order");
+const userRouter = require("./routes/user");
 
 const app = express();
 
@@ -37,6 +38,9 @@ app.use("/basket", basketRouter);
 
 app.use("/typeOfFood", typeOfFoodRouter);
 app.use("/order", orderRouter);
+
+app.use("/user", userRouter);
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {

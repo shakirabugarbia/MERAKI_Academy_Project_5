@@ -15,14 +15,14 @@ import Footer from "./component/Footer";
 import ProductsAdminSide from "./component/ProdusctsAdmin";
 import UserAdminSide from "./component/UserAdmin";
 import UserOrder from "./component/orderHistoryPerUser";
+
 import Map from "./component/Map/map";
 import PayPal from "./component/PayPal/PayPal";
 
-
-
-
-
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+
+import ViewTable from "./component/viewTable";
+
 
 function App() {
   
@@ -50,7 +50,11 @@ function App() {
         <Route path={"/ProductAdminPanel"} element={<ProductsAdminSide />} />
         <Route path={"/UserAdminPanel"} element={<UserAdminSide />} />
         <Route path={"/Userorder"} element={<UserOrder />} />
+
         <Route path={"/location"} element={<Map />} />
+
+        <Route path={"/viewTable"} element={<ViewTable />} />
+
       </Routes>
 
       {checkout ? (

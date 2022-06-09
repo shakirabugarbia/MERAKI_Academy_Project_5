@@ -5,16 +5,21 @@ const order = createSlice({
   initialState: {
     order: [],
     items: [],
+    id: localStorage.getItem("id") || 0,
   },
   reducers: {
     addOrder: (state, action) => {
-      state.order.push(action.payload);
+      state.order = action.payload;
     },
     setItems: (state, action) => {
       state.items.push(action.payload);
     },
+    setId: (state, action) => {
+      state.id = action.payload;
+      localStorage.setItem("id", state.id);
+    },
   },
 });
 
-export const { addOrder ,setItems} = order.actions;
+export const { addOrder, setItems, setId } = order.actions;
 export default order.reducer;

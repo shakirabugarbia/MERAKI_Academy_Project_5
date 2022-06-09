@@ -1,0 +1,42 @@
+
+.All_Users{
+    display: flex;
+    flex-direction: column;
+ height: 500px;
+ 
+}
+
+table{
+    width: 50%;
+    border: 1px solid;
+    margin-left: 25%;
+    width: 50%;
+    margin-top: 5rem;
+}   
+
+ th{
+ 
+    border: 1px solid;
+
+
+ 
+}
+
+td{
+    border: 1px solid;
+  
+}
+
+
+tr{
+    border: 1px solid;
+ 
+}
+
+
+.OrderH{
+    background-color: rgba(240, 248, 255, 0);
+    border-color: rgba(240, 248, 255, 0);
+    color: black;
+    font-size: smaller;
+}

@@ -1,0 +1,14 @@
+.USER-HISTORY{
+    display: flex;
+    flex-direction: column;
+ height: 500px;
+}
+.userss{
+    margin-top: 2%;
+    color: chocolate;
+}
+.tabells{
+  margin-left: 25%;
+    width: 50%;
+    margin-top: 2rem;
+}

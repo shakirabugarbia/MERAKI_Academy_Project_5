@@ -5,6 +5,13 @@
   padding: 2rem;
 }
 
+.suggestions{
+  text-decoration: none;
+  font-family: 'Courgette', cursive;
+color: black;
+margin-right: 5rem;
+
+}
 .footer-content {
   display: flex;
   justify-content: space-around;
