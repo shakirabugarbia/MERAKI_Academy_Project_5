@@ -92,6 +92,6 @@ CREATE TABLE ORDERHISTORY (
     orderdate  DEFAULT  GETUTCDATE() ,
     user_id INT,
     foreign key (user_id) references users(id),
-    ORDERhisory VARCHAR(255),
+    ORDERhisory VARCHAR(100000),
     primary key (id)
 );
