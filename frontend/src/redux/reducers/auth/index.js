@@ -5,6 +5,7 @@ import {createSlice} from "@reduxjs/toolkit";
  initialState:{
      token:localStorage.getItem("token")||"",
      isLoggedIn:localStorage.getItem("token")?true:false,
+     users:[]
  },
  reducers:{
      login:(state,action)=>{
@@ -16,12 +17,15 @@ import {createSlice} from "@reduxjs/toolkit";
          localStorage.clear();
          state.token="";
          state.isLoggedIn=false;
-     }
+     },
+     setUsers: (state, action) => {
+        state.users = action.payload;
+      },
  }
 
 
 })
 
-export const {login,logout} = authSlice.actions;
+export const {login,logout,setUsers} = authSlice.actions;
 
 export default authSlice.reducer;
