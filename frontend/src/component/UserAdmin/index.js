@@ -40,6 +40,8 @@ const UserAdminSide = () => {
     <th>userName</th>
     <th>Email</th>
     <th>phoneNumber</th>
+    <th>Order History</th>
+
   </tr>
   
   
@@ -53,7 +55,7 @@ const UserAdminSide = () => {
     <td>{element.email}</td>
  
     <td>   {element.phoneNumber}</td>
-    <td><button></button></td>
+    <td><button className="OrderH">view</button></td>
   </tr>
         
           );
