@@ -161,10 +161,13 @@ const ProductsAdminSide = () => {
         price,
       })
       .then((result) => {
-        console.log(result.data);
-        gatAllproducts()
+        // dispatch(updateproductts(result.data));
+       
+        console.log("hiii",result.data);
+        gatAllproducts();
       })
       .catch((error) => {
+        setMessage(error.message);
         console.log(error);
       });
   };
@@ -200,11 +203,43 @@ const ProductsAdminSide = () => {
                       >
                         Delete
                       </button>
-                      <input type="text" placeholder="productName" onChange={(e)=>{setProductName(e.target.value)}}/>
-                      <input type="file" placeholder="imge input" onChange={(e)=>{setProductName(e.target.value)}}/>
-                      <input type="text" placeholder="Desciption input" onChange={(e)=>{setProductName(e.target.value)}}/>
-                      <input type="text" placeholder="Price" onChange={(e)=>{setProductName(e.target.value)}}/>
-                      <button className="update" onClick={()=>{updateproducttss(element.product_id)}}>Update</button>
+
+                      <input
+                        type="text"
+                        placeholder="productName"
+                        onChange={(e) => {
+                          setProductName(e.target.value);
+                        }}
+                      />
+                      <input
+                        type="url"
+                        placeholder="imge input"
+                        onChange={(e) => {
+                          setImg(e.target.value);
+                        }}
+                      />
+                      <input
+                        type="text"
+                        placeholder="Desciption input"
+                        onChange={(e) => {
+                          setDescription(e.target.value);
+                        }}
+                      />
+                      <input
+                        type="text"
+                        placeholder="Price"
+                        onChange={(e) => {
+                          setPrice(e.target.value);
+                        }}
+                      />
+                      <button
+                        className="update"
+                        onClick={() => {
+                          updateproducttss(element.id);
+                        console.log(element.id)}}
+                      >
+                        Update
+                      </button>
                     </div>
                   </div>
                 </div>

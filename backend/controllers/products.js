@@ -1,7 +1,7 @@
 const connection = require("../models/db");
 
 const createNewProduct = (req, res) => {
-  const { productName, img, price,description, category_id } = req.body;
+  const { productName, img, price, description, category_id } = req.body;
   const type_id = req.params.type_id;
   const query = `INSERT INTO products (productName,
     img,
@@ -9,7 +9,7 @@ const createNewProduct = (req, res) => {
     description,
     type_id,
     category_id) VALUES (?,?,?,?,?,?);`;
-  const data = [productName, img, price,description, type_id, category_id];
+  const data = [productName, img, price, description, type_id, category_id];
   connection.query(query, data, (err, result) => {
     if (err) {
       return res.status(500).json({
@@ -45,8 +45,8 @@ const getAllProduct = (req, res) => {
     }
     if (result.length === 0) {
       return res.status(404).json({
-        massage:"final page"
-      })
+        massage: "final page",
+      });
     }
     return res.status(200).json({
       success: true,
@@ -81,15 +81,15 @@ const deleteProductById = (req, res) => {
 };
 
 const updateProductById = (req, res) => {
-  const { productName, img, price,description } = req.body;
+  const { productName, img, description, price } = req.body;
   const id = req.params.id;
 
   const query = `SELECT * FROM products WHERE id=?;`;
   const data = [id];
 
-  console.log("hello");
+  // console.log("hello");
   connection.query(query, data, (err, result) => {
-    console.log(result);
+    console.log("controller 92: ",result);
     if (err) {
       return res.status(404).json({
         success: false,
@@ -104,17 +104,18 @@ const updateProductById = (req, res) => {
         err: err,
       });
     } else {
-      const query = `UPDATE products SET productName=?,img=?,price=? WHERE id=?;`;
+      console.log("result:107",result);
+      const query = `UPDATE products SET productName=?,img=?,description=?,price=? WHERE id=?;`;
       const data = [
         productName || result[0].productName,
         img || result[0].img,
+        description || result[0].description,
         price || result[0].price,
-        description||result[0].description,
         id,
       ];
 
       connection.query(query, data, (err, result) => {
-        console.log(err);
+        console.log("controller 117",err);
         if (result.affectedRows != 0)
           res.status(201).json({
             success: true,
@@ -128,8 +129,8 @@ const updateProductById = (req, res) => {
 
 const getAllProductByType = (req, res) => {
   const { category_id } = req.query;
-  const {type_id}=req.params
-  const query = `SELECT * FROM products WHERE is_deleted=0 AND type_id=? AND category_id=?;`;    
+  const { type_id } = req.params;
+  const query = `SELECT * FROM products WHERE is_deleted=0 AND type_id=? AND category_id=?;`;
   const data = [type_id, category_id];
   connection.query(query, data, (err, result) => {
     if (err) {
