@@ -1,6 +1,8 @@
 import { addOrder, setItems } from "../../redux/reducers/order";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
+import "./style.css";
+
 import React, { useState, useEffect } from "react";
 const UserOrder = () => {
   const [show, setShow] = useState(false);
@@ -36,35 +38,41 @@ const UserOrder = () => {
   };
   useEffect(() => {
     getOrders();
-    return()=>{
-      dispatch(addOrder([]))
-    }
+    return () => {
+      dispatch(addOrder([]));
+    };
   }, []);
 
   return (
     <div>
       <h2>user history</h2>
       <div>
-        {orderState.order.length &&
-          orderState.order.map((element, index) => {
-            return (
-              <div key={index}>
-                <div>order date : {element.orderdate}</div>
-                <div>
-                  {console.log(JSON.parse(element.ORDERhisory))}
+        <table>
+          {" "}
+          <tr>
+            <th>order date</th>
+            <th>productName</th>
+            <th>price</th>
+            <th>amount</th>
+          </tr>
+          {orderState.order.length &&
+            orderState.order.map((element, index) => {
+              return (
+                <>
                   {JSON.parse(element.ORDERhisory).map((elements, indexs) => {
                     return (
-                      <div key={indexs} id={indexs}>
-                        food class:{elements.productName} , price:{" "}
-                        {elements.price}, amount : {elements.amount}
-                      </div>
+                      <tr key={index}>
+                        <td>{element.orderdate}</td>
+                        <td>{elements.productName} </td>
+                        <td> {elements.price}JD</td>
+                        <td> {elements.amount}</td>
+                      </tr>
                     );
                   })}
-                </div>
-                ----------
-              </div>
-            );
-          })}
+                </>
+              );
+            })}
+        </table>
       </div>
     </div>
   );
