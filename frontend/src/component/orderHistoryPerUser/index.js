@@ -3,8 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import "./style.css";
 
-import React, { useState, useEffect } from "react";
+import ReactToPrint from "react-to-print";
+
+import React, { useState, useEffect, useRef } from "react";
+
 const UserOrder = () => {
+  const componentRef = useRef();
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
   const { token, isLoggedIn } = useSelector((state) => {
@@ -48,7 +52,11 @@ const UserOrder = () => {
     <div className="USER-HISTORY">
       <h2 className="userss">user history</h2>
       <div>
-        <table className="tabells">
+        <ReactToPrint
+          trigger={() => <button>Print this out!</button>}
+          content={() => componentRef.current}
+        />
+        <table className="tabells" ref={componentRef}>
           {" "}
           <tr>
             <th>order date</th>
