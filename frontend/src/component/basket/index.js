@@ -39,9 +39,11 @@ import {
   renderamount,
 } from "../../redux/reducers/basket/index";
 
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+
 const Basket = () => {
   const [show, setShow] = useState(false);
-
+  const [checkout, setCheckout] = useState(false);
   const navigate = useNavigate();
   const [page, setPage] = useState(1);
   const [message, setMessage] = useState("");
@@ -270,6 +272,19 @@ const Basket = () => {
       total items : {basketState.amount}
       <br />
       total price : {basketState.price}
+      {checkout ? (
+        <PayPalScriptProvider options={{ "client-id": "test" }}>
+          <PayPalButtons style={{ layout: "horizontal" }} />
+        </PayPalScriptProvider>
+      ) : (
+        <button
+          onClick={() => {
+            setCheckout(true);
+          }}
+        >
+          Checkout
+        </button>
+      )}
       <div>
         <button
           onClick={() => {
