@@ -53,6 +53,7 @@ const ProductsAdminSide = () => {
   });
 
   const [show, setShow] = useState(false);
+  const [showupdate, setShowupdate] = useState(false);
   const [productName, setProductName] = useState("");
   const [description, setDescription] = useState("");
   const [img, setImg] = useState("");
@@ -63,6 +64,7 @@ const ProductsAdminSide = () => {
   const [userId, setUserId] = useState("");
   const [hide, setHide] = useState(false);
   const [page, setPage] = useState(1);
+  const [showid, setShowid] = useState("");
 
   const gatAllproducts = () => {
     axios
@@ -70,9 +72,9 @@ const ProductsAdminSide = () => {
       .then((result) => {
         dispatch(setProducts(result.data.result.result));
         setMessage(result.data.message);
+        // setShow(true);
       })
       .catch((err) => {
-        setShow(true);
         setMessage(err.message);
       });
   };
@@ -162,8 +164,8 @@ const ProductsAdminSide = () => {
       })
       .then((result) => {
         // dispatch(updateproductts(result.data));
-       
-        console.log("hiii",result.data);
+
+        console.log("hiii", result.data);
         gatAllproducts();
       })
       .catch((error) => {
@@ -204,42 +206,61 @@ const ProductsAdminSide = () => {
                         Delete
                       </button>
 
-                      <input
-                        type="text"
-                        placeholder="productName"
-                        onChange={(e) => {
-                          setProductName(e.target.value);
-                        }}
-                      />
-                      <input
-                        type="url"
-                        placeholder="imge input"
-                        onChange={(e) => {
-                          setImg(e.target.value);
-                        }}
-                      />
-                      <input
-                        type="text"
-                        placeholder="Desciption input"
-                        onChange={(e) => {
-                          setDescription(e.target.value);
-                        }}
-                      />
-                      <input
-                        type="text"
-                        placeholder="Price"
-                        onChange={(e) => {
-                          setPrice(e.target.value);
-                        }}
-                      />
                       <button
-                        className="update"
                         onClick={() => {
-                          updateproducttss(element.id);
-                        console.log(element.id)}}
+                          setShowid(element.id);
+                          setShowupdate(true);
+                        }}
                       >
                         Update
                       </button>
+
+                     
+                      {showupdate && element.id === showid ? (
+                        <div className="update-inputs">
+                          <input
+                            type="text"
+                            placeholder="productName"
+                            onChange={(e) => {
+                              setProductName(e.target.value);
+                            }}
+                          />
+                          <input
+                            type="text"
+                            placeholder="imge input"
+                            onChange={(e) => {
+                              setImg(e.target.value);
+                            }}
+                          />
+                          <input
+                            type="text"
+                            placeholder="Desciption input"
+                            onChange={(e) => {
+                              setDescription(e.target.value);
+                            }}
+                          />
+                          <input
+                            type="text"
+                            placeholder="Price"
+                            onChange={(e) => {
+                              setPrice(e.target.value);
+                            }}
+                          />
+                          <button
+                            className="submit"
+                            onClick={() => {
+                              updateproducttss(element.id);
+                              setShowupdate(false);
+
+                              console.log(element.id);
+                            }}
+                          >
+                            Submit
+                          </button>
+                        </div>
+                      ) : (
+                        <></>
+                      )}
                     </div>
                   </div>
                 </div>
