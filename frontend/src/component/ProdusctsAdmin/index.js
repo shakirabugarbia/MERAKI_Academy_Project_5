@@ -42,6 +42,7 @@ const ProductsAdminSide = () => {
   const typesOffoodsState = useSelector((state) => {
     return {
       typesOffoods: state.typeoffood,
+      setTypeId: state.typeoffood,
     };
   });
 
@@ -65,6 +66,10 @@ const ProductsAdminSide = () => {
   const [hide, setHide] = useState(false);
   const [page, setPage] = useState(1);
   const [showid, setShowid] = useState("");
+  const [showCategory, setShowCategory] = useState(false);
+  const [showTypeFood, setShowTypeFood] = useState(false);
+  const [showCreateInput, setShowCreateInput] = useState(false);
+  const [showCreateButton, setShowCreateButton] = useState(true);
 
   const gatAllproducts = () => {
     axios
@@ -151,9 +156,9 @@ const ProductsAdminSide = () => {
         setMessage(err.message);
       });
   };
-  // const createProduct = ()=>{
-  //   axios.post(`http://localhost:5000/product/${}`,{}).then({}).catch({})
-  // }
+  const createProduct = (id) => {
+    axios.post(`http://localhost:5000/product/${id}`).then({}).catch({});
+  };
   const updateproducttss = (id) => {
     axios
       .put(`http://localhost:5000/product/update/${id}`, {
@@ -183,6 +188,102 @@ const ProductsAdminSide = () => {
   return (
     <div className="main">
       <h1>Products Admin Side</h1>
+      {showCreateButton ? (
+        <button
+          onClick={() => {
+            setShowCreateButton(false);
+            setShowCategory(true);
+          }}
+        >
+          Create Meale
+        </button>
+      ) : (
+        <></>
+      )}
+      {showCategory ? (
+        <div className="choose-category">
+          <p>Choose Category Of Meal</p>
+          {categories.map((element, index) => {
+            return (
+              <a
+                key={index}
+                onClick={() => {
+                  showCategory(false);
+                  showTypeFood(true);
+                }}
+              >
+                {element.category_title}
+              </a>
+            );
+          })}
+        </div>
+      ) : (
+        <></>
+      )}
+      {showTypeFood ? (
+        <div className="choose-foodType">
+          <p>Choose Type Of Meal</p>
+          {typesOffoodsState.typesOffoods.map((element, index) => {
+            return (
+              <a
+                key={index}
+                onClick={() => {
+                  showCreateInput(true);
+                  showTypeFood(false);
+                }}
+              >
+                {element.type}
+              </a>
+            );
+          })}
+        </div>
+      ) : (
+        <></>
+      )}
+      {showCreateInput ? (
+        <div className="Create-inputs">
+          <input
+            type="text"
+            placeholder="productName"
+            onChange={(e) => {
+              setProductName(e.target.value);
+            }}
+          />
+          <input
+            type="text"
+            placeholder="imge input"
+            onChange={(e) => {
+              setImg(e.target.value);
+            }}
+          />
+          <input
+            type="text"
+            placeholder="Desciption input"
+            onChange={(e) => {
+              setDescription(e.target.value);
+            }}
+          />
+          <input
+            type="text"
+            placeholder="Price"
+            onChange={(e) => {
+              setPrice(e.target.value);
+            }}
+          />
+          <button
+            className="Create"
+            onClick={() => {
+              showCreateInput(false);
+              createProduct();
+            }}
+          >
+            Create
+          </button>
+        </div>
+      ) : (
+        <></>
+      )}
+
       <div className="Products-Container">
         {show &&
           productsState.products.map((element, index) => {
@@ -215,7 +316,6 @@ const ProductsAdminSide = () => {
                         Update
                       </button>
 
-                     
                       {showupdate && element.id === showid ? (
                         <div className="update-inputs">
                           <input
