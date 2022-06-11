@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const typeoffoods = createSlice({
+const typeoffood = createSlice({
   name: "typeoffood",
   initialState: {
     typeOfFood: [],
@@ -41,6 +41,6 @@ export const {
   updateTypeOfFood,
   setTypeOfFood,
   setTypeId
-} = typeoffoods.actions;
+} = typeoffood.actions;
 
-export default typeoffoods.reducer;
+export default typeoffood.reducer;
