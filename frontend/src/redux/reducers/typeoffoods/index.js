@@ -4,6 +4,7 @@ const typeoffoods = createSlice({
   name: "typeoffood",
   initialState: {
     typeOfFood: [],
+    type_id: "",
   },
   reducers: {
     addTypeOfFood: (state, action) => {
@@ -28,6 +29,9 @@ const typeoffoods = createSlice({
     setTypeOfFood: (state, action) => {
       state.typeOfFood = action.payload;
     },
+    setTypeId: (state, action) => {
+      state.type_id = action.payload;
+    },
   },
 });
 
@@ -36,6 +40,7 @@ export const {
   deleteTypeOfFood,
   updateTypeOfFood,
   setTypeOfFood,
+  setTypeId
 } = typeoffoods.actions;
 
 export default typeoffoods.reducer;
