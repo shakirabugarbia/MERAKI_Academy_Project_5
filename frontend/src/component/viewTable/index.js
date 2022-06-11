@@ -1,11 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import { addOrder, setItems, setId } from "../../redux/reducers/order";
 import { useDispatch, useSelector } from "react-redux";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import "./style.css";
-
+import ReactToPrint from "react-to-print";
 const ViewTable = () => {
+  const componentRef = useRef();
   const dispatch = useDispatch();
   const orderState = useSelector((state) => {
     return {
@@ -35,7 +36,12 @@ const ViewTable = () => {
   return (
     <div className="views">
       <div>
-        <table>
+        <ReactToPrint
+          trigger={() => <button>Print this out!</button>}
+          content={() => componentRef.current}
+        />
+
+        <table ref={componentRef}>
           {" "}
           <tr>
             <th>order date</th>
@@ -62,7 +68,8 @@ const ViewTable = () => {
             })}
         </table>
       </div>
-      <button className="back"
+      <button
+        className="back"
         onClick={() => {
           navigate("/UserAdminPanel");
         }}
