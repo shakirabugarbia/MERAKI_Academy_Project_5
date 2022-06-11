@@ -19,7 +19,7 @@ import UserOrder from "./component/orderHistoryPerUser";
 import Map from "./component/Map/map";
 import PayPal from "./component/PayPal/PayPal";
 
-import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+
 
 import ViewTable from "./component/viewTable";
 
@@ -32,7 +32,7 @@ function App() {
     intent: "capture",
     "data-client-token": "abc123xyz==",
 };
-  const [checkout, setCheckout] = useState(false);
+ 
 
   return (
     <div className="App">
@@ -57,19 +57,7 @@ function App() {
 
       </Routes>
 
-      {checkout ? (
-         <PayPalScriptProvider options={{ "client-id": "test" }}>
-         <PayPalButtons style={{ layout: "horizontal" }} />
-     </PayPalScriptProvider>
-      ) : (
-        <button
-          onClick={() => {
-            setCheckout(true);
-          }}
-        >
-          Checkout
-        </button>
-      )}
+      
       
       <Footer />
     </div>
