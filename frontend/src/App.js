@@ -17,21 +17,18 @@ import UserAdminSide from "./component/UserAdmin";
 import UserOrder from "./component/orderHistoryPerUser";
 
 import Map from "./component/Map/map";
-import PayPal from "./component/PayPal/PayPal";
 
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 import ViewTable from "./component/viewTable";
 
-
 function App() {
-  
   const initialOptions = {
     "client-id": "test",
     currency: "USD",
     intent: "capture",
     "data-client-token": "abc123xyz==",
-};
+  };
   const [checkout, setCheckout] = useState(false);
 
   return (
@@ -54,23 +51,8 @@ function App() {
         <Route path={"/location"} element={<Map />} />
 
         <Route path={"/viewTable"} element={<ViewTable />} />
-
       </Routes>
 
-      {checkout ? (
-         <PayPalScriptProvider options={{ "client-id": "test" }}>
-         <PayPalButtons style={{ layout: "horizontal" }} />
-     </PayPalScriptProvider>
-      ) : (
-        <button
-          onClick={() => {
-            setCheckout(true);
-          }}
-        >
-          Checkout
-        </button>
-      )}
-      
       <Footer />
     </div>
   );
