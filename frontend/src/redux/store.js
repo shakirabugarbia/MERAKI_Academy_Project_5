@@ -3,7 +3,7 @@ import auth from "./reducers/auth";
 import products from "./reducers/products";
 import categories from "./reducers/categories";
 import basket from "./reducers/basket";
-import typeoffoods from "./reducers/typeoffoods";
+import typeoffood from "./reducers/typeoffoods";
 import order from "./reducers/order";
 
 export default configureStore({
@@ -12,7 +12,7 @@ export default configureStore({
     products: products,
     categories: categories,
     basket: basket,
-    typeoffood: typeoffoods,
+    typeoffood: typeoffood,
     order: order,
   },
 });

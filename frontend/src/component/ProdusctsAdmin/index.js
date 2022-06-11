@@ -15,12 +15,14 @@ import {
   deleteCategoriess,
   updateCategoriess,
   setCategories,
+  setCategoriesId
 } from "../../redux/reducers/categories";
 import {
   addTypeOfFood,
   deleteTypeOfFood,
   updateTypeOfFood,
   setTypeOfFood,
+  setTypeId
 } from "../../redux/reducers/typeoffoods/index";
 
 const ProductsAdminSide = () => {
@@ -41,8 +43,8 @@ const ProductsAdminSide = () => {
 
   const typesOffoodsState = useSelector((state) => {
     return {
-      typesOffoods: state.typeoffood,
-      setTypeId: state.typeoffood,
+      typesOffood: state.typeoffood.typeOfFood,
+      type_id: state.typeoffood.type_id,
     };
   });
 
@@ -156,8 +158,17 @@ const ProductsAdminSide = () => {
         setMessage(err.message);
       });
   };
-  const createProduct = (id) => {
-    axios.post(`http://localhost:5000/product/${id}`).then({}).catch({});
+  const createProduct = () => {
+    axios.post(`http://localhost:5000/product/${typesOffoodsState.type_id}`,{
+      productName,
+      description,
+      img,
+      price,
+      category_id}).then(()=>{
+        gatAllproducts()
+      }).catch((err)=>{
+        console.log(err);
+      });
   };
   const updateproducttss = (id) => {
     axios
@@ -208,8 +219,9 @@ const ProductsAdminSide = () => {
               <a
                 key={index}
                 onClick={() => {
-                  showCategory(false);
-                  showTypeFood(true);
+                  dispatch(setCategoriesId(element.id))
+                  setShowCategory(false);
+                  setShowTypeFood(true);
                 }}
               >
                 {element.category_title}
@@ -223,13 +235,14 @@ const ProductsAdminSide = () => {
       {showTypeFood ? (
         <div className="choose-foodType">
           <p>Choose Type Of Meal</p>
-          {typesOffoodsState.typesOffoods.map((element, index) => {
+          {typesOffoodsState.typesOffood.map((element, index) => {
             return (
               <a
                 key={index}
                 onClick={() => {
-                  showCreateInput(true);
-                  showTypeFood(false);
+                  dispatch(setTypeId(element.id))
+                  setShowCreateInput(true);
+                  setShowTypeFood(false);
                 }}
               >
                 {element.type}
@@ -273,8 +286,11 @@ const ProductsAdminSide = () => {
           <button
             className="Create"
             onClick={() => {
-              showCreateInput(false);
+              setShowCreateInput(false);
+            setShowCreateButton(true);
+
               createProduct();
+
             }}
           >
             Create
