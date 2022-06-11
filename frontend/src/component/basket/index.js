@@ -38,6 +38,8 @@ import {
   renderPrice,
   renderamount,
 } from "../../redux/reducers/basket/index";
+import PayPal from "../PayPal/PayPal";
+
 
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
@@ -203,6 +205,7 @@ const Basket = () => {
   useEffect(() => {
     viewBasket();
   }, []);
+  
   return (
     <div>
       <div className="products">
@@ -286,18 +289,22 @@ const Basket = () => {
         </button>
       )}
       <div>
+      <PayPal/>
         <button
           onClick={() => {
             emptyBasket();
             dispatch(zeroPrice());
             orderToHistory();
           }}
+          
         >
           check out after paying
         </button>
+        
       </div>
     </div>
   );
+  
 };
 
 export default Basket;

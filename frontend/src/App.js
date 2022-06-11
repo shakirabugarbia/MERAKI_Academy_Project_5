@@ -17,22 +17,10 @@ import UserAdminSide from "./component/UserAdmin";
 import UserOrder from "./component/orderHistoryPerUser";
 
 import Map from "./component/Map/map";
-import PayPal from "./component/PayPal/PayPal";
-
-
-
 import ViewTable from "./component/viewTable";
 
-
 function App() {
-  
-  const initialOptions = {
-    "client-id": "test",
-    currency: "USD",
-    intent: "capture",
-    "data-client-token": "abc123xyz==",
-};
- 
+  const [checkout, setCheckout] = useState(false);
 
   return (
     <div className="App">
@@ -54,11 +42,8 @@ function App() {
         <Route path={"/location"} element={<Map />} />
 
         <Route path={"/viewTable"} element={<ViewTable />} />
-
       </Routes>
 
-      
-      
       <Footer />
     </div>
   );
