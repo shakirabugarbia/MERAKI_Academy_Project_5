@@ -1,8 +1,8 @@
 
-/* DROP DATABASE restaurant;
-CREATE DATABASE restaurant;
- */
-use sql11497812;
+ DROP DATABASE restaurant;
+ CREATE DATABASE restaurant;
+
+use restaurant;
 
 CREATE TABLE roles (
     id INT AUTO_INCREMENT NOT NULL,
@@ -92,6 +92,6 @@ CREATE TABLE ORDERHISTORY (
     orderdate TIMESTAMP  DEFAULT CURRENT_TIMESTAMP   ,
     user_id INT,
     foreign key (user_id) references users(id),
-    ORDERhisory VARCHAR(100000),
+    ORDERhisory VARCHAR(9000),
     primary key (id)
 );
