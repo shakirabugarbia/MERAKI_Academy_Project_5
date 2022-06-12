@@ -15,6 +15,13 @@ const ViewTable = () => {
       id: state.order.id,
     };
   });
+  const { token, isLoggedIn, users } = useSelector((state) => {
+    return {
+      token: state.auth.token,
+      isLoggedIn: state.auth.isLoggedIn,
+      users: state.auth.users,
+    };
+  });
   const navigate = useNavigate();
   const getOrders = () => {
     axios
@@ -35,47 +42,64 @@ const ViewTable = () => {
   }, []);
   return (
     <div className="views">
-      <div>
-        <ReactToPrint
-          trigger={() => <button>Print this out!</button>}
-          content={() => componentRef.current}
-        />
+      {isLoggedIn ? (
+        <>
+          <div>
+            <ReactToPrint
+              trigger={() => <button>Print this out!</button>}
+              content={() => componentRef.current}
+            />
 
-        <table ref={componentRef}>
-          {" "}
-          <tr>
-            <th>order date</th>
-            <th>productName</th>
-            <th>price</th>
-            <th>amount</th>
-          </tr>
-          {orderState.order.length &&
-            orderState.order.map((element, index) => {
-              return (
-                <>
-                  {JSON.parse(element.ORDERhisory).map((elements, indexs) => {
-                    return (
-                      <tr key={index}>
-                        <td>{element.orderdate}</td>
-                        <td>{elements.productName} </td>
-                        <td> {elements.price}JD</td>
-                        <td> {elements.amount}</td>
-                      </tr>
-                    );
-                  })}
-                </>
-              );
-            })}
-        </table>
-      </div>
-      <button
-        className="back"
-        onClick={() => {
-          navigate("/UserAdminPanel");
-        }}
-      >
-        Back to user AdminPanel
-      </button>
+            <table ref={componentRef}>
+              {" "}
+              <tr>
+                <th>order date</th>
+                <th>productName</th>
+                <th>price</th>
+                <th>amount</th>
+              </tr>
+              {orderState.order.length &&
+                orderState.order.map((element, index) => {
+                  return (
+                    <>
+                      {JSON.parse(element.ORDERhisory).map(
+                        (elements, indexs) => {
+                          return (
+                            <tr key={index}>
+                              <td>{element.orderdate}</td>
+                              <td>{elements.productName} </td>
+                              <td> {elements.price}JD</td>
+                              <td> {elements.amount}</td>
+                            </tr>
+                          );
+                        }
+                      )}
+                    </>
+                  );
+                })}
+            </table>
+          </div>
+          <button
+            className="back"
+            onClick={() => {
+              navigate("/UserAdminPanel");
+            }}
+          >
+            Back to user AdminPanel
+          </button>
+        </>
+      ) : (
+        <div>
+          Login first
+          <button
+            onClick={() => {
+              navigate("/login");
+            }}
+          >
+            go to login
+          </button>
+        </div>
+      )}
     </div>
   );
 };

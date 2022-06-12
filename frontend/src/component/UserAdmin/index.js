@@ -58,65 +58,89 @@ const UserAdminSide = () => {
 
   return (
     <div className="All_Users">
-      <table className="tabel">
-        <tr>
-          <th>userName</th>
-          <th>Email</th>
-          <th>phoneNumber</th>
-          <th>Order History</th>
-          <th>User status</th>
-          <th>Change User status</th>
-        </tr>
+      {isLoggedIn ? (
+        <>
+          <table className="tabel">
+            <tr>
+              <th>userName</th>
+              <th>Email</th>
+              <th>phoneNumber</th>
+              <th>Order History</th>
+              <th>User status</th>
+              <th>Change User status</th>
+            </tr>
 
-        {show &&
-          users.map((element, index) => {
-            return (
-              <tr key={index}>
-                <td>{element.userName}</td>
-                <td>{element.email}</td>
+            {show &&
+              users.map((element, index) => {
+                return (
+                  <tr key={index}>
+                    <td>{element.userName}</td>
+                    <td>{element.email}</td>
 
-                <td> {element.phoneNumber}</td>
-                <td>
-                  <button
-                    className="OrderH"
-                    onClick={() => {
-                      console.log(element.id);
-                      dispatch(setId(element.id));
-                      navigate("/viewTable");
-                    }}
-                  >
-                    view
-                  </button>
-                </td>
-                <td>{element.is_deleted === 0 ? <>active</> : <>blocked</>}</td>
-                <td>
-                  {element.is_deleted === 0 ? (
-                    <button
-                      className="OrderH"
-                      onClick={() => {
-                        block(element.id);
-                      }}
-                    >
-                      block OR active
-                    </button>
-                  ) : (
-                    <button
-                      className="OrderH"
-                      onClick={() => {
-                        active(element.id);
-                      }}
-                    >
-                      block OR active
-                    </button>
-                  )}
-                </td>
-              </tr>
-            );
-          })}
-      </table>
-      <div> <button onClick={()=>{
-            navigate("/adminPanel");
-          }}>Back</button></div>
+                    <td> {element.phoneNumber}</td>
+                    <td>
+                      <button
+                        className="OrderH"
+                        onClick={() => {
+                          console.log(element.id);
+                          dispatch(setId(element.id));
+                          navigate("/viewTable");
+                        }}
+                      >
+                        view
+                      </button>
+                    </td>
+                    <td>
+                      {element.is_deleted === 0 ? <>active</> : <>blocked</>}
+                    </td>
+                    <td>
+                      {element.is_deleted === 0 ? (
+                        <button
+                          className="OrderH"
+                          onClick={() => {
+                            block(element.id);
+                          }}
+                        >
+                          block OR active
+                        </button>
+                      ) : (
+                        <button
+                          className="OrderH"
+                          onClick={() => {
+                            active(element.id);
+                          }}
+                        >
+                          block OR active
+                        </button>
+                      )}
+                    </td>
+                  </tr>
+                );
+              })}
+          </table>
+          <div>
+            {" "}
+            <button
+              onClick={() => {
+                navigate("/adminPanel");
+              }}
+            >
+              Back
+            </button>
+          </div>
+        </>
+      ) : (
+        <div>
+          Login first
+          <button
+            onClick={() => {
+              navigate("/login");
+            }}
+          >
+            go to login
+          </button>
+        </div>
+      )}
     </div>
   );
 };
