@@ -26,6 +26,7 @@ import {
 } from "../../redux/reducers/typeoffoods/index";
 
 const ProductsAdminSide = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const { token, isLoggedIn } = useSelector((state) => {
@@ -202,232 +203,247 @@ const ProductsAdminSide = () => {
 
   return (
     <div className="main">
-      <h1>Products Admin Side</h1>
-      {showCreateButton ? (
-        <button
-          onClick={() => {
-            setShowCreateButton(false);
-            setShowCategory(true);
-          }}
-        >
-          Create Meale
-        </button>
-      ) : (
-        <></>
-      )}
-      {showCategory ? (
-        <div className="choose-category">
-          <p>Choose Category Of Meal</p>
-          {categories.map((element, index) => {
-            return (
-              <a
-                key={index}
+      {isLoggedIn ? (
+        <>
+          <h1>Products Admin Side</h1>
+          {showCreateButton ? (
+            <button
+              onClick={() => {
+                setShowCreateButton(false);
+                setShowCategory(true);
+              }}
+            >
+              Create Meale
+            </button>
+          ) : (
+            <></>
+          )}
+          {showCategory ? (
+            <div className="choose-category">
+              <p>Choose Category Of Meal</p>
+              {categories.map((element, index) => {
+                return (
+                  <a
+                    key={index}
+                    onClick={() => {
+                      dispatch(setCategoriesId(element.id));
+                      setShowCategory(false);
+                      setShowTypeFood(true);
+                    }}
+                  >
+                    {element.category_title}
+                  </a>
+                );
+              })}
+            </div>
+          ) : (
+            <></>
+          )}
+          {showTypeFood ? (
+            <div className="choose-foodType">
+              <p>Choose Type Of Meal</p>
+              {typesOffoodsState.typesOffood.map((element, index) => {
+                return (
+                  <a
+                    key={index}
+                    onClick={() => {
+                      dispatch(setTypeId(element.id));
+                      setShowCreateInput(true);
+                      setShowTypeFood(false);
+                    }}
+                  >
+                    {element.type}
+                  </a>
+                );
+              })}
+            </div>
+          ) : (
+            <></>
+          )}
+          {showCreateInput ? (
+            <div className="Create-inputs">
+              <input
+                type="text"
+                placeholder="productName"
+                onChange={(e) => {
+                  setProductName(e.target.value);
+                }}
+              />
+              <input
+                type="text"
+                placeholder="imge input"
+                onChange={(e) => {
+                  setImg(e.target.value);
+                }}
+              />
+              <input
+                type="text"
+                placeholder="Desciption input"
+                onChange={(e) => {
+                  setDescription(e.target.value);
+                }}
+              />
+              <input
+                type="text"
+                placeholder="Price"
+                onChange={(e) => {
+                  setPrice(e.target.value);
+                }}
+              />
+              <button
+                className="Create"
                 onClick={() => {
-                  dispatch(setCategoriesId(element.id));
-                  setShowCategory(false);
-                  setShowTypeFood(true);
+                  setShowCreateInput(false);
+                  setShowCreateButton(true);
+
+                  createProduct();
                 }}
               >
-                {element.category_title}
-              </a>
-            );
-          })}
-        </div>
-      ) : (
-        <></>
-      )}
-      {showTypeFood ? (
-        <div className="choose-foodType">
-          <p>Choose Type Of Meal</p>
-          {typesOffoodsState.typesOffood.map((element, index) => {
-            return (
-              <a
-                key={index}
-                onClick={() => {
-                  dispatch(setTypeId(element.id));
-                  setShowCreateInput(true);
-                  setShowTypeFood(false);
-                }}
-              >
-                {element.type}
-              </a>
-            );
-          })}
-        </div>
-      ) : (
-        <></>
-      )}
-      {showCreateInput ? (
-        <div className="Create-inputs">
-          <input
-            type="text"
-            placeholder="productName"
-            onChange={(e) => {
-              setProductName(e.target.value);
-            }}
-          />
-          <input
-            type="text"
-            placeholder="imge input"
-            onChange={(e) => {
-              setImg(e.target.value);
-            }}
-          />
-          <input
-            type="text"
-            placeholder="Desciption input"
-            onChange={(e) => {
-              setDescription(e.target.value);
-            }}
-          />
-          <input
-            type="text"
-            placeholder="Price"
-            onChange={(e) => {
-              setPrice(e.target.value);
-            }}
-          />
-          <button
-            className="Create"
-            onClick={() => {
-              setShowCreateInput(false);
-              setShowCreateButton(true);
+                Create
+              </button>
+            </div>
+          ) : (
+            <></>
+          )}
 
-              createProduct();
-            }}
-          >
-            Create
-          </button>
-        </div>
-      ) : (
-        <></>
-      )}
-
-      <div className="Products-Container">
-        {show &&
-          productsState.products.map((element, index) => {
-            return (
-              <div className="Product-Container" key={index}>
-                {confirmation && element.id === showid ? (
-                  <div>
-                    <p>Are you sure you want to delete the product?</p>
-                    <button
-                      onClick={() => {
-                        deleteProductById(element.id);
-                        setConfirmation(false);
-                      }}
-                    >
-                      Confirm
-                    </button>
-                  </div>
-                ) : (
-                  <></>
-                )}
-                <div className="product-All-Detiles">
-                  <div className="Product-Img-Dev">
-                    <img className="imgg" src={element.img} />
-                  </div>
-                  <div className="pppp">
-                    <div className="t">
-                      <div className="pName"> {element.productName}</div>
-                      <div className="desc"> {element.description}</div>
-                      <div className="price">{element.price} JD</div>
-                      <button
-                        className="delete"
-                        onClick={() => {
-                          setConfirmation(true);
-                          setShowid(element.id);
-                        }}
-                      >
-                        Delete
-                      </button>
-
-                      <button
-                        onClick={() => {
-                          setShowid(element.id);
-                          setShowupdate(true);
-                        }}
-                      >
-                        Update
-                      </button>
-
-                      {showupdate && element.id === showid ? (
-                        <div className="update-inputs">
-                          <input
-                            type="text"
-                            placeholder="productName"
-                            onChange={(e) => {
-                              setProductName(e.target.value);
-                            }}
-                          />
-                          <input
-                            type="text"
-                            placeholder="imge input"
-                            onChange={(e) => {
-                              setImg(e.target.value);
-                            }}
-                          />
-                          <input
-                            type="text"
-                            placeholder="Desciption input"
-                            onChange={(e) => {
-                              setDescription(e.target.value);
-                            }}
-                          />
-                          <input
-                            type="text"
-                            placeholder="Price"
-                            onChange={(e) => {
-                              setPrice(e.target.value);
-                            }}
-                          />
+          <div className="Products-Container">
+            {show &&
+              productsState.products.map((element, index) => {
+                return (
+                  <div className="Product-Container" key={index}>
+                    {confirmation && element.id === showid ? (
+                      <div>
+                        <p>Are you sure you want to delete the product?</p>
+                        <button
+                          onClick={() => {
+                            deleteProductById(element.id);
+                            setConfirmation(false);
+                          }}
+                        >
+                          Confirm
+                        </button>
+                      </div>
+                    ) : (
+                      <></>
+                    )}
+                    <div className="product-All-Detiles">
+                      <div className="Product-Img-Dev">
+                        <img className="imgg" src={element.img} />
+                      </div>
+                      <div className="pppp">
+                        <div className="t">
+                          <div className="pName"> {element.productName}</div>
+                          <div className="desc"> {element.description}</div>
+                          <div className="price">{element.price} JD</div>
                           <button
-                            className="submit"
+                            className="delete"
                             onClick={() => {
-                              updateproducttss(element.id);
-                              setShowupdate(false);
-
-                              console.log(element.id);
+                              setConfirmation(true);
+                              setShowid(element.id);
                             }}
                           >
-                            Submit
+                            Delete
                           </button>
+
+                          <button
+                            onClick={() => {
+                              setShowid(element.id);
+                              setShowupdate(true);
+                            }}
+                          >
+                            Update
+                          </button>
+
+                          {showupdate && element.id === showid ? (
+                            <div className="update-inputs">
+                              <input
+                                type="text"
+                                placeholder="productName"
+                                onChange={(e) => {
+                                  setProductName(e.target.value);
+                                }}
+                              />
+                              <input
+                                type="text"
+                                placeholder="imge input"
+                                onChange={(e) => {
+                                  setImg(e.target.value);
+                                }}
+                              />
+                              <input
+                                type="text"
+                                placeholder="Desciption input"
+                                onChange={(e) => {
+                                  setDescription(e.target.value);
+                                }}
+                              />
+                              <input
+                                type="text"
+                                placeholder="Price"
+                                onChange={(e) => {
+                                  setPrice(e.target.value);
+                                }}
+                              />
+                              <button
+                                className="submit"
+                                onClick={() => {
+                                  updateproducttss(element.id);
+                                  setShowupdate(false);
+
+                                  console.log(element.id);
+                                }}
+                              >
+                                Submit
+                              </button>
+                            </div>
+                          ) : (
+                            <></>
+                          )}
                         </div>
-                      ) : (
-                        <></>
-                      )}
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            );
-          })}
-      </div>
+                );
+              })}
+          </div>
 
-      {hide ? (
-        <></>
-      ) : (
-        <>
-          <a href="#l">
-            <button
-              onClick={() => {
-                back();
-              }}
-            >
-              Back
-            </button>
-          </a>
-          {page}
-          <a href="#l">
-            <button
-              onClick={() => {
-                next();
-              }}
-            >
-              Next
-            </button>
-          </a>
+          {hide ? (
+            <></>
+          ) : (
+            <>
+              <a href="#l">
+                <button
+                  onClick={() => {
+                    back();
+                  }}
+                >
+                  Back
+                </button>
+              </a>
+              {page}
+              <a href="#l">
+                <button
+                  onClick={() => {
+                    next();
+                  }}
+                >
+                  Next
+                </button>
+              </a>
+            </>
+          )}
         </>
+      ) : (
+        <div>
+          Login first
+          <button
+            onClick={() => {
+              navigate("/login");
+            }}
+          >
+            go to login
+          </button>
+        </div>
       )}
     </div>
   );

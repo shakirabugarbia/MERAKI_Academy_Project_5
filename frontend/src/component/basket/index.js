@@ -40,7 +40,6 @@ import {
 } from "../../redux/reducers/basket/index";
 import PayPal from "../PayPal/PayPal";
 
-
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 const Basket = () => {
@@ -205,106 +204,120 @@ const Basket = () => {
   useEffect(() => {
     viewBasket();
   }, []);
-  
+
   return (
     <div>
-      <div className="products">
-        {show &&
-          productsState.products.map((element, index) => {
-            return (
-              <div className="bask" key={index}>
-                <img src={element.img} />
-                <div> {element.productName}</div>
-                <div> {element.description}</div>
-                <div>amount: {element.amount}</div>
-                <div>price: {element.price * element.amount}</div>
-                {isLoggedIn ? (
-                  <>
-                    <button
-                      className="dec"
-                      onClick={() => {
-                        decreaseAndRemoveFromBasket(element.id);
-                        dispatch(decreasePrice(element.price));
-                      }}
-                    >
-                      <AiOutlineMinusSquare className="ai" />
-                    </button>
+      {isLoggedIn ? (
+        <>
+          <div className="products">
+            {show &&
+              productsState.products.map((element, index) => {
+                return (
+                  <div className="bask" key={index}>
+                    <img src={element.img} />
+                    <div> {element.productName}</div>
+                    <div> {element.description}</div>
+                    <div>amount: {element.amount}</div>
+                    <div>price: {element.price * element.amount}</div>
+                    {isLoggedIn ? (
+                      <>
+                        <button
+                          className="dec"
+                          onClick={() => {
+                            decreaseAndRemoveFromBasket(element.id);
+                            dispatch(decreasePrice(element.price));
+                          }}
+                        >
+                          <AiOutlineMinusSquare className="ai" />
+                        </button>
 
-                    <button
-                      className="del"
-                      onClick={() => {
-                        removeFromCart(element.id);
-                        dispatch(erase(element.amount));
-                        dispatch(erasePrice(element.price * element.amount));
-                      }}
-                    >
-                      <AiOutlineDelete />
-                    </button>
-                    <button
-                      className="inc"
-                      onClick={() => {
-                        increaseCart(element.id);
-                        dispatch(setPrice(element.price));
-                      }}
-                    >
-                      <AiOutlinePlusSquare />
-                    </button>
-                  </>
-                ) : (
-                  <></>
-                )}
-              </div>
-            );
-          })}
-      </div>
-      {productsState.products.length ? (
+                        <button
+                          className="del"
+                          onClick={() => {
+                            removeFromCart(element.id);
+                            dispatch(erase(element.amount));
+                            dispatch(
+                              erasePrice(element.price * element.amount)
+                            );
+                          }}
+                        >
+                          <AiOutlineDelete />
+                        </button>
+                        <button
+                          className="inc"
+                          onClick={() => {
+                            increaseCart(element.id);
+                            dispatch(setPrice(element.price));
+                          }}
+                        >
+                          <AiOutlinePlusSquare />
+                        </button>
+                      </>
+                    ) : (
+                      <></>
+                    )}
+                  </div>
+                );
+              })}
+          </div>
+          {productsState.products.length ? (
+            <div>
+              <button
+                className="emptyButton"
+                onClick={() => {
+                  emptyBasket();
+                  dispatch(zeroPrice());
+                }}
+              >
+                empty basket
+              </button>
+            </div>
+          ) : (
+            <></>
+          )}
+          total items : {basketState.amount}
+          <br />
+          total price : {basketState.price}
+          {checkout ? (
+            <PayPalScriptProvider options={{ "client-id": "test" }}>
+              <PayPalButtons style={{ layout: "horizontal" }} />
+            </PayPalScriptProvider>
+          ) : (
+            <button
+              onClick={() => {
+                setCheckout(true);
+              }}
+            >
+              Checkout
+            </button>
+          )}
+          <div>
+            <PayPal />
+            <button
+              onClick={() => {
+                emptyBasket();
+                dispatch(zeroPrice());
+                orderToHistory();
+              }}
+            >
+              check out after paying
+            </button>
+          </div>
+        </>
+      ) : (
         <div>
+          Login first
           <button
-            className="emptyButton"
             onClick={() => {
-              emptyBasket();
-              dispatch(zeroPrice());
+              navigate("/login");
             }}
           >
-            empty basket
+            go to login
           </button>
         </div>
-      ) : (
-        <></>
       )}
-      total items : {basketState.amount}
-      <br />
-      total price : {basketState.price}
-      {checkout ? (
-        <PayPalScriptProvider options={{ "client-id": "test" }}>
-          <PayPalButtons style={{ layout: "horizontal" }} />
-        </PayPalScriptProvider>
-      ) : (
-        <button
-          onClick={() => {
-            setCheckout(true);
-          }}
-        >
-          Checkout
-        </button>
-      )}
-      <div>
-      <PayPal/>
-        <button
-          onClick={() => {
-            emptyBasket();
-            dispatch(zeroPrice());
-            orderToHistory();
-          }}
-          
-        >
-          check out after paying
-        </button>
-        
-      </div>
     </div>
   );
-  
 };
 
 export default Basket;
