@@ -15,14 +15,14 @@ import {
   deleteCategoriess,
   updateCategoriess,
   setCategories,
-  setCategoriesId
+  setCategoriesId,
 } from "../../redux/reducers/categories";
 import {
   addTypeOfFood,
   deleteTypeOfFood,
   updateTypeOfFood,
   setTypeOfFood,
-  setTypeId
+  setTypeId,
 } from "../../redux/reducers/typeoffoods/index";
 
 const ProductsAdminSide = () => {
@@ -54,7 +54,7 @@ const ProductsAdminSide = () => {
       category_id: state.categories.category_id,
     };
   });
-
+  const [confirmation, setConfirmation] = useState(false);
   const [show, setShow] = useState(false);
   const [showupdate, setShowupdate] = useState(false);
   const [productName, setProductName] = useState("");
@@ -159,14 +159,18 @@ const ProductsAdminSide = () => {
       });
   };
   const createProduct = () => {
-    axios.post(`http://localhost:5000/product/${typesOffoodsState.type_id}`,{
-      productName,
-      description,
-      img,
-      price,
-      category_id}).then(()=>{
-        gatAllproducts()
-      }).catch((err)=>{
+    axios
+      .post(`http://localhost:5000/product/${typesOffoodsState.type_id}`, {
+        productName,
+        description,
+        img,
+        price,
+        category_id,
+      })
+      .then(() => {
+        gatAllproducts();
+      })
+      .catch((err) => {
         console.log(err);
       });
   };
@@ -219,7 +223,7 @@ const ProductsAdminSide = () => {
               <a
                 key={index}
                 onClick={() => {
-                  dispatch(setCategoriesId(element.id))
+                  dispatch(setCategoriesId(element.id));
                   setShowCategory(false);
                   setShowTypeFood(true);
                 }}
@@ -240,7 +244,7 @@ const ProductsAdminSide = () => {
               <a
                 key={index}
                 onClick={() => {
-                  dispatch(setTypeId(element.id))
+                  dispatch(setTypeId(element.id));
                   setShowCreateInput(true);
                   setShowTypeFood(false);
                 }}
@@ -287,10 +291,9 @@ const ProductsAdminSide = () => {
             className="Create"
             onClick={() => {
               setShowCreateInput(false);
-            setShowCreateButton(true);
+              setShowCreateButton(true);
 
               createProduct();
-
             }}
           >
             Create
@@ -305,6 +308,21 @@ const ProductsAdminSide = () => {
           productsState.products.map((element, index) => {
             return (
               <div className="Product-Container" key={index}>
+                {confirmation && element.id === showid ? (
+                  <div>
+                    <p>Are you sure you want to delete the product?</p>
+                    <button
+                      onClick={() => {
+                        deleteProductById(element.id);
+                        setConfirmation(false);
+                      }}
+                    >
+                      Confirm
+                    </button>
+                  </div>
+                ) : (
+                  <></>
+                )}
                 <div className="product-All-Detiles">
                   <div className="Product-Img-Dev">
                     <img className="imgg" src={element.img} />
@@ -317,7 +335,8 @@ const ProductsAdminSide = () => {
                       <button
                         className="delete"
                         onClick={() => {
-                          deleteProductById(element.id);
+                          setConfirmation(true);
+                          setShowid(element.id);
                         }}
                       >
                         Delete
