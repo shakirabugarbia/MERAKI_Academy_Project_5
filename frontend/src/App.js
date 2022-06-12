@@ -19,6 +19,11 @@ import UserOrder from "./component/orderHistoryPerUser";
 import Map from "./component/Map/map";
 import ViewTable from "./component/viewTable";
 
+
+
+import WhatsAppWidget from 'react-whatsapp-widget'
+import 'react-whatsapp-widget/dist/index.css'
+
 function App() {
   const [checkout, setCheckout] = useState(false);
 
@@ -43,7 +48,7 @@ function App() {
 
         <Route path={"/viewTable"} element={<ViewTable />} />
       </Routes>
-
+      <WhatsAppWidget phoneNumber='00905388964247' />
       <Footer />
     </div>
   );
