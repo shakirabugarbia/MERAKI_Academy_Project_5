@@ -89,7 +89,7 @@ primary key (id)
 
 CREATE TABLE ORDERHISTORY (
     id INT AUTO_INCREMENT NOT NULL,
-    orderdate  DEFAULT  GETUTCDATE() ,
+    orderdate TIMESTAMP  DEFAULT CURRENT_TIMESTAMP   ,
     user_id INT,
     foreign key (user_id) references users(id),
     ORDERhisory VARCHAR(100000),
