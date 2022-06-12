@@ -48,7 +48,7 @@ function App() {
 
         <Route path={"/viewTable"} element={<ViewTable />} />
       </Routes>
-      <WhatsAppWidget phoneNumber='00905388964247' />
+      <WhatsAppWidget phoneNumber='00962786296608' />
       <Footer />
     </div>
   );
