@@ -114,6 +114,9 @@ const UserAdminSide = () => {
             );
           })}
       </table>
+      <div> <button onClick={()=>{
+            navigate("/adminPanel");
+          }}>Back</button></div>
     </div>
   );
 };

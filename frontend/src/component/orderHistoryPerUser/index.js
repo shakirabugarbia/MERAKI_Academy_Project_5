@@ -1,5 +1,7 @@
 import { addOrder, setItems } from "../../redux/reducers/order";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
 import axios from "axios";
 import "./style.css";
 
@@ -10,6 +12,8 @@ import React, { useState, useEffect, useRef } from "react";
 const UserOrder = () => {
   const componentRef = useRef();
   const [show, setShow] = useState(false);
+  const navigate = useNavigate();
+
   const dispatch = useDispatch();
   const { token, isLoggedIn } = useSelector((state) => {
     return {
@@ -83,6 +87,9 @@ const UserOrder = () => {
             })}
         </table>
       </div>
+      <button onClick={()=>{
+            navigate("/");
+          }}>Back</button>
     </div>
   );
 };
