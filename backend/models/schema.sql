@@ -1,8 +1,14 @@
 
+
+/* DROP DATABASE restaurant;
+CREATE DATABASE restaurant;
+ */
+
+
  DROP DATABASE restaurant;
  CREATE DATABASE restaurant;
 
-use restaurant;
+use heroku_9960a3136bbd853;
 
 CREATE TABLE roles (
     id INT AUTO_INCREMENT NOT NULL,
