@@ -88,10 +88,10 @@ const UserOrder = () => {
         </table>
       </div>
       <button onClick={()=>{
-            navigate("/");
+            navigate("/basket");
           }}>Back</button>
     </div>
   );
 };
 export default UserOrder;
-// "orderdate":
+
