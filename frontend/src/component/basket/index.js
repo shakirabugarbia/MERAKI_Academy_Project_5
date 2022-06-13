@@ -40,7 +40,6 @@ import {
 } from "../../redux/reducers/basket/index";
 import PayPal from "../PayPal/PayPal";
 
-
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 const Basket = () => {
@@ -205,7 +204,7 @@ const Basket = () => {
   useEffect(() => {
     viewBasket();
   }, []);
-  
+
   return (
     <div>
       <div className="products">
@@ -275,36 +274,14 @@ const Basket = () => {
       total items : {basketState.amount}
       <br />
       total price : {basketState.price}
-      {checkout ? (
-        <PayPalScriptProvider options={{ "client-id": "test" }}>
-          <PayPalButtons style={{ layout: "horizontal" }} />
-        </PayPalScriptProvider>
-      ) : (
-        <button
-          onClick={() => {
-            setCheckout(true);
-          }}
-        >
-          Checkout
-        </button>
-      )}
+      <PayPalScriptProvider options={{ "client-id": "test" }}>
+        <PayPalButtons style={{ layout: "horizontal" }} />
+      </PayPalScriptProvider>
       <div>
-      <PayPal/>
-        <button
-          onClick={() => {
-            emptyBasket();
-            dispatch(zeroPrice());
-            orderToHistory();
-          }}
-          
-        >
-          check out after paying
-        </button>
-        
+        <PayPal />
       </div>
     </div>
   );
-  
 };
 
 export default Basket;
