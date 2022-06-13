@@ -39,9 +39,7 @@ import {
   renderamount,
 } from "../../redux/reducers/basket/index";
 import PayPal from "../PayPal/PayPal";
-
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
-
 const Basket = () => {
   const [show, setShow] = useState(false);
   const [checkout, setCheckout] = useState(false);
@@ -101,14 +99,12 @@ const Basket = () => {
       })
       .then((result) => {
         viewBasket();
-
         dispatch(zero());
       })
       .catch((err) => {
         console.log(err.message);
       });
   };
-
   const removeFromCart = (id) => {
     axios
       .put(
@@ -127,7 +123,6 @@ const Basket = () => {
         console.log(err.message);
       });
   };
-
   const increaseCart = (id) => {
     axios
       .post(
@@ -141,10 +136,8 @@ const Basket = () => {
       )
       .then((result) => {
         viewBasket();
-
         dispatch(setAmount());
         console.log(basketState.amount);
-
         setMessage("Added To Basket");
       })
       .catch((err) => {
@@ -204,7 +197,6 @@ const Basket = () => {
   useEffect(() => {
     viewBasket();
   }, []);
-
   return (
     <div>
       {isLoggedIn ? (
@@ -230,7 +222,6 @@ const Basket = () => {
                         >
                           <AiOutlineMinusSquare className="ai" />
                         </button>
-
                         <button
                           className="del"
                           onClick={() => {
@@ -315,24 +306,8 @@ const Basket = () => {
             go to login
           </button>
         </div>
-
-      ) : (
-        <></>
       )}
-      total items : {basketState.amount}
-      <br />
-      total price : {basketState.price}
-      <PayPalScriptProvider options={{ "client-id": "test" }}>
-        <PayPalButtons style={{ layout: "horizontal" }} />
-      </PayPalScriptProvider>
-      <div>
-        <PayPal />
-      </div>
-
-      )}
-
     </div>
   );
 };
-
 export default Basket;
