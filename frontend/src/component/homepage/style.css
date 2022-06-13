@@ -126,6 +126,7 @@
   justify-content: center;
   grid-template-rows: auto;
   gap: 2.5rem;
+  max-height: 80%;
 }
 
 .Product-Container {

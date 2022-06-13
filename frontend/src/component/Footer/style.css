@@ -1,16 +1,16 @@
 .footer {
+  clear: both;
   position: relative;
-  margin: 0px;
+  height: 6rem;
   background-color: rgb(227, 183, 125);
   padding: 2rem;
 }
 
-.suggestions{
+.suggestions {
   text-decoration: none;
-  font-family: 'Courgette', cursive;
-color: black;
-margin-right: 3rem;
-
+  font-family: "Courgette", cursive;
+  color: black;
+  margin-right: 3rem;
 }
 .footer-content {
   display: flex;
