@@ -206,13 +206,19 @@ const Basket = () => {
               productsState.products.map((element, index) => {
                 return (
                   <div className="bask" key={index}>
-                    <img src={element.img} />
-                    <div> {element.productName}</div>
-                    <div> {element.description}</div>
-                    <div>amount: {element.amount}</div>
-                    <div>price: {element.price * element.amount}</div>
+                    <div className="img-dev">
+                      <img className="imgg" src={element.img} />
+                    </div>
+                    <div className="product-info">
+                      <div> {element.productName}</div>
+                      <div> {element.description}</div>
+                      <div>price: {element.price * element.amount}</div>
+                    </div>
+                   
+
                     {isLoggedIn ? (
                       <>
+                      <div className="dec_inc">
                         <button
                           className="dec"
                           onClick={() => {
@@ -222,6 +228,18 @@ const Basket = () => {
                         >
                           <AiOutlineMinusSquare className="ai" />
                         </button>
+                         <p className="amm">{element.amount}</p>
+                        <button
+                          className="inc"
+                          onClick={() => {
+                            increaseCart(element.id);
+                            dispatch(setPrice(element.price));
+                          }}
+                        >
+                          <AiOutlinePlusSquare />
+                        </button>
+                        </div>
+                        <div className="deletebtn">
                         <button
                           className="del"
                           onClick={() => {
@@ -234,15 +252,7 @@ const Basket = () => {
                         >
                           <AiOutlineDelete />
                         </button>
-                        <button
-                          className="inc"
-                          onClick={() => {
-                            increaseCart(element.id);
-                            dispatch(setPrice(element.price));
-                          }}
-                        >
-                          <AiOutlinePlusSquare />
-                        </button>
+                        </div>
                       </>
                     ) : (
                       <></>

@@ -1,3 +1,55 @@
 .products{
     height: 1000px;
+    gap: 5rem;
+    margin-top: 4rem;
+}
+
+.bask{
+  display: flex; 
+  border: 1px solid wheat; 
+  width: 40rem;
+  margin: 1rem;
+  margin-top: 1rem;
+}
+
+.imgg{
+    width: 130px;
+    height: 100px;
+    padding: 1rem;
+}
+
+.product-info{
+width: 15rem;
+margin-top: 3.5rem;
+}
+
+.dec_inc{
+display: flex;
+width: 5rem;
+margin-top: 3.5rem;
+
+}
+
+
+.dec{
+    background-color: rgba(240, 248, 255, 0);
+    border-color: rgba(240, 248, 255, 0);
+    color:coral;
+}
+
+.inc{
+    background-color: rgba(240, 248, 255, 0);
+    border-color: rgba(240, 248, 255, 0);
+    color:coral; 
+}
+
+.amm{
+    margin-top: .5rem;
+}
+
+.del{
+    background-color: rgba(240, 248, 255, 0);
+    border-color: rgba(240, 248, 255, 0);
+    color:black; 
+ 
 }
