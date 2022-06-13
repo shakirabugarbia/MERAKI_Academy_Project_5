@@ -8,7 +8,7 @@ import {
   AiFillApple
 } from "react-icons/ai";
 import { FaGooglePlay } from "react-icons/fa";
-import "./foodStoresStyle.css";
+import "./style.css";
 
 export const Footer = () => {
   return (
@@ -32,6 +32,7 @@ export const Footer = () => {
               <b>For Restaurant</b>
               <p>Restaurant</p>
               <p>Business</p>
+              <Link className="suggestions"  to={"/location"}>Location</Link>
             </div>
             <div>
               <b>For You</b>

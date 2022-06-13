@@ -315,7 +315,22 @@ const Basket = () => {
             go to login
           </button>
         </div>
+
+      ) : (
+        <></>
       )}
+      total items : {basketState.amount}
+      <br />
+      total price : {basketState.price}
+      <PayPalScriptProvider options={{ "client-id": "test" }}>
+        <PayPalButtons style={{ layout: "horizontal" }} />
+      </PayPalScriptProvider>
+      <div>
+        <PayPal />
+      </div>
+
+      )}
+
     </div>
   );
 };
