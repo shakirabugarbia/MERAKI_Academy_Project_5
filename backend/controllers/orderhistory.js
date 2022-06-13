@@ -54,7 +54,7 @@ const usersOrders = (req, res) => {
         err: error.message,
       });
     } else {
-      res.status(200).json({
+      return res.status(200).json({
         success: true,
         massage: `order history `,
         result: result,
@@ -73,7 +73,7 @@ const allOrders = (req, res) => {
         err: error.message,
       });
     } else {
-      res.status(200).json({
+      return res.status(200).json({
         success: true,
         massage: `order history `,
         result: result,

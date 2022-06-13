@@ -154,7 +154,7 @@ const getProductsByTitle = (req, res) => {
   const query = `SELECT * FROM products
    WHERE is_deleted=0 AND 
     productName LIKE ?;`;
-  const data = [`${productName}%`];
+  const data = [`%${productName}%`];
   connection.query(query, data, (err, result) => {
     if (err) {
       return res.status(500).json({

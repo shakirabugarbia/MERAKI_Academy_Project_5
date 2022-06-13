@@ -17,7 +17,7 @@ CREATE TABLE roles (
 );
 -- - Create a table called users in the database
 
-CREATE TABLE users(
+`CREATE TABLE users(
     id INT AUTO_INCREMENT NOT NULL,
     userName VARCHAR(255),
     address VARCHAR(255),
@@ -28,7 +28,7 @@ CREATE TABLE users(
     FOREIGN KEY (role_id) REFERENCES roles(id),
     is_deleted TINYINT DEFAULT 0,
     PRIMARY KEY (id)
-);
+);`
 -- - Create a table called foodCategories in the database
 CREATE TABLE foodCategories(
     id INT AUTO_INCREMENT NOT NULL,

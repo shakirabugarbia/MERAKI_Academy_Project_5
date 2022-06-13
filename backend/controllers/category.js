@@ -58,7 +58,7 @@ const updateCategoryByid = (req, res) => {
       });
     }
     if (!result) {
-      res.status(404).json({
+     return res.status(404).json({
         success: false,
         massage: `The foodCategories: ${id} is not found`,
         err: err,
@@ -76,7 +76,7 @@ const updateCategoryByid = (req, res) => {
         console.log("errr", err);
         console.log(results);
         if (results.affectedRows != 0)
-          res.status(201).json({
+        return res.status(201).json({
             success: true,
             massage: `product`,
             result: results,
