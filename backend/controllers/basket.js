@@ -180,6 +180,8 @@ const emptyCart = (req, res) => {
   });
 };
 
+
+
 module.exports = {
   addAndUpdateToCart,
   viewCart,

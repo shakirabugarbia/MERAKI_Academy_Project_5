@@ -2,7 +2,7 @@
 /* DROP DATABASE restaurant;
 CREATE DATABASE restaurant;
  */
-use sql11497812;
+use heroku_9960a3136bbd853;
 
 CREATE TABLE roles (
     id INT AUTO_INCREMENT NOT NULL,

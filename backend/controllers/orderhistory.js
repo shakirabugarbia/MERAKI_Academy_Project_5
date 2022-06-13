@@ -82,9 +82,36 @@ const allOrders = (req, res) => {
   });
 };
 
+
+const  getOrderHistoryById = (req, res) =>{
+ 
+const id = req.params.id
+
+const query = `SELECT * FROM orderhistory WHERE id=?;`;
+const data = [orederHistoryId];
+connection.query(query, data, (error, result) => {
+  console.log(error);
+  if (error) {
+    return res.status(500).json({
+      success: false,
+      massage: "Server error",
+      err: error.message,
+    });
+  } else {
+    res.status(200).json({
+      success: true,
+      massage: `Order Selected with id > ${id} `,
+      result: result,
+    });
+  }
+});
+
+}
+
 module.exports = {
   order,
   orderhistoryByUser,
   allOrders,
-  usersOrders
+  usersOrders,
+  getOrderHistoryById
 };
