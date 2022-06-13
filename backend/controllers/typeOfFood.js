@@ -13,7 +13,7 @@ const createTypeOfFood = (req, res) => {
         err: err,
       });
     }
-    res.status(201).json({
+    return  res.status(201).json({
       success: true,
       massage: "Success typeOfFood created",
       results: results,
@@ -43,7 +43,7 @@ const deleteTypeOfFoodById = (req, res) => {
           err: err,
         });
       }
-      res.status(200).json({
+      return  res.status(200).json({
         success: true,
         massage: `Succeeded to delete category with id: ${id}`,
         result: result,
@@ -56,13 +56,13 @@ const deleteTypeOfFoodById = (req, res) => {
     const query = `SELECT * FROM typeOfFood WHERE is_deleted=0;`;
     connection.query(query, (err, result) => {
       if (err) {
-        res.status(500).json({
+        return   res.status(500).json({
           success: false,
           massage: "server error",
           err: err,
         });
       }
-      res.status(200).json({
+      return res.status(200).json({
         success: true,
         massage: "All the typeOfFood",
         result: result,

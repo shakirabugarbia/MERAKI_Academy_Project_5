@@ -14,7 +14,7 @@ const createNewRole = (req, res) => {
         err: err,
       });
     }
-    res.status(201).json({
+    return   res.status(201).json({
       success: true,
       massage: "Success role created",
       results: results,

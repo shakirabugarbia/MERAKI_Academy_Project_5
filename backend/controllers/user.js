@@ -11,7 +11,7 @@ const getAllUsers = (req, res) => {
         err: error.message,
       });
     } else {
-      res.status(200).json({
+      return res.status(200).json({
         success: true,
         massage: `All users `,
         result: result,

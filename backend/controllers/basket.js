@@ -23,7 +23,7 @@ const addAndUpdateToCart = (req, res) => {
             result: results,
           });
         } else {
-          res.status(500).json({
+          return res.status(500).json({
             success: false,
             massage: "Server error",
             err: err,
@@ -35,13 +35,13 @@ const addAndUpdateToCart = (req, res) => {
       const data = [product_id, user_id];
       connection.query(query, data, (err, result) => {
         if (err) {
-          res.status(500).json({
+        return  res.status(500).json({
             success: false,
             massage: "Server error",
             err: err,
           });
         }
-        res.status(200).json({
+       return res.status(200).json({
           success: true,
           massage: `Product Added to Basket`,
           result: result,
@@ -92,7 +92,7 @@ const removefromcart = (req, res) => {
         err: error.message,
       });
     } else {
-      res.status(200).json({
+     return res.status(200).json({
         success: true,
         massage: `Product removed `,
         result: result,
