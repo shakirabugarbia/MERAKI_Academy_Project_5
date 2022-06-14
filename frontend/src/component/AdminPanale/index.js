@@ -13,7 +13,7 @@ const Admin = () => {
     };
   });
   return (
-    <div className="main">
+    <div className="theholder">
       <div className="analize">
         <h1 className="dash">Dashboard</h1>
         <br />
