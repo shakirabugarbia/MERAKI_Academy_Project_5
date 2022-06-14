@@ -26,26 +26,51 @@ const Admin = () => {
       </div>
       {isLoggedIn ? (
         <div className="admin_sections">
-          <div className="section_link">
+          <div className="section_link_1">
             <Link className="linkss" to={"/UserAdminPanel"}>
               User Section
             </Link>
+            <img className="chart_Pic"
+          src="https://i.ibb.co/xfkSCnV/1.png
+
+          "
+          alt="chart"
+          border="0"
+        />
           </div>{" "}
-          <div className="section_link">
+          <div className="section_link_2">
             <Link className="linkss" to={"/ProductAdminPanel"}>
               Product Section
             </Link>
+            <img className="chart_Pic"
+          src="https://i.ibb.co/QnkZ25K/4.png
+          "
+          alt="chart"
+          border="0"
+        />
           </div>{" "}
-          <div className="section_link">
+          <div className="section_link_3">
             <Link className="linkss" to={"/"}>
               Category Section
             </Link>
+            <img className="chart_Pic"
+          src="https://i.ibb.co/DkSHXVD/2.png
+          "
+          alt="chart"
+          border="0"
+        />
           </div>
-          <div className="section_link">
+          <div className="section_link_4">
             {" "}
             <Link className="linkss" to={"/"}>
               Foods type Section
             </Link>
+            <img className="chart_Pic"
+          src="https://i.ibb.co/b28fCdR/3.png
+          "
+          alt="chart"
+          border="0"
+        />
           </div>
         </div>
       ) : (
