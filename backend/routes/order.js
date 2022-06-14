@@ -14,7 +14,7 @@ orderRouter.post("/", authentication, order);
 orderRouter.get("/", authentication, orderhistoryByUser);
 orderRouter.get("/users/:id",usersOrders);
 orderRouter.get("/all", allOrders)
-orderRouter.get("/orderid/:id",getOrderHistoryById);
+orderRouter.get("/orderid/:id", getOrderHistoryById);
 
 
 module.exports = orderRouter;

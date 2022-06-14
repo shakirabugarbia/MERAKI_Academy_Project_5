@@ -129,7 +129,9 @@
   align-items: center;
   grid-template-rows: auto;
   gap: 2.5rem;
+  max-height: 80%;
   margin-left: 8rem;
+
 }
 
 .Product-Container {
