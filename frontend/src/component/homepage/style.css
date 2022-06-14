@@ -92,6 +92,8 @@
     "Lucida Sans", Arial, sans-serif;
   color: rgba(210, 105, 30, 0.565);
   margin-left: 1em;
+
+
 }
 .types-Of-Food {
   width: 8rem;
@@ -124,9 +126,12 @@
   display: grid;
   grid-template-columns: 45% 45%;
   justify-content: center;
+  align-items: center;
   grid-template-rows: auto;
   gap: 2.5rem;
   max-height: 80%;
+  margin-left: 8rem;
+
 }
 
 .Product-Container {

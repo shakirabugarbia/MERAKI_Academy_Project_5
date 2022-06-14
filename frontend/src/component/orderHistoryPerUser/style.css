@@ -12,3 +12,23 @@
     width: 50%;
     margin-top: 2rem;
 }
+
+
+.orderdate{
+  cursor: pointer;
+}
+
+.bttl{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2%;
+  gap: .75rem;
+
+}
+
+.boton{
+  color: #000;
+}
+
+

@@ -1,17 +1,24 @@
-import { addOrder, setItems } from "../../redux/reducers/order";
+import {
+  addOrder,
+  setItems,
+  setId,
+  setrecipteId,
+} from "../../redux/reducers/order";
+import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
 import "./style.css";
+import { BiPrinter } from 'react-icons/bi';
 
 import ReactToPrint from "react-to-print";
-
-import React, { useState, useEffect, useRef } from "react";
 
 const UserOrder = () => {
   const componentRef = useRef();
   const [show, setShow] = useState(false);
+  const [show2, setShow2] = useState(false);
+
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
@@ -26,6 +33,7 @@ const UserOrder = () => {
       order: state.order.order,
       items: state.order.items,
       id: state.order.id,
+      recipteId: state.order.recipteId,
     };
   });
 
@@ -45,6 +53,7 @@ const UserOrder = () => {
         console.log(err);
       });
   };
+
   useEffect(() => {
     getOrders();
     return () => {
@@ -56,12 +65,9 @@ const UserOrder = () => {
     <div className="USER-HISTORY">
       <h2 className="userss">user history</h2>
       <div>
-        <ReactToPrint
-          trigger={() => <button>Print this out!</button>}
-          content={() => componentRef.current}
-        />
+       
         <table className="tabells" ref={componentRef}>
-          {" "}
+
           <tr>
             <th>order date</th>
             <th>productName</th>
@@ -74,11 +80,21 @@ const UserOrder = () => {
                 <>
                   {JSON.parse(element.ORDERhisory).map((elements, indexs) => {
                     return (
-                      <tr key={index}>
-                        <td>{element.orderdate}</td>
+                      <tr key={indexs}>
+                        <td
+                          className="orderdate"
+                          onClick={() => {
+                            console.log(element.id);
+                            navigate("/myrecepits");
+                            dispatch(setrecipteId(element.id));
+                          }}
+                        >
+                          {element.orderdate}
+                        </td>
+
                         <td>{elements.productName} </td>
-                        <td> {elements.price}JD</td>
-                        <td> {elements.amount}</td>
+                        <td>{elements.price} JD</td>
+                        <td>{elements.amount}</td>
                       </tr>
                     );
                   })}
@@ -87,11 +103,26 @@ const UserOrder = () => {
             })}
         </table>
       </div>
-      <button onClick={()=>{
+
+      <button
+        onClick={() => {
+          navigate("/basket");
+        }}
+      >
+        Back
+      </button>
+
+      <div className="bttl">
+      <ReactToPrint
+          trigger={() => <button className="boton">Print this out!<BiPrinter className="printer"/></button>}
+          content={() => componentRef.current}
+        />
+      <button className="boton" onClick={()=>{
             navigate("/basket");
           }}>Back</button>
+          </div>
+
     </div>
   );
 };
 export default UserOrder;
-

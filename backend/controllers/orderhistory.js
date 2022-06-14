@@ -24,7 +24,7 @@ const order = (req, res) => {
 
 const orderhistoryByUser = (req, res) => {
   const user_id = req.token.userId;
-  const query = `SELECT userName,email,phoneNumber,orderdate ,ORDERhisory FROM ORDERHISTORY INNER JOIN users ON user_id = users.id WHERE user_id = ? ;`;
+  const query = `SELECT ORDERHISTORY.id,userName,email,phoneNumber,orderdate ,ORDERhisory FROM ORDERHISTORY INNER JOIN users ON user_id = users.id WHERE user_id = ? ;`;
   const data = [user_id];
   connection.query(query, data, (err, result) => {
     if (err) {
@@ -54,7 +54,7 @@ const usersOrders = (req, res) => {
         err: error.message,
       });
     } else {
-      res.status(200).json({
+      return res.status(200).json({
         success: true,
         massage: `order history `,
         result: result,
@@ -63,7 +63,7 @@ const usersOrders = (req, res) => {
   });
 };
 const allOrders = (req, res) => {
-  const query = `SELECT userName,email,phoneNumber,orderdate ,ORDERhisory FROM ORDERHISTORY INNER JOIN users ON user_id = users.id  ;`;
+  const query = `SELECT ORDERHISTORY.id,userName,email,phoneNumber,orderdate ,ORDERhisory FROM ORDERHISTORY INNER JOIN users ON user_id = users.id  ;`;
 
   connection.query(query, (err, result) => {
     if (err) {
@@ -73,7 +73,7 @@ const allOrders = (req, res) => {
         err: error.message,
       });
     } else {
-      res.status(200).json({
+      return res.status(200).json({
         success: true,
         massage: `order history `,
         result: result,
@@ -88,7 +88,7 @@ const  getOrderHistoryById = (req, res) =>{
 const id = req.params.id
 
 const query = `SELECT * FROM orderhistory WHERE id=?;`;
-const data = [orederHistoryId];
+const data = [id];
 connection.query(query, data, (error, result) => {
   console.log(error);
   if (error) {
