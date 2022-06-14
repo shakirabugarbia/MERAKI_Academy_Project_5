@@ -6,6 +6,7 @@ const order = createSlice({
     order: [],
     items: [],
     id: localStorage.getItem("id") || 0,
+    recipteId: localStorage.getItem("recipteId") || 0,
   },
   reducers: {
     addOrder: (state, action) => {
@@ -18,8 +19,12 @@ const order = createSlice({
       state.id = action.payload;
       localStorage.setItem("id", state.id);
     },
+    setrecipteId: (state, action) => {
+      state.recipteId = action.payload;
+      localStorage.setItem("recipteId", state.recipteId);
+    },
   },
 });
 
-export const { addOrder, setItems, setId } = order.actions;
+export const { addOrder, setItems, setId ,setrecipteId} = order.actions;
 export default order.reducer;
