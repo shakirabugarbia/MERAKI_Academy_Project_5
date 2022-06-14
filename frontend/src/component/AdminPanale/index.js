@@ -14,38 +14,42 @@ const Admin = () => {
   });
   return (
     <div className="main">
+          <div className="analize">
+            <h2>Analize</h2>
+           <br/>
+            <h2>Payments</h2>
+            <br/>
+            <h2>Data</h2>
+          </div>
       {isLoggedIn ? (
-        <table className="tabelss">
-          <tr>
-            <td>
-              <Link className="linkss" to={"/UserAdminPanel"}>
-                User Section
-              </Link>
-            </td>{" "}
-            <td>
-              <Link className="linkss" to={"/ProductAdminPanel"}>
-                Product Section
-              </Link>
-            </td>
-          </tr>{" "}
-          <tr>
-            <td>
-              <Link className="linkss" to={"/"}>
-                Category Section
-              </Link>
-            </td>
-            <td>
-              {" "}
-              <Link className="linkss" to={"/"}>
-                Foods type Section
-              </Link>
-            </td>
-          </tr>
-        </table>
+        <div className="admin_sections">
+          <div className="section_link">
+            <Link className="linkss" to={"/UserAdminPanel"}>
+              User Section
+            </Link>
+          </div>{" "}
+          <div className="section_link">
+            <Link className="linkss" to={"/ProductAdminPanel"}>
+              Product Section
+            </Link>
+          </div>{" "}
+          <div className="section_link">
+            <Link className="linkss" to={"/"}>
+              Category Section
+            </Link>
+          </div>
+          <div className="section_link">
+            {" "}
+            <Link className="linkss" to={"/"}>
+              Foods type Section
+            </Link>
+          </div>
+        </div>
       ) : (
-        <div>
+        <div className="login_first">
           Login first
           <button
+            className="login_first_button"
             onClick={() => {
               navigate("/login");
             }}
