@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
 import "./style.css";
+import { BiPrinter } from 'react-icons/bi';
 
 import ReactToPrint from "react-to-print";
 
@@ -56,12 +57,9 @@ const UserOrder = () => {
     <div className="USER-HISTORY">
       <h2 className="userss">user history</h2>
       <div>
-        <ReactToPrint
-          trigger={() => <button>Print this out!</button>}
-          content={() => componentRef.current}
-        />
+       
         <table className="tabells" ref={componentRef}>
-          {" "}
+
           <tr>
             <th>order date</th>
             <th>productName</th>
@@ -87,9 +85,15 @@ const UserOrder = () => {
             })}
         </table>
       </div>
-      <button onClick={()=>{
+      <div className="bttl">
+      <ReactToPrint
+          trigger={() => <button className="boton">Print this out!<BiPrinter className="printer"/></button>}
+          content={() => componentRef.current}
+        />
+      <button className="boton" onClick={()=>{
             navigate("/basket");
           }}>Back</button>
+          </div>
     </div>
   );
 };

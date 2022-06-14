@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/reducers/auth";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineUser, AiOutlineUserAdd } from "react-icons/ai";
+
+
 import { GrLogout } from "react-icons/gr";
 
 //===============================================================
@@ -50,7 +52,8 @@ const NavBar = () => {
                 localStorage.setItem("view", true);
               }}
             >
-              basket
+              Basket 
+         
             </Link>
             <a
               className="Link"
