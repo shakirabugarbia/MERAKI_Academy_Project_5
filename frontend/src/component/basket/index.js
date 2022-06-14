@@ -6,6 +6,9 @@ import {
   AiOutlinePlusSquare,
   AiOutlineDelete,
 } from "react-icons/ai";
+
+import { ImCross } from "react-icons/im";
+
 import "./style.css";
 import {
   addProductts,
@@ -198,7 +201,7 @@ const Basket = () => {
     viewBasket();
   }, []);
   return (
-    <div>
+    <div className="basket_container">
       {isLoggedIn ? (
         <>
           <div className="products">
@@ -214,44 +217,43 @@ const Basket = () => {
                       <div> {element.description}</div>
                       <div>price: {element.price * element.amount}</div>
                     </div>
-                   
 
                     {isLoggedIn ? (
                       <>
-                      <div className="dec_inc">
-                        <button
-                          className="dec"
-                          onClick={() => {
-                            decreaseAndRemoveFromBasket(element.id);
-                            dispatch(decreasePrice(element.price));
-                          }}
-                        >
-                          <AiOutlineMinusSquare className="ai" />
-                        </button>
-                         <p className="amm">{element.amount}</p>
-                        <button
-                          className="inc"
-                          onClick={() => {
-                            increaseCart(element.id);
-                            dispatch(setPrice(element.price));
-                          }}
-                        >
-                          <AiOutlinePlusSquare />
-                        </button>
+                        <div className="dec_inc">
+                          <button
+                            className="dec"
+                            onClick={() => {
+                              decreaseAndRemoveFromBasket(element.id);
+                              dispatch(decreasePrice(element.price));
+                            }}
+                          >
+                            <AiOutlineMinusSquare className="ai" />
+                          </button>
+                          <p className="amm">{element.amount}</p>
+                          <button
+                            className="inc"
+                            onClick={() => {
+                              increaseCart(element.id);
+                              dispatch(setPrice(element.price));
+                            }}
+                          >
+                            <AiOutlinePlusSquare />
+                          </button>
                         </div>
                         <div className="deletebtn">
-                        <button
-                          className="del"
-                          onClick={() => {
-                            removeFromCart(element.id);
-                            dispatch(erase(element.amount));
-                            dispatch(
-                              erasePrice(element.price * element.amount)
-                            );
-                          }}
-                        >
-                          <AiOutlineDelete />
-                        </button>
+                          <button
+                            className="del"
+                            onClick={() => {
+                              removeFromCart(element.id);
+                              dispatch(erase(element.amount));
+                              dispatch(
+                                erasePrice(element.price * element.amount)
+                              );
+                            }}
+                          >
+                            <ImCross className="delette" />
+                          </button>
                         </div>
                       </>
                     ) : (
@@ -261,52 +263,35 @@ const Basket = () => {
                 );
               })}
           </div>
-          {productsState.products.length ? (
-            <div>
-              <button
-                className="emptyButton"
-                onClick={() => {
-                  emptyBasket();
-                  dispatch(zeroPrice());
-                }}
-              >
-                empty basket
-              </button>
+
+          <div className="prices_and_paypal">
+            <div className="infoos">
+              Total Items : <span className="span">{basketState.amount}</span>
+              <br />
+              Total Price : <span className="span">{basketState.price}</span>
+              {productsState.products.length ? (
+                <div>
+                  <button
+                    className="emptyButton"
+                    onClick={() => {
+                      emptyBasket();
+                      dispatch(zeroPrice());
+                    }}
+                  >
+                    empty basket <AiOutlineDelete className="dell" />
+                  </button>
+                </div>
+              ) : (
+                <></>
+              )}
             </div>
-          ) : (
-            <></>
-          )}
-          total items : {basketState.amount}
-          <br />
-          total price : {basketState.price}
-          {checkout ? (
-            <PayPalScriptProvider options={{ "client-id": "test" }}>
-              <PayPalButtons style={{ layout: "horizontal" }} />
-            </PayPalScriptProvider>
-          ) : (
-            <button
-              onClick={() => {
-                setCheckout(true);
-              }}
-            >
-              Checkout
-            </button>
-          )}
-          <div>
-            <PayPal />
-            <button
-              onClick={() => {
-                emptyBasket();
-                dispatch(zeroPrice());
-                orderToHistory();
-              }}
-            >
-              check out after paying
-            </button>
+            <div className="paypaal">
+              <PayPal style={{ layout: "horizontal", width: "5rem" }} />
+            </div>
           </div>
         </>
       ) : (
-        <div>
+        <>
           Login first
           <button
             onClick={() => {
@@ -315,7 +300,7 @@ const Basket = () => {
           >
             go to login
           </button>
-        </div>
+        </>
       )}
     </div>
   );
