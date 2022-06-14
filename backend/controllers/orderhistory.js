@@ -88,7 +88,7 @@ const  getOrderHistoryById = (req, res) =>{
 const id = req.params.id
 
 const query = `SELECT * FROM orderhistory WHERE id=?;`;
-const data = [orederHistoryId];
+const data = [id];
 connection.query(query, data, (error, result) => {
   console.log(error);
   if (error) {
