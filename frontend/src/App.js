@@ -16,6 +16,8 @@ import ProductsAdminSide from "./component/ProdusctsAdmin";
 import UserAdminSide from "./component/UserAdmin";
 import UserOrder from "./component/orderHistoryPerUser";
 
+import Recepit from "./component/Receipt/receipt";
+
 import Map from "./component/Map/map";
 import ViewTable from "./component/viewTable";
 
@@ -47,6 +49,9 @@ function App() {
         <Route path={"/location"} element={<Map />} />
 
         <Route path={"/viewTable"} element={<ViewTable />} />
+        
+        <Route path={"/myrecepits"} element={<Recepit />} />
+        
       </Routes>
       <WhatsAppWidget phoneNumber='00962786296608' />
       <Footer />

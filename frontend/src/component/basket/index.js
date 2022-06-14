@@ -199,6 +199,11 @@ const Basket = () => {
     dispatch(renderPrice(y));
   };
   storgesolve();
+
+
+
+
+
   useEffect(() => {
     viewBasket();
   }, []);

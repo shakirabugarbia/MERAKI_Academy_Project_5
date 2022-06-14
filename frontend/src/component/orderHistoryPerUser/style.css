@@ -13,6 +13,11 @@
     margin-top: 2rem;
 }
 
+
+.orderdate{
+  cursor: pointer;
+}
+
 .bttl{
   display: flex;
   flex-direction: column;
@@ -25,4 +30,5 @@
 .boton{
   color: #000;
 }
+
 
