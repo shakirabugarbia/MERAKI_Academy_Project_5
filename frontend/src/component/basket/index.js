@@ -49,6 +49,8 @@ const Basket = () => {
   const navigate = useNavigate();
   const [page, setPage] = useState(1);
   const [message, setMessage] = useState("");
+  const [showPay, setShowPay] = useState(false);
+
   const dispatch = useDispatch();
   const { token, isLoggedIn } = useSelector((state) => {
     return {
@@ -286,7 +288,10 @@ const Basket = () => {
               )}
             </div>
             <div className="paypaal">
-              <PayPal style={{ layout: "horizontal", width: "5rem" }} />
+              
+                <PayPal style={{ layout: "horizontal", width: "5rem" }} />
+            
+    
             </div>
           </div>
         </>
