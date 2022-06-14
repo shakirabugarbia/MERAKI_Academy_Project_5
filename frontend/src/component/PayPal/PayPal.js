@@ -35,11 +35,9 @@ import {
 const currency = "USD";
 const style = { layout: "vertical" };
 
-
 function refreshPage() {
   window.location.reload(false);
 }
-
 
 // Custom component to wrap the PayPalButtons and handle currency changes
 const ButtonWrapper = ({ currency, showSpinner }) => {
@@ -136,6 +134,7 @@ const ButtonWrapper = ({ currency, showSpinner }) => {
   return (
     <>
       {showSpinner && isPending && <div className="spinner" />}
+
       <PayPalButtons
         style={style}
         disabled={false}
@@ -164,7 +163,7 @@ const ButtonWrapper = ({ currency, showSpinner }) => {
             emptyBasket();
             dispatch(zeroPrice());
             orderToHistory();
-            refreshPage()
+            refreshPage();
           });
         }}
       />
@@ -188,3 +187,4 @@ export default function PayPal() {
     </div>
   );
 }
+// export default ButtonWrapper;

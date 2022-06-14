@@ -21,7 +21,7 @@ const login = (req, res) => {
           const secret = process.env.SECRET;
           const token = jwt.sign(payload, secret);
 
-          res
+          return res
             .status(200)
             .json({ success: true, message: "welcome", token, result });
         } else {
@@ -32,7 +32,7 @@ const login = (req, res) => {
         }
       });
     } else {
-      res
+      return  res
         .status(404)
         .json({ success: false, message: "The email doesn't exist" });
     }
