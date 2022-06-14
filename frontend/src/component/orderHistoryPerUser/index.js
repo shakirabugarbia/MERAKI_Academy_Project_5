@@ -104,13 +104,7 @@ const UserOrder = () => {
         </table>
       </div>
 
-      <button
-        onClick={() => {
-          navigate("/basket");
-        }}
-      >
-        Back
-      </button>
+   
 
       <div className="bttl">
       <ReactToPrint

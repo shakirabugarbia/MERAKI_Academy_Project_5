@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import ReactToPrint from "react-to-print";
 import axios from "axios";
 import "./style.css";
+import { BiPrinter } from "react-icons/bi";
 
 import {
   addOrder,
@@ -13,6 +14,7 @@ import {
 } from "../../redux/reducers/order";
 
 const Recepit = () => {
+  const [total, setTotal] = useState(0);
   const navigate = useNavigate();
   const componentRef = useRef();
   const dispatch = useDispatch();
@@ -35,7 +37,7 @@ const Recepit = () => {
 
   const getOrderHistoryById = () => {
     axios
-      .get(`http://localhost:5000/order/orderid/11`, {
+      .get(`http://localhost:5000/order/orderid/${orderState.recipteId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -48,6 +50,14 @@ const Recepit = () => {
         console.log(err);
       });
   };
+  let x = 0;
+  orderState.order.length &&
+    orderState.order.map((element, index) => {
+      return JSON.parse(element.ORDERhisory).map((elements, indexs) => {
+        return (x = x + elements.price);
+      });
+    });
+
   useEffect(() => {
     getOrderHistoryById();
     console.log(orderState.recipteId);
@@ -75,10 +85,20 @@ const Recepit = () => {
                     </tr>
                   );
                 })}
+                <tfoot>       Total price: {x} JD    </tfoot>
               </>
             );
           })}
       </table>
+      <ReactToPrint
+        trigger={() => (
+          <button className="boton">
+            Print this out!
+            <BiPrinter className="printer" />
+          </button>
+        )}
+        content={() => componentRef.current}
+      />
     </div>
   );
 };
