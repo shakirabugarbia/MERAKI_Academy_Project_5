@@ -58,6 +58,7 @@ const ProductsAdminSide = () => {
   const [confirmation, setConfirmation] = useState(false);
   const [show, setShow] = useState(false);
   const [showupdate, setShowupdate] = useState(false);
+  const [cansel, setCansel] = useState(false);
   const [productName, setProductName] = useState("");
   const [description, setDescription] = useState("");
   const [img, setImg] = useState("");
@@ -311,21 +312,6 @@ const ProductsAdminSide = () => {
               productsState.products.map((element, index) => {
                 return (
                   <div className="Product-Container" key={index}>
-                    {confirmation && element.id === showid ? (
-                      <div>
-                        <p>Are you sure you want to delete the product?</p>
-                        <button
-                          onClick={() => {
-                            deleteProductById(element.id);
-                            setConfirmation(false);
-                          }}
-                        >
-                          Confirm
-                        </button>
-                      </div>
-                    ) : (
-                      <></>
-                    )}
                     <div className="product-All-Detiles">
                       <div className="Product-Img-Dev">
                         <img className="imgg" src={element.img} />
@@ -340,6 +326,7 @@ const ProductsAdminSide = () => {
                             onClick={() => {
                               setConfirmation(true);
                               setShowid(element.id);
+                              setCansel(true);
                             }}
                           >
                             Delete
@@ -349,6 +336,7 @@ const ProductsAdminSide = () => {
                             onClick={() => {
                               setShowid(element.id);
                               setShowupdate(true);
+                              setCansel(true);
                             }}
                           >
                             Update
@@ -394,6 +382,38 @@ const ProductsAdminSide = () => {
                                 }}
                               >
                                 Submit
+                              </button>
+                            </div>
+                          ) : (
+                            <></>
+                          )}
+                          {confirmation && element.id === showid ? (
+                            <div>
+                              <p>
+                                Are you sure you want to delete the product?
+                              </p>
+                              <button
+                                onClick={() => {
+                                  deleteProductById(element.id);
+                                  setConfirmation(false);
+                                }}
+                              >
+                                Confirm
+                              </button>
+                            </div>
+                          ) : (
+                            <></>
+                          )}
+                          {cansel && element.id === showid ? (
+                            <div>
+                              <button
+                                onClick={() => {
+                                  setConfirmation(false);
+                                  setShowupdate(false);
+                                  setCansel(false);
+                                }}
+                              >
+                                X
                               </button>
                             </div>
                           ) : (
