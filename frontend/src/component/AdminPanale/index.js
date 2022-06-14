@@ -14,13 +14,16 @@ const Admin = () => {
   });
   return (
     <div className="main">
-          <div className="analize">
-            <h2>Analize</h2>
-           <br/>
-            <h2>Payments</h2>
-            <br/>
-            <h2>Data</h2>
-          </div>
+      <div className="analize">
+        <h1 className="dash">Dash Bord</h1>
+        <br/>
+        <br/>
+        <h2>Analize</h2>
+        <br />
+        <h2>Payments</h2>
+        <br />
+        <h2>Database</h2>
+      </div>
       {isLoggedIn ? (
         <div className="admin_sections">
           <div className="section_link">

@@ -10,6 +10,10 @@
   align-items: center;
   color: rgba(77, 5, 92, 0.616);
 }
+.dash{
+    font-size: 30px;
+    color: black;
+}
 .analize {
   display: flex;
   flex-direction: column;
@@ -17,11 +21,13 @@
   border-right: 5px;
   border-right: black 1px solid;
   height: 10rem;
+
 }
 .admin_sections {
   display: grid;
   padding: 1rem;
   max-height: 100%;
+  width: 70%;
   grid-template-columns: repeat(2, auto);
   gap: 2rem;
   margin: 2px;
@@ -34,7 +40,6 @@
   display: flex;
   height: 100%;
   width: 90%;
-  
   gap: 2px;
   margin: 1rem;
   justify-content: space-around;
