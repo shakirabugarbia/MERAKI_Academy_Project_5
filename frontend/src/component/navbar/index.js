@@ -47,6 +47,7 @@ const NavBar = () => {
               to="/basket"
               onClick={() => {
                 setView(true);
+                localStorage.setItem("view", true);
               }}
             >
               basket
@@ -57,6 +58,7 @@ const NavBar = () => {
                 dispatch(logout());
                 navigate("/");
                 setView(false);
+                localStorage.removeItem("view");
               }}
             >
               <GrLogout className="log" /> Logout
@@ -75,7 +77,7 @@ const NavBar = () => {
             </div>
           </>
         )}
-        {view ? (
+        {localStorage.getItem("view") ? (
           <Link className="Link" to="/Userorder">
             My Orders
           </Link>
