@@ -11,7 +11,7 @@ import { FaBeer } from "react-icons/fa";
 import { GrLogout } from "react-icons/gr";
 
 //===============================================================
-
+import { zero } from "../../redux/reducers/basket/index";
 const NavBar = () => {
   const [view, setView] = useState(false);
   const navigate = useNavigate();
@@ -63,12 +63,12 @@ const NavBar = () => {
               Basket | {basketState.amount}
             </Link>
             {localStorage.getItem("view") ? (
-          <Link className="Link" to="/Userorder">
-            My Orders
-          </Link>
-        ) : (
-          <></>
-        )}
+              <Link className="Link" to="/Userorder">
+                My Orders
+              </Link>
+            ) : (
+              <></>
+            )}
             <a
               className="Link"
               onClick={() => {
@@ -76,6 +76,7 @@ const NavBar = () => {
                 navigate("/");
                 setView(false);
                 localStorage.removeItem("view");
+                dispatch(zero())
               }}
             >
               <GrLogout className="log" /> Logout
@@ -94,7 +95,6 @@ const NavBar = () => {
             </div>
           </>
         )}
-       
       </div>
     </div>
   );
