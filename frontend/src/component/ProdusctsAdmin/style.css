@@ -23,7 +23,7 @@
 .btn{
     border-bottom: .09rem solid orange;
 }
-/* .big_div{
+.big_div{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -41,7 +41,7 @@
     padding: 10px;
     border: 5px solid #46ac32;
   
-} */
+}
 .closebtn {
     margin-left: 95%;
     width: 20px;
