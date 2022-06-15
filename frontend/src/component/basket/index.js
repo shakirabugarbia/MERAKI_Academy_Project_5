@@ -7,7 +7,8 @@ import {
   AiOutlineDelete,
 } from "react-icons/ai";
 
-import { ImCross } from "react-icons/im";
+import { GrFormClose
+} from "react-icons/gr";
 
 import "./style.css";
 import {
@@ -200,10 +201,6 @@ const Basket = () => {
   };
   storgesolve();
 
-
-
-
-
   useEffect(() => {
     viewBasket();
   }, []);
@@ -259,7 +256,7 @@ const Basket = () => {
                               );
                             }}
                           >
-                            <ImCross className="delette" />
+                            <GrFormClose className="delette" />
                           </button>
                         </div>
                       </>
@@ -293,10 +290,7 @@ const Basket = () => {
               )}
             </div>
             <div className="paypaal">
-              
-                <PayPal style={{ layout: "horizontal", width: "5rem" }} />
-            
-    
+              <PayPal style={{ layout: "horizontal", width: "5rem" }} />
             </div>
           </div>
         </>

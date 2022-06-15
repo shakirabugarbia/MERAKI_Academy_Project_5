@@ -28,7 +28,7 @@ export const Footer = () => {
               <p>Code of conduct</p>
               <p>Community</p>
             </div>
-            <div>
+            <div className="For_restaurant">
               <b>For Restaurant</b>
               <p>Restaurant</p>
               <p>Business</p>
