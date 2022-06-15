@@ -6,6 +6,7 @@ import { logout } from "../../redux/reducers/auth";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineUser, AiOutlineUserAdd } from "react-icons/ai";
 
+import { FaBeer } from 'react-icons/fa';
 
 import { GrLogout } from "react-icons/gr";
 

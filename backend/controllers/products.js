@@ -28,7 +28,7 @@ const createNewProduct = (req, res) => {
 
 const getAllProduct = (req, res) => {
   // limit as 20
-  const limit = 9;
+  const limit = 10;
   // page number
   const page = req.query.page;
   // calculate offset

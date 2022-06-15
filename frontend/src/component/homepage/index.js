@@ -37,6 +37,8 @@ import {
   setTypeOfFood,
 } from "../../redux/reducers/typeoffoods/index";
 
+import { FiPlus } from "react-icons/fi";
+
 const Homepage = () => {
   const navigate = useNavigate();
   const [page, setPage] = useState(1);
@@ -295,22 +297,22 @@ const Homepage = () => {
                       <img className="imgg" src={element.img} />
                     </div>
                     <div className="pppp">
-                      <div className="t">
+                      <div className="tow">
                         <div className="pName"> {element.productName}</div>
                         <div className="desc"> {element.description}</div>
                         <div className="price">{element.price}JD</div>
                       </div>
                       {isLoggedIn ? (
-                        <div>
-                          <button
-                            className="basketButton"
+                        <div className="adding-Product">
+                          <button 
+                            className="bttt" 
                             onClick={() => {
                               addToCart(element.id);
                               dispatch(setAmount());
                               dispatch(setPrice(element.price));
                             }}
                           >
-                            Add to basket
+                            <FiPlus />
                           </button>
                         </div>
                       ) : (
