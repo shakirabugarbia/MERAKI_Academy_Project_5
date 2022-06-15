@@ -62,6 +62,13 @@ const NavBar = () => {
             >
               Basket | {basketState.amount}
             </Link>
+            {localStorage.getItem("view") ? (
+          <Link className="Link" to="/Userorder">
+            My Orders
+          </Link>
+        ) : (
+          <></>
+        )}
             <a
               className="Link"
               onClick={() => {
@@ -87,13 +94,7 @@ const NavBar = () => {
             </div>
           </>
         )}
-        {localStorage.getItem("view") ? (
-          <Link className="Link" to="/Userorder">
-            My Orders
-          </Link>
-        ) : (
-          <></>
-        )}
+       
       </div>
     </div>
   );
