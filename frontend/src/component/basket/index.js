@@ -53,6 +53,7 @@ const Basket = () => {
   const [showPay, setShowPay] = useState(false);
 
   const dispatch = useDispatch();
+  
   const { token, isLoggedIn } = useSelector((state) => {
     return {
       token: state.auth.token,
@@ -282,7 +283,7 @@ const Basket = () => {
                       dispatch(zeroPrice());
                     }}
                   >
-                    empty basket <AiOutlineDelete className="dell" />
+                    Empty Basket <AiOutlineDelete className="dell" />
                   </button>
                 </div>
               ) : (
@@ -290,8 +291,21 @@ const Basket = () => {
               )}
             </div>
             <div className="paypaal">
-              <PayPal style={{ layout: "horizontal", width: "5rem" }} />
+
+             {/*  <PayPal style={{ layout: "horizontal", width: "5rem" }} /> */}
+
             </div>
+            {checkout ? (
+              <PayPal style={{ layout: "horizontal", width: "5rem" }} />
+            ) : (
+              <button
+                onClick={() => {
+                  setCheckout(true);
+                }}
+              >
+                Checkout
+              </button>
+            )}
           </div>
         </>
       ) : (

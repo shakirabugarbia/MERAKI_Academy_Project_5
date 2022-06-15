@@ -301,8 +301,8 @@ const Homepage = () => {
                     <div className="pppp">
                       <div className="tow">
                         <div className="pName"> {element.productName}</div>
-                        <div className="desc"> {element.description}</div>
-                        <div className="price">{element.price}JD</div>
+                        <p className="desc"> {element.description}</p>
+                        <div className="price">{element.price} JD</div>
                       </div>
                       {isLoggedIn ? (
                         <div className="adding-Product">

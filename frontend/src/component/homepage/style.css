@@ -49,10 +49,10 @@
 
 .Slider-Show-continer {
   margin-left: 0.5em;
-  box-shadow: 0.1rem 0.2rem 0.9rem #f26d3d;
-  border-radius: 1rem;
-  width: 9.3rem;
-  height: 11rem;
+  box-shadow: 0.1rem 0.5rem 0.99rem #c6c5c5;
+  border-radius: .3rem;
+  width: 9rem;
+  height: 10rem;
   overflow: hidden;
   position: relative;
   justify-content: center;
@@ -65,7 +65,7 @@
 
 .pic-slideshow {
   width: 10em;
-  height: 9em;
+  height: 8em;
   border-radius: 0.1rem;
   justify-content: center;
   transform: scale(0.99);
@@ -155,7 +155,7 @@
 }
 
 .pName {
-  font-size: large;
+  font-size:large;
   font-weight: 600;
   margin-bottom: 1rem;
   color: #f26d3d;
@@ -165,8 +165,14 @@
   color: #f26d3d;
 }
 .desc {
-  color: rgba(0, 0, 0, 0.612);
-  margin-left: 1rem;
+  word-break: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-height: 16px; /* fallback */
+  max-height: 47px; /* fallback */
+  -webkit-line-clamp: 5; /* number of lines to show */
+  -webkit-box-orient: vertical;
 }
 .product-All-Detiles {
   display: flex;
@@ -239,3 +245,4 @@ button {
   transform: translateY(-15%);
   margin-left: -5rem;
 }
+
