@@ -206,9 +206,10 @@ const ProductsAdminSide = () => {
     <div className="main">
       {isLoggedIn ? (
         <>
-          <h1>Products Admin Side</h1>
+          <h1 className="Products_Admin_Side_p">Products Admin Side</h1>
           {showCreateButton ? (
             <button
+              className="Create_Meale_button"
               onClick={() => {
                 setShowCreateButton(false);
                 setShowCategory(true);
@@ -219,94 +220,103 @@ const ProductsAdminSide = () => {
           ) : (
             <></>
           )}
-          {showCategory ? (
-            <div className="choose-category">
-              <p>Choose Category Of Meal</p>
-              {categories.map((element, index) => {
-                return (
-                  <a
-                    key={index}
-                    onClick={() => {
-                      dispatch(setCategoriesId(element.id));
-                      setShowCategory(false);
-                      setShowTypeFood(true);
-                    }}
-                  >
-                    {element.category_title}
-                  </a>
-                );
-              })}
-            </div>
-          ) : (
-            <></>
-          )}
-          {showTypeFood ? (
-            <div className="choose-foodType">
-              <p>Choose Type Of Meal</p>
-              {typesOffoodsState.typesOffood.map((element, index) => {
-                return (
-                  <a
-                    key={index}
-                    onClick={() => {
-                      dispatch(setTypeId(element.id));
-                      setShowCreateInput(true);
-                      setShowTypeFood(false);
-                    }}
-                  >
-                    {element.type}
-                  </a>
-                );
-              })}
-            </div>
-          ) : (
-            <></>
-          )}
-          {showCreateInput ? (
-            <div className="Create-inputs">
-              <input
-                type="text"
-                placeholder="productName"
-                onChange={(e) => {
-                  setProductName(e.target.value);
-                }}
-              />
-              <input
-                type="text"
-                placeholder="imge input"
-                onChange={(e) => {
-                  setImg(e.target.value);
-                }}
-              />
-              <input
-                type="text"
-                placeholder="Desciption input"
-                onChange={(e) => {
-                  setDescription(e.target.value);
-                }}
-              />
-              <input
-                type="text"
-                placeholder="Price"
-                onChange={(e) => {
-                  setPrice(e.target.value);
-                }}
-              />
-              <button
-                className="Create"
-                onClick={() => {
-                  setShowCreateInput(false);
-                  setShowCreateButton(true);
+          <div className="big_div">
 
-                  createProduct();
-                }}
-              >
-                Create
-              </button>
-            </div>
-          ) : (
-            <></>
-          )}
+            {showCategory ? (
+              <div className="choose_category_div">
+                <button id="closebtn">&times;</button>
+                <p className="Choose_Category_p">Choose Category Of Meal</p>
+                {categories.map((element, index) => {
+                  return (
+                    <div className="category_title_links">
+                      <a
+                        key={index}
+                        onClick={() => {
+                          dispatch(setCategoriesId(element.id));
+                          setShowCategory(false);
+                          setShowTypeFood(true);
+                        }}
+                      >
+                        <button className="btn">
+                          {element.category_title}
+                        </button>
+                      </a>
+                    </div>
+                  );
+                })}
+              </div>
+            ) : (
+              <></>
+            )}
+            {showTypeFood ? (
+              <div className="choose_foodType_div">
+                <p className="Choose_Type_p">Choose Type Of Meal</p>
+                {typesOffoodsState.typesOffood.map((element, index) => {
+                  return (
+                    <div className="Choose_Type_links">
+                      <a
+                        key={index}
+                        onClick={() => {
+                          dispatch(setTypeId(element.id));
+                          setShowCreateInput(true);
+                          setShowTypeFood(false);
+                        }}
+                      >
+                        {element.type}
+                      </a>
+                    </div>
+                  );
+                })}
+              </div>
+            ) : (
+              <></>
+            )}
+            {showCreateInput ? (
+              <div className="Create-inputs">
+                <input
+                  type="text"
+                  placeholder="productName"
+                  onChange={(e) => {
+                    setProductName(e.target.value);
+                  }}
+                />
+                <input
+                  type="text"
+                  placeholder="imge input"
+                  onChange={(e) => {
+                    setImg(e.target.value);
+                  }}
+                />
+                <input
+                  type="text"
+                  placeholder="Desciption input"
+                  onChange={(e) => {
+                    setDescription(e.target.value);
+                  }}
+                />
+                <input
+                  type="text"
+                  placeholder="Price"
+                  onChange={(e) => {
+                    setPrice(e.target.value);
+                  }}
+                />
+                <button
+                  className="Create"
+                  onClick={() => {
+                    setShowCreateInput(false);
+                    setShowCreateButton(true);
 
+                    createProduct();
+                  }}
+                >
+                  Create
+                </button>
+              </div>
+            ) : (
+              <></>
+            )}
+          </div>
           <div className="Products-Container">
             {show &&
               productsState.products.map((element, index) => {
@@ -413,7 +423,7 @@ const ProductsAdminSide = () => {
                                   setCansel(false);
                                 }}
                               >
-                                X
+                                &times;
                               </button>
                             </div>
                           ) : (
