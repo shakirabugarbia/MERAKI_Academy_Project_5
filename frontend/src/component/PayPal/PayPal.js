@@ -44,7 +44,7 @@ const ButtonWrapper = ({ currency, showSpinner }) => {
   // usePayPalScriptReducer can be use only inside children of PayPalScriptProviders
   // This is the main reason to wrap the PayPalButtons in a new component
   const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
-  const [show, setShow] = useState(false);
+  
 
   const { token, isLoggedIn } = useSelector((state) => {
     return {
@@ -78,7 +78,7 @@ const ButtonWrapper = ({ currency, showSpinner }) => {
       .then((result) => {
         if (result.data.success) {
           dispatch(setProducts(result.data.result));
-          setShow(true);
+          
         }
       })
       .catch((err) => {
@@ -129,7 +129,7 @@ const ButtonWrapper = ({ currency, showSpinner }) => {
         currency: currency,
       },
     });
-  }, [currency, showSpinner]);
+  }, []);
 
   return (
     <>

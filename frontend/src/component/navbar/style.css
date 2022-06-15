@@ -3,8 +3,9 @@
   display: flex;
   justify-content: space-between;
   height: 3.5rem;
-  background: linear-gradient(90deg, rgb(255, 255, 255) 30%, #f26716 300%);
+  background: linear-gradient(90deg, rgb(255, 255, 255) 30%,  rgba(251, 149, 40, 0.766) 160%);
 }
+
 .imgpg {
   align-items: center;
   justify-content: space-between;
