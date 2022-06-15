@@ -39,8 +39,7 @@ import {
 
 import { FiPlus } from "react-icons/fi";
 
-
-import { BsArrowLeftSquareFill,BsArrowRightSquareFill } from "react-icons/bs";
+import { BsArrowLeftSquareFill, BsArrowRightSquareFill } from "react-icons/bs";
 
 const Homepage = () => {
   const navigate = useNavigate();
@@ -304,8 +303,26 @@ const Homepage = () => {
                         <p className="desc"> {element.description}</p>
                         <div className="price">{element.price} JD</div>
                       </div>
+                      {isLoggedIn === false ? (
+                        <div className="adding-Product">
+                          <button
+                            className="bttt"
+                            onClick={() => {
+                              alert("you need to login first");
+                              navigate("/login");
+                            }}
+                          >
+                            <div className="tooltip">
+                              <span className="tooltiptext">add to basket</span>
+                              <FiPlus />
+                            </div>
+                          </button>
+                        </div>
+                      ) : (
+                        <></>
+                      )}
                       {isLoggedIn ? (
-                        <div className="adding-Product" >
+                        <div className="adding-Product">
                           <button
                             className="bttt"
                             onClick={() => {
@@ -314,9 +331,9 @@ const Homepage = () => {
                               dispatch(setPrice(element.price));
                             }}
                           >
-                            <div class="tooltip">
-                            <span class="tooltiptext">add to basket</span>
-                            <FiPlus/>
+                            <div className="tooltip">
+                              <span className="tooltiptext">add to basket</span>
+                              <FiPlus />
                             </div>
                           </button>
                         </div>
@@ -335,17 +352,19 @@ const Homepage = () => {
       ) : (
         <>
           <a href="#l">
-            <button className="bttt2"
+            <button
+              className="bttt2"
               onClick={() => {
                 back();
               }}
             >
-             <BsArrowLeftSquareFill className="bttt3"/>
+              <BsArrowLeftSquareFill className="bttt3" />
             </button>
           </a>
           {page}
           <a href="#l">
-            <button className="bttt2"
+            <button
+              className="bttt2"
               onClick={() => {
                 next();
               }}

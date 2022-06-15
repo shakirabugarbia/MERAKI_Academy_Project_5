@@ -7,8 +7,7 @@ import {
   AiOutlineDelete,
 } from "react-icons/ai";
 
-import { GrFormClose
-} from "react-icons/gr";
+import { GrFormClose } from "react-icons/gr";
 
 import "./style.css";
 import {
@@ -53,7 +52,7 @@ const Basket = () => {
   const [showPay, setShowPay] = useState(false);
 
   const dispatch = useDispatch();
-  
+
   const { token, isLoggedIn } = useSelector((state) => {
     return {
       token: state.auth.token,
@@ -78,25 +77,7 @@ const Basket = () => {
       price: state.basket.price,
     };
   });
-  const orderToHistory = () => {
-    const orderhisory = JSON.stringify(productsState.products);
-    axios
-      .post(
-        "http://localhost:5000/order",
-        { orderhisory },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
-      .then((result) => {
-        console.log(productsState.products);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+
   const emptyBasket = () => {
     axios
       .delete(`http://localhost:5000/basket/empty`, {
@@ -144,12 +125,11 @@ const Basket = () => {
       .then((result) => {
         viewBasket();
         dispatch(setAmount());
-        console.log(basketState.amount);
+       
         setMessage("Added To Basket");
       })
       .catch((err) => {
-        // console.log("header", token);
-        // console.log(err);
+       
         setMessage(err.message);
       });
   };
@@ -193,7 +173,7 @@ const Basket = () => {
     let x = 0;
     let y = 0;
     productsState.products.forEach((element) => {
-      console.log(element.amount);
+      
       x = x + parseInt(element.amount);
       y = y + parseInt(element.price * element.amount);
     });
@@ -231,6 +211,7 @@ const Basket = () => {
                             onClick={() => {
                               decreaseAndRemoveFromBasket(element.id);
                               dispatch(decreasePrice(element.price));
+                              viewBasket();
                             }}
                           >
                             <AiOutlineMinusSquare className="ai" />
@@ -241,6 +222,7 @@ const Basket = () => {
                             onClick={() => {
                               increaseCart(element.id);
                               dispatch(setPrice(element.price));
+                              viewBasket();
                             }}
                           >
                             <AiOutlinePlusSquare />
@@ -255,6 +237,7 @@ const Basket = () => {
                               dispatch(
                                 erasePrice(element.price * element.amount)
                               );
+                              viewBasket();
                             }}
                           >
                             <GrFormClose className="delette" />
@@ -281,6 +264,7 @@ const Basket = () => {
                     onClick={() => {
                       emptyBasket();
                       dispatch(zeroPrice());
+                      viewBasket();
                     }}
                   >
                     Empty Basket <AiOutlineDelete className="dell" />
@@ -291,9 +275,7 @@ const Basket = () => {
               )}
             </div>
             <div className="paypaal">
-
-             {/*  <PayPal style={{ layout: "horizontal", width: "5rem" }} /> */}
-
+              {/*  <PayPal style={{ layout: "horizontal", width: "5rem" }} /> */}
             </div>
             {checkout ? (
               <PayPal style={{ layout: "horizontal", width: "5rem" }} />
