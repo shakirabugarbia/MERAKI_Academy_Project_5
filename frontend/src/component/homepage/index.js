@@ -305,7 +305,7 @@ const Homepage = () => {
                         <div className="price">{element.price} JD</div>
                       </div>
                       {isLoggedIn ? (
-                        <div className="adding-Product">
+                        <div className="adding-Product" >
                           <button
                             className="bttt"
                             onClick={() => {
@@ -314,7 +314,10 @@ const Homepage = () => {
                               dispatch(setPrice(element.price));
                             }}
                           >
-                            <FiPlus />
+                            <div class="tooltip">
+                            <span class="tooltiptext">add to basket</span>
+                            <FiPlus/>
+                            </div>
                           </button>
                         </div>
                       ) : (
