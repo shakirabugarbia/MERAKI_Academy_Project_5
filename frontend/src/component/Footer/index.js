@@ -15,7 +15,7 @@ export const Footer = () => {
     <div className="footer">
       <div className="footer-content">
         <div className="sub">
-          <div>
+          <div className="co">
             <b>Company</b>
             <br />
             <Link className="suggestions" to={"/contactUS"}>
@@ -27,7 +27,7 @@ export const Footer = () => {
             </Link>
             <br/>
             <Link className="suggestions" to={"/contactUS"}>
-              Suggestion
+             Contact Us
             </Link>
           </div>
           <div>
