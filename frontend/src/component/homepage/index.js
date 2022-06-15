@@ -39,6 +39,9 @@ import {
 
 import { FiPlus } from "react-icons/fi";
 
+
+import { BsArrowLeftSquareFill,BsArrowRightSquareFill } from "react-icons/bs";
+
 const Homepage = () => {
   const navigate = useNavigate();
   const [page, setPage] = useState(1);
@@ -248,8 +251,7 @@ const Homepage = () => {
         <div className="Types-of-products-continer">
           {hide ? (
             <>
-              <h3 className="Types-of-products-title">Types of products</h3>
-              <div className="">
+              <div className="types-Of-Food-div">
                 {" "}
                 {show &&
                   typesOffoodsState.typesOffoods.typeOfFood.map(
@@ -281,7 +283,7 @@ const Homepage = () => {
                 setHide(false);
               }}
             >
-              back to all product{" "}
+              All product{" "}
             </button>
           ) : (
             <></>
@@ -304,8 +306,8 @@ const Homepage = () => {
                       </div>
                       {isLoggedIn ? (
                         <div className="adding-Product">
-                          <button 
-                            className="bttt" 
+                          <button
+                            className="bttt"
                             onClick={() => {
                               addToCart(element.id);
                               dispatch(setAmount());
@@ -330,22 +332,22 @@ const Homepage = () => {
       ) : (
         <>
           <a href="#l">
-            <button
+            <button className="bttt2"
               onClick={() => {
                 back();
               }}
             >
-              Back
+             <BsArrowLeftSquareFill className="bttt3"/>
             </button>
           </a>
           {page}
           <a href="#l">
-            <button
+            <button className="bttt2"
               onClick={() => {
                 next();
               }}
             >
-              Next
+              <BsArrowRightSquareFill className="bttt2" />
             </button>
           </a>
         </>
