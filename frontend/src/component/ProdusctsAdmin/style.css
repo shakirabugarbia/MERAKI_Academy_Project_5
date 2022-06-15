@@ -1,51 +1,68 @@
 .Products_Admin_Side_p {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 .Create_Meale_button {
-    background-color:darkorange;
-
+  background-color: darkorange;
 }
 .choose_category_div {
+    display: grid;
+    grid-template-columns: 4,auto;
 }
 .Choose_Category_p {
+  margin-bottom: 2rem;
+  font-size: 150%;
 }
 .category_title_links {
-  display: flex; 
+  display: flex;
   flex-direction: row 25%;
   display: inline;
- 
+  cursor: pointer;
 }
 .choose_foodType_div {
 }
+.Choose_Category_p {
+  margin-bottom: 2rem;
+  font-size: 150%;
+}
 .Choose_Type_links {
+  display: flex;
+  flex-direction: row 25%;
+  display: inline;
+  cursor: pointer;
 }
-
-.btn{
-    border-bottom: .09rem solid orange;
+.category_button{
+  border-bottom: 0.09rem solid orange;
+  height: 80%;
+  width: 40%;
+  padding: .2rem;
+} 
+.big_div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: fixed;
+  top: 50%;
+  left: 20%;
+  transform: translateY(-50%);
+  background: rgb(223, 221, 221);
+  height: 80%;
+  width: 60%;
+  box-shadow: 0px 20px 20px rgb(199, 89, 89);
+  border-radius: 10px;
+  padding: 10px;
+  border: 2px solid rgba(0, 0, 0, 0.795);
+  z-index: 5;
+  /* position: relative; */
 }
-.big_div{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: fixed;
+#closebtn {
     
-    top: 50%;
-    left: 20%;
-    transform: translateY(-50%);
-    
-    background: white;
-    height: 80%;
-    width: 60%;
-    box-shadow: 0px 20px 20px black;
-    border-radius: 10px;
-    padding: 10px;
-    border: 5px solid #46ac32;
+    position: relative;
+  margin-right: 95%;
   
+  
+  width: 5%;
+  height: 7%;
+  cursor: pointer;
+  background-color: orange;
 }
-.closebtn {
-    margin-left: 95%;
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-  }
-  
