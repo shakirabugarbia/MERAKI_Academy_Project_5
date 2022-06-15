@@ -1,100 +1,88 @@
-
-.basket_container{
-    display: flex;
-    flex-direction: row;
-gap: 12rem;
-margin-top: 4rem;
+.basket_container {
+  display: flex;
+  flex-direction: row;
+  gap: 12rem;
+  margin-top: 4rem;
 }
-.products{
-    height: 1000px;
-    gap: 2rem;
-  
+.products {
+  height: 1000px;
+  gap: 2rem;
 }
 
-.bask{
-  display: flex; 
-  border: 1px solid wheat; 
+.bask {
+  display: flex;
+  border: 1px solid wheat;
   width: 35rem;
-  height: 7.5rem;
+  height: 6rem;
   /* margin: 1rem; */
   margin-top: 1rem;
   margin-left: 3rem;
-
+  padding: 0.5rem;
 }
 
-
-.product-info{
-width: 15rem;
-margin-top: 2.5rem;
+.product-info {
+  width: 15rem;
+  margin-top: 2.5rem;
 }
 
-.dec_inc{
-display: flex;
-width: 5rem;
-margin-top: 2.5rem;
-margin-left: 3rem;
-
+.dec_inc {
+  display: flex;
+  width: 5rem;
+  margin-top: 2.5rem;
+  margin-left: 3rem;
 }
 
-
-.dec{
-    background-color: rgba(240, 248, 255, 0);
-    border-color: rgba(240, 248, 255, 0);
-    color:coral;
+.dec {
+  background-color: rgba(240, 248, 255, 0);
+  border-color: rgba(240, 248, 255, 0);
+  color: coral;
 }
 
-.inc{
-    background-color: rgba(240, 248, 255, 0);
-    border-color: rgba(240, 248, 255, 0);
-    color:coral; 
+.inc {
+  background-color: rgba(240, 248, 255, 0);
+  border-color: rgba(240, 248, 255, 0);
+  color: coral;
 }
 
-.amm{
-    margin-top: .5rem;
+.amm {
+  margin-top: 0.5rem;
 }
 
-.del{
-    background-color: rgba(240, 248, 255, 0);
-    border-color: rgba(240, 248, 255, 0);
-    color:coral; 
-   
- 
+.del {
+  background-color: rgba(240, 248, 255, 0);
+  border-color: rgba(240, 248, 255, 0);
+  color: coral;
 }
-.delette{
-    margin-left: 8rem;
+.delette {
+  margin-left: 7rem;
 }
-.prices_and_paypal{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-   
-    justify-content: center;
-    margin-top: 1%;
-    gap: 2rem;
-    border: 1px solid wheat;
-height: 25rem;
-width: 30rem;
-margin-right: 5%;
+.prices_and_paypal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
+  justify-content: center;
+  margin-top: 1%;
+  gap: 2rem;
+  border: 1px solid wheat;
+  height: 25rem;
+  width: 30rem;
+  margin-right: 5%;
 }
-.paypaal{
-    width: 50%;
-  
-
+.paypaal {
+  width: 50%;
 }
 
-.span{
-    color:coral;
+.span {
+  color: coral;
 }
 
-
-
-.emptyButton{
-    background-color: rgba(240, 248, 255, 0);
-    color:coral ;
-    font-size: medium;
+.emptyButton {
+  background-color: rgba(240, 248, 255, 0);
+  color: coral;
+  font-size: medium;
 }
 
-.dell{
-    margin-top: 1rem;
+.dell {
+  margin-top: 1rem;
 }

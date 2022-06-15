@@ -37,6 +37,8 @@ import {
   setTypeOfFood,
 } from "../../redux/reducers/typeoffoods/index";
 
+import Footer from "../Footer/index"
+
 import { FiPlus } from "react-icons/fi";
 
 import { BsArrowLeftSquareFill, BsArrowRightSquareFill } from "react-icons/bs";
@@ -308,7 +310,6 @@ const Homepage = () => {
                           <button
                             className="bttt"
                             onClick={() => {
-                              alert("you need to login first");
                               navigate("/login");
                             }}
                           >
@@ -374,6 +375,7 @@ const Homepage = () => {
           </a>
         </>
       )}
+      <Footer />
     </div>
   );
 };

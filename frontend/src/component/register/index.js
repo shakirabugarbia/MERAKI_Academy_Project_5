@@ -14,10 +14,9 @@ export const Register = () => {
     <div className="register-Pg">
       
         <img className="register-Pic"
-          src="https://i.ibb.co/4T8TwDH/Black-And-White-Modern-Menu-Template-1.png"
-          alt="Black-And-White-Modern-Menu-Template-1"
-          border="0"
+          src="https://i.ibb.co/TmDc5Xb/2.png" alt="2" border="0"
         />
+       
         
       <div className="register">
         <input
