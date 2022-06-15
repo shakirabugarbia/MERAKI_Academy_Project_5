@@ -21,8 +21,10 @@ import {
   updateBasket,
   deleteFromBasket,
   addToBasket,
+  setAmount,
+  setPrice,
 } from "../../redux/reducers/basket/index";
-
+import { FiPlus } from "react-icons/fi";
 const SearchResult = () => {
   const navigate = useNavigate();
   const [page, setPage] = useState(1);
@@ -88,42 +90,45 @@ const SearchResult = () => {
   };
 
   return (
-   
-    
-      <div className="producttss">
-        {products.map((element, index) => {
-          return (
-            <div className="product" key={index}>
-              <div className="pr">
-                <div className="imge">
-                  <img className="imgg" src={element.img} />
+    <div className="producttss">
+      {products.map((element, index) => {
+        return (
+          <div className="Product-Container" key={index}>
+            <div className="product-All-Detiles">
+              <div className="Product-Img-Dev">
+                <img className="imgg" src={element.img} />
+              </div>
+              <div className="pppp">
+                <div className="tow">
+                  <div className="pName"> {element.productName}</div>
+                  <p className="desc"> {element.description}</p>
+                  <div className="price">{element.price} JD</div>
                 </div>
-                <div className="pppp">
-                  <div className="t">
-                    <div className="pName"> {element.productName}</div>
-                    <div className="desc"> {element.description}</div>
-                    <div className="price">{element.price}</div>
+                {isLoggedIn ? (
+                  <div className="adding-Product">
+                    <button
+                      className="bttt"
+                      onClick={() => {
+                        addToCart(element.id);
+                        dispatch(setAmount());
+                        dispatch(setPrice(element.price));
+                      }}
+                    >
+                      <div class="tooltip">
+                        <span class="tooltiptext">add to basket</span>
+                        <FiPlus />
+                      </div>
+                    </button>
                   </div>
-                  {isLoggedIn ? (
-                    <div>
-                      <button
-                        className="basketButton"
-                        onClick={() => {
-                          addToCart(element.id);
-                        }}
-                      >
-                        Add to basket
-                      </button>
-                    </div>
-                  ) : (
-                    <></>
-                  )}
-                </div>
+                ) : (
+                  <></>
+                )}
               </div>
             </div>
-          );
-        })}
-     
+          </div>
+        );
+      })}
+
       <div>
         {products.length === 0 ? (
           <p>Your search didn't match any product.</p>
@@ -131,7 +136,7 @@ const SearchResult = () => {
           <></>
         )}
       </div>
-     </div>
+    </div>
   );
 };
 

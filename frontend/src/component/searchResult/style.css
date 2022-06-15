@@ -9,3 +9,251 @@
   margin-left: 4rem;
   margin-top: 7%;
 }
+
+.Search-Continer {
+  display: flex;
+  align-items: center;
+  z-index: 2;
+  margin: 30px;
+  border: 1px solid rgba(255, 255, 255, 0);
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0.57);
+  color: #f26d3d;
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  width: 42rem;
+  padding: 0.5rem;
+}
+
+.searchBarInput {
+  border-radius: 0.5em;
+  width: 31rem;
+  height: 2rem;
+  background-color: rgba(255, 255, 255, 0.671);
+  border-color: rgba(255, 255, 255, 0.631);
+}
+.searchButton {
+  background-color: #f26d3d;
+  border-color: rgba(255, 255, 255, 0);
+  height: 2rem;
+  margin-left: 0.5rem;
+}
+
+/* ================================*/
+
+.kitchen-titele {
+  display: flex;
+  justify-content: left;
+  align-items: flex-start;
+  margin-top: 0.5rem;
+  margin-left: 3rem;
+}
+/* ================================*/
+.Categories-Slider-Container {
+  display: grid;
+  grid-template-columns: 15% 15% 15% 15%;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100%;
+  gap: 1rem;
+}
+
+.Slider-Show-continer {
+  margin-left: 0.5em;
+  box-shadow: 0.1rem 0.5rem 0.99rem #c6c5c5;
+  border-radius: .3rem;
+  width: 9rem;
+  height: 10rem;
+  overflow: hidden;
+  position: relative;
+  justify-content: center;
+  object-fit: fill;
+}
+.Slider-Show-continer:hover {
+  transform: scale(0.99);
+  cursor: pointer;
+}
+
+.pic-slideshow {
+  width: 10em;
+  height: 8em;
+  border-radius: 0.1rem;
+  justify-content: center;
+  transform: scale(0.99);
+  cursor: pointer;
+}
+.Category-title-slider-btn {
+  background-color: rgba(240, 248, 255, 0);
+  border-color: rgba(240, 248, 255, 0);
+  color: #f26d3d;
+}
+/* ================================*/
+.Types-of-products-continer {
+  margin-left: 1em;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+}
+.Types-of-products-title {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  color: #f26d3d;
+  margin-left: 1em;
+}
+.types-Of-Food-div {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  gap: 9rem;
+  margin-left: 110%;
+}
+.types-Of-Food {
+  width: 8rem;
+  background-color: rgb(227, 183, 125);
+  background-color: rgba(240, 248, 255, 0);
+  color: #f26d3d;
+  border-bottom: 0.25rem solid bisque;
+  margin-bottom: 2rem;
+
+}
+
+.types-Of-Food-btn {
+  width: 9rem;
+  background-color: rgb(227, 183, 125);
+  background-color: rgba(240, 248, 255, 0);
+  color: #fa4706ea;
+  border-bottom: 0.25rem solid bisque;
+  margin-left: 143%;
+  margin-bottom: 2rem;
+}
+/* ================================*/
+.Products-Continer-Home {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5rem;
+  max-width: 100%;
+  max-height: 90%;
+}
+
+.Products-Container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  justify-content: center;
+  align-items: center;
+  grid-template-rows: auto;
+  gap: 2rem;
+  max-height: 70%;
+  margin-left: 8rem;
+  margin-bottom: 2rem;
+}
+
+.Product-Container {
+  border: 1px solid #f26d3d;
+  margin-right: 1.5rem;
+  width: 31rem;
+  padding: 2%;
+  height: 6rem;
+}
+
+.Product-Img-Dev {
+  width: 8rem;
+  height: 5.8rem;
+}
+.pppp {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: row;
+  margin-left: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.pName {
+  font-size:large;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #f26d3d;
+}
+.price {
+  margin-top: 0.5rem;
+  color: #f26d3d;
+}
+.desc {
+  word-break: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-height: 16px; /* fallback */
+  max-height: 47px; /* fallback */
+  -webkit-line-clamp: 5; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
+.product-All-Detiles {
+  display: flex;
+  flex-direction: row;
+}
+
+button {
+  width: 150px;
+  margin: 5px;
+  height: 30px;
+  background-color: #ff910b;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  color: seashell;
+  font-size: large;
+}
+
+.basketButton {
+  width: 2rem;
+  margin-top: 2.4rem;
+  margin-left: 1rem;
+  color: #f26d3d;
+  color: rgba(0, 0, 0, 0.473);
+  z-index: 2;
+  top: 5rem;
+  right: 5rem;
+}
+.moveUl {
+  list-style: none;
+  height: 100%;
+  display: flex;
+  gap: 10px;
+}
+
+.imgg {
+  width: 130px;
+  height: 100px;
+  border-radius: 4px;
+}
+
+.bttt {
+  background-color: rgba(255, 255, 255, 0);
+  color: black;
+}
+
+.bttt2 {
+  background-color: rgba(255, 255, 255, 0);
+  color:#ff790b;
+  margin-right: 9rem;
+  
+}
+
+.bttt3 {
+  background-color: rgba(255, 255, 255, 0);
+  color:#ff790b;
+  margin-left: 16.4rem;
+  
+}
+
+.tow {
+  display: grid;
+  grid-template-columns: 25% 60% 15%;
+  width: 21rem;
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+.adding-Product {
+  z-index: 3;
+  transform: translateY(-15%);
+  margin-left: -5rem;
+}
