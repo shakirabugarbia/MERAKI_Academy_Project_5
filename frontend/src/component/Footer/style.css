@@ -7,12 +7,14 @@
 }
 .For_restaurant{
   align-items: center;
+  width: 8rem;
 }
 .suggestions {
   text-decoration: none;
   font-family: "Courgette", cursive;
   color: black;
   margin-left:8.5%;
+ 
 }
 .footer-content {
   display: flex;
