@@ -5,12 +5,14 @@
   background-color: rgba(251, 149, 40, 0.766);
   padding: 2rem;
 }
-
+.For_restaurant{
+  align-items: center;
+}
 .suggestions {
   text-decoration: none;
   font-family: "Courgette", cursive;
   color: black;
-  margin-right: 3rem;
+  margin-left:8.5%;
 }
 .footer-content {
   display: flex;

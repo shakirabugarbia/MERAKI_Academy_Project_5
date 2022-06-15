@@ -248,7 +248,7 @@ const ProductsAdminSide = () => {
                             setShowTypeFood(true);
                           }}
                         >
-                          <button className="btn">
+                          <button className="category_button">
                             {element.category_title}
                           </button>
                         </a>
@@ -283,40 +283,42 @@ const ProductsAdminSide = () => {
                 <></>
               )}
               {showCreateInput ? (
-                <div className="Create-inputs">
-                  <input
+                <div className="Create_Product_div">
+                  <input className="Create_Product_inputs"
                     type="text"
-                    placeholder="productName"
+                    placeholder="Meal name"
                     onChange={(e) => {
                       setProductName(e.target.value);
                     }}
                   />
                   <input
+                  className="Create_Product_inputs"
                     type="text"
-                    placeholder="imge input"
+                    placeholder="Image link"
                     onChange={(e) => {
                       setImg(e.target.value);
                     }}
                   />
                   <input
+                  className="Create_Product_inputs"
                     type="text"
-                    placeholder="Desciption input"
+                    placeholder="The description of meal"
                     onChange={(e) => {
                       setDescription(e.target.value);
                     }}
                   />
                   <input
+                  className="Create_Product_inputs"
                     type="text"
-                    placeholder="Price"
+                    placeholder="The price"
                     onChange={(e) => {
                       setPrice(e.target.value);
                     }}
                   />
                   <button
-                    className="Create"
+                    className="Create_button1"
                     onClick={() => {
                       setShowCreateInput(false);
-                      // setShowCreateButton(true);
                       setShowXbutton(false);
                       createProduct();
                     }}
