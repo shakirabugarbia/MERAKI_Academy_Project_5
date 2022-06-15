@@ -248,7 +248,7 @@ const ProductsAdminSide = () => {
                             setShowTypeFood(true);
                           }}
                         >
-                          <button className="btn">
+                          <button className="category_button">
                             {element.category_title}
                           </button>
                         </a>
