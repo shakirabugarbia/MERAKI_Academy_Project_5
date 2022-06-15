@@ -1,6 +1,6 @@
 .container {
   position: relative;
-  width: 100%;
+  width: 80%;
   min-height: 100vh;
   padding: 2rem;
   background-color: #cdb07600;
@@ -8,12 +8,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-left: 5rem;
 }
 
 .form {
   width: 100%;
   max-width:1050px;
-  background-color: #cdb07600;
+  background-color: #df9e1c00;
   border-radius: 10px;
   box-shadow:  5 5 5px 1px rgba(0, 0, 0, 0.675);
   z-index: 1000;
@@ -28,6 +29,7 @@
   background-color:fff;
   position: relative;
   color: coral;
+  background-color: rgba(79, 76, 74, 0.041);
 }
 
 form {
@@ -40,12 +42,12 @@ form {
 }
 
 .title {
-  color:chocolate;
+  color: rgb(255, 69, 2);
   font-weight: 500;
   font-size: 1.5rem;
   line-height: 1;
-
-  padding: 1rem;
+  padding: 2rem;
+  margin-left: 5rem;
 }
 
 .input-container {
