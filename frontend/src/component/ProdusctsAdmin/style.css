@@ -3,7 +3,7 @@
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 .Create_Meale_button {
-  background-color: darkorange;
+  background-color: orangered;
 }
 .choose_category_div {
   display: grid;
@@ -21,6 +21,8 @@
   cursor: pointer;
 }
 .choose_foodType_div {
+  font-size: 150%;
+  color: black;
 }
 .Choose_Type_p {
   color: black;
@@ -32,15 +34,13 @@
   display: flex;
   flex-direction: column 25%;
   justify-content: center;
-  /* display: inline; */
   cursor: pointer;
 }
 .category_button {
-  border-bottom: 0.09rem solid orange;
+  border-bottom: 0.09rem solid orangered;
   height: 80%;
   width: 40%;
   padding: 0.2rem;
-  
 }
 .big_div {
   display: inline-block;
@@ -52,30 +52,29 @@
   top: 50%;
   left: 20%;
   transform: translateY(-50%);
-  background:rgb(255, 245, 226);
+  background: rgb(255, 245, 226);
   height: 80%;
   width: 60%;
   box-shadow: 0px 20px 20px rgb(36, 35, 35);
   padding: 10px;
   margin: 20px;
-  border: 2px solid rgba(0, 0, 0, 0.795);
+  border: 2px solid orangered;
   border-radius: 6px;
   z-index: 5;
   color: beige;
-  border-color: black;
 }
 
 #closebtn {
   position: relative;
-  margin-right: 95%;
-  width: 5%;
-  height: 7%;
+  margin-left: 93%;
+  width: 3%;
+  height: 5%;
   cursor: pointer;
   background-color: orangered;
 }
 .Create_Product_div {
-    position: relative;
-    align-items: center;
+  position: relative;
+  align-items: center;
   display: flex;
   flex-direction: column;
 }
@@ -88,11 +87,80 @@
   font-size: 1em;
   border: solid 1px rgba(128, 128, 128, 0.275);
   resize: none;
-  
-
 }
 .Create_button1 {
-    justify-content: center;
-    background-color: orangered;
-    transform: scale(0.98);
+  justify-content: center;
+  background-color: orangered;
+  transform: scale(0.98);
+}
+
+/* ________________________________________ */
+/* ________________________________________ */
+.are_you_sure {
+  color: black;
+}
+
+.shishiani {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  justify-content: center;
+  align-items: center;
+  grid-template-rows: auto;
+  gap: 2rem;
+  max-height: 70%;
+  margin-left: 8rem;
+  margin-bottom: 2rem;
+  display: inline-block;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  position: fixed;
+  top: 50%;
+  left: 20%;
+  transform: translateY(-50%);
+  background: rgb(255, 245, 226);
+  height: 80%;
+  width: 60%;
+  box-shadow: 0px 20px 20px rgb(36, 35, 35);
+  padding: 10px;
+  margin: 20px;
+  border: 2px solid orangered;
+  border-radius: 6px;
+  z-index: 5;
+  color: beige;
+}
+
+.Product_Container_Admin {
+  border: 1px solid #f26d3d;
+  margin-right: 1.5rem;
+  width: 31rem;
+  padding: 2%;
+  height: 10rem;
+}
+
+.Product-Img-Dev {
+  width: 8rem;
+  height: 5.8rem;
+}
+.pppp {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: row;
+  margin-left: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.pName {
+  font-size: large;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #f26d3d;
+}
+.price {
+  margin-top: 0.5rem;
+  color: #f26d3d;
+}
+.t{
+  height: 8rem;
 }
