@@ -26,7 +26,7 @@ export const Login = () => {
 
   const loginn = () => {
     axios
-      .post("http://localhost:5000/login", {
+      .post("https://bigbites-backend.herokuapp.com/login", {
         email,
         password,
       })

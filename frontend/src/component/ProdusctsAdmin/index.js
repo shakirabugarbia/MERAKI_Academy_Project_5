@@ -80,7 +80,7 @@ const ProductsAdminSide = () => {
 
   const gatAllproducts = () => {
     axios
-      .get(`http://localhost:5000/product/?page=${page}`)
+      .get(`https://bigbites-backend.herokuapp.com/product/?page=${page}`)
       .then((result) => {
         dispatch(setProducts(result.data.result.result));
         setMessage(result.data.message);
@@ -92,7 +92,7 @@ const ProductsAdminSide = () => {
   };
   const deleteProductById = (product_id) => {
     axios
-      .put(`http://localhost:5000/product/${product_id}`)
+      .put(`https://bigbites-backend.herokuapp.com/product/${product_id}`)
       .then((result) => {
         console.log(result.data.result);
         dispatch(deleteproductts(result.data.result));
@@ -105,7 +105,7 @@ const ProductsAdminSide = () => {
   };
   const next = () => {
     axios
-      .get(`http://localhost:5000/product/?page=${page + 1}`)
+      .get(`https://bigbites-backend.herokuapp.com/product/?page=${page + 1}`)
       .then((result) => {
         if (result.data.result.result.length !== 0) {
           dispatch(setProducts(result.data.result.result));
@@ -123,7 +123,7 @@ const ProductsAdminSide = () => {
 
   const back = () => {
     axios
-      .get(`http://localhost:5000/product/?page=${page - 1}`)
+      .get(`https://bigbites-backend.herokuapp.com/product/?page=${page - 1}`)
       .then((result) => {
         if (result.data.result.result.length !== 0) {
           dispatch(setProducts(result.data.result.result));
@@ -141,7 +141,7 @@ const ProductsAdminSide = () => {
 
   const gatAllCategories = () => {
     axios
-      .get(`http://localhost:5000/category/allCategories`)
+      .get(`https://bigbites-backend.herokuapp.com/category/allCategories`)
       .then((result) => {
         dispatch(setCategories(result.data.result));
         setMessage(result.data.message);
@@ -154,7 +154,7 @@ const ProductsAdminSide = () => {
 
   const getAllTypeOfFood = () => {
     axios
-      .get(`http://localhost:5000/typeOfFood`)
+      .get(`https://bigbites-backend.herokuapp.com/typeOfFood`)
       .then((result) => {
         dispatch(setTypeOfFood(result.data.result));
         setShow(true);
@@ -165,7 +165,7 @@ const ProductsAdminSide = () => {
   };
   const createProduct = () => {
     axios
-      .post(`http://localhost:5000/product/${typesOffoodsState.type_id}`, {
+      .post(`https://bigbites-backend.herokuapp.com/product/${typesOffoodsState.type_id}`, {
         productName,
         description,
         img,
@@ -181,7 +181,7 @@ const ProductsAdminSide = () => {
   };
   const updateproducttss = (id) => {
     axios
-      .put(`http://localhost:5000/product/update/${id}`, {
+      .put(`https://bigbites-backend.herokuapp.com/product/update/${id}`, {
         productName,
         img,
         description,

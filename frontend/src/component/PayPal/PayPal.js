@@ -70,7 +70,7 @@ const ButtonWrapper = ({ currency, showSpinner }) => {
 
   const viewBasket = () => {
     axios
-      .get(`http://localhost:5000/basket/`, {
+      .get(`https://bigbites-backend.herokuapp.com/basket/`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -88,7 +88,7 @@ const ButtonWrapper = ({ currency, showSpinner }) => {
 
   const emptyBasket = () => {
     axios
-      .delete(`http://localhost:5000/basket/empty`, {
+      .delete(`https://bigbites-backend.herokuapp.com/basket/empty`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -106,7 +106,7 @@ const ButtonWrapper = ({ currency, showSpinner }) => {
     const orderhisory = JSON.stringify(productsState.products);
     axios
       .post(
-        "http://localhost:5000/order",
+        "https://bigbites-backend.herokuapp.com/order",
         { orderhisory },
         {
           headers: {
