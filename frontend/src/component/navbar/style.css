@@ -29,7 +29,7 @@
 .titlee {
   width: 3em;
   height: 3em;
-  margin-left: 5%;
+  margin-left: 2%;
 }
 .Link {
   border: 0ch solid rgba(255, 255, 255, 0);
@@ -40,7 +40,7 @@
   font-family: "Satisfy", cursive;
 }
 .title {
-  margin-left: 1rem;
+  margin-left: -1rem;
   margin-top: -4.2rem;
   height: 8rem;
   width: 9rem;
