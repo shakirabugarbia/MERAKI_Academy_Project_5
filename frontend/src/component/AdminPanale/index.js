@@ -18,11 +18,11 @@ const Admin = () => {
         <h1 className="dash">Dashboard</h1>
         <br />
         <br />
-        <h3>Analytics</h3>
+        <h3 className="hello">Analytics</h3>
         <br />
-        <h3>Payments</h3>
+        <h3 className="hello">Payments</h3>
         <br />
-        <h3>Databases</h3>
+        <h3 className="hello">Databases</h3>
       </div>
       {isLoggedIn ? (
         <div className="admin_sections">
