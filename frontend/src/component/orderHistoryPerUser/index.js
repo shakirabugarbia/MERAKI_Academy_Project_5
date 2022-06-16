@@ -40,7 +40,7 @@ const UserOrder = () => {
 
   const getOrders = async () => {
     await axios
-      .get("http://localhost:5000/order", {
+      .get("https://bigbites-backend.herokuapp.com/order", {
         headers: {
           Authorization: `Bearer ${token}`,
         },

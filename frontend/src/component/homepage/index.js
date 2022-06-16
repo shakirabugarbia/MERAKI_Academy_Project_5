@@ -90,7 +90,7 @@ const Homepage = () => {
   const addToCart = (String) => {
     axios
       .post(
-        `http://localhost:5000/basket/${String}`,
+        `https://bigbites-backend.herokuapp.com/basket/${String}`,
         {},
         {
           headers: {
@@ -110,7 +110,7 @@ const Homepage = () => {
   };
   const gatAllproducts = () => {
     axios
-      .get(`http://localhost:5000/product/?page=${page}`)
+      .get(`https://bigbites-backend.herokuapp.com/product/?page=${page}`)
       .then((result) => {
         dispatch(setProducts(result.data.result.result));
         setMessage(result.data.message);
@@ -122,7 +122,7 @@ const Homepage = () => {
   };
   const gatAllCategories = () => {
     axios
-      .get(`http://localhost:5000/category/allCategories`)
+      .get(`https://bigbites-backend.herokuapp.com/category/allCategories`)
       .then((result) => {
         dispatch(setCategories(result.data.result));
         setMessage(result.data.message);
@@ -135,7 +135,7 @@ const Homepage = () => {
 
   const getAllTypeOfFood = () => {
     axios
-      .get(`http://localhost:5000/typeOfFood`)
+      .get(`https://bigbites-backend.herokuapp.com/typeOfFood`)
       .then((result) => {
         dispatch(setTypeOfFood(result.data.result));
         setShow(true);
@@ -147,7 +147,7 @@ const Homepage = () => {
 
   const next = () => {
     axios
-      .get(`http://localhost:5000/product/?page=${page + 1}`)
+      .get(`https://bigbites-backend.herokuapp.com/product/?page=${page + 1}`)
       .then((result) => {
         if (result.data.result.result.length !== 0) {
           dispatch(setProducts(result.data.result.result));
@@ -165,7 +165,7 @@ const Homepage = () => {
   const getProductsByTypeOf = (type_id) => {
     axios
       .get(
-        `http://localhost:5000/product/bytype/${type_id}/categoryId?category_id=${category_id}`
+        `https://bigbites-backend.herokuapp.com/product/bytype/${type_id}/categoryId?category_id=${category_id}`
       )
       .then((result) => {
         dispatch(setProducts(result.data.result));
@@ -178,7 +178,7 @@ const Homepage = () => {
   };
   const back = () => {
     axios
-      .get(`http://localhost:5000/product/?page=${page - 1}`)
+      .get(`https://bigbites-backend.herokuapp.com/product/?page=${page - 1}`)
       .then((result) => {
         if (result.data.result.result.length !== 0) {
           dispatch(setProducts(result.data.result.result));

@@ -37,7 +37,7 @@ const Recepit = () => {
 
   const getOrderHistoryById = () => {
     axios
-      .get(`http://localhost:5000/order/orderid/${orderState.recipteId}`, {
+      .get(`https://bigbites-backend.herokuapp.com/order/orderid/${orderState.recipteId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

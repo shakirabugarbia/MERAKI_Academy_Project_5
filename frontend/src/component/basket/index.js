@@ -80,7 +80,7 @@ const Basket = () => {
 
   const emptyBasket = () => {
     axios
-      .delete(`http://localhost:5000/basket/empty`, {
+      .delete(`https://bigbites-backend.herokuapp.com/basket/empty`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -96,7 +96,7 @@ const Basket = () => {
   const removeFromCart = (id) => {
     axios
       .put(
-        `http://localhost:5000/basket/${id}`,
+        `https://bigbites-backend.herokuapp.com/basket/${id}`,
         {},
         {
           headers: {
@@ -114,7 +114,7 @@ const Basket = () => {
   const increaseCart = (id) => {
     axios
       .post(
-        `http://localhost:5000/basket/${id}`,
+        `https://bigbites-backend.herokuapp.com/basket/${id}`,
         {},
         {
           headers: {
@@ -136,7 +136,7 @@ const Basket = () => {
   const decreaseAndRemoveFromBasket = (id) => {
     axios
       .put(
-        `http://localhost:5000/basket/basket/${id}`,
+        `https://bigbites-backend.herokuapp.com/basket/basket/${id}`,
         {},
         {
           headers: {
@@ -154,7 +154,7 @@ const Basket = () => {
   };
   const viewBasket = () => {
     axios
-      .get(`http://localhost:5000/basket/`, {
+      .get(`https://bigbites-backend.herokuapp.com/basket/`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

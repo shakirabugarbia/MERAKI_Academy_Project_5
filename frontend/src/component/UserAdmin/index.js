@@ -32,7 +32,7 @@ const UserAdminSide = () => {
   });
   const block = (id) => {
     axios
-      .put(`http://localhost:5000/user/${id}`)
+      .put(`https://bigbites-backend.herokuapp.com/user/${id}`)
       .then((result) => {
         getUsers();
       })
@@ -40,14 +40,15 @@ const UserAdminSide = () => {
   };
   const active = (id) => {
     axios
-      .put(`http://localhost:5000/user/active/${id}`)
+      .put(`https://bigbites-backend.herokuapp.com/user/active/${id}`)
       .then((result) => {
         getUsers();
       })
       .catch((err) => {});
   };
   const getUsers = (String) => {
-    axios.get(`http://localhost:5000/user/`).then((result) => {
+    axios
+    .get(`https://bigbites-backend.herokuapp.com/user/`).then((result) => {
       dispatch(setUsers(result.data.result));
       setShow(true);
     });
