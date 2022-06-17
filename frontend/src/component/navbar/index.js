@@ -41,7 +41,7 @@ const NavBar = () => {
           }}
         >
           <img
-            className="title"
+            className="title80"
             src="https://i.ibb.co/RDmggP2/Bite-removebg-preview.png"
             alt="Bite-removebg-preview"
             border="0"
