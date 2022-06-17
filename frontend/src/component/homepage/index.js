@@ -82,7 +82,7 @@ const Homepage = () => {
     };
   });
   const productByCategory = (String) => {
-    axios.get(`http://localhost:5000/product/${String}`).then((result) => {
+    axios.get(`https://bigbites-backend.herokuapp.com/product/${String}`).then((result) => {
       dispatch(setProducts(result.data.result));
       dispatch(setCategoriesId(result.data.result[0].category_id));
     });
