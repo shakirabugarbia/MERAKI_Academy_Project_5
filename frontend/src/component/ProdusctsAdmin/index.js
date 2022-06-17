@@ -75,10 +75,12 @@ const ProductsAdminSide = () => {
   const [showCreateInput, setShowCreateInput] = useState(false);
   const [showCreateButton, setShowCreateButton] = useState(true);
   const [showXButton, setShowXbutton] = useState(false);
+  const [showXButton2, setShowXbutton2] = useState(false);
+  const [showXButton3, setShowXbutton3] = useState(false);
 
   const gatAllproducts = () => {
     axios
-      .get(`http://localhost:5000/product/?page=${page}`)
+      .get(`https://bigbites-backend.herokuapp.com/product/?page=${page}`)
       .then((result) => {
         dispatch(setProducts(result.data.result.result));
         setMessage(result.data.message);
@@ -90,7 +92,7 @@ const ProductsAdminSide = () => {
   };
   const deleteProductById = (product_id) => {
     axios
-      .put(`http://localhost:5000/product/${product_id}`)
+      .put(`https://bigbites-backend.herokuapp.com/product/${product_id}`)
       .then((result) => {
         console.log(result.data.result);
         dispatch(deleteproductts(result.data.result));
@@ -103,7 +105,7 @@ const ProductsAdminSide = () => {
   };
   const next = () => {
     axios
-      .get(`http://localhost:5000/product/?page=${page + 1}`)
+      .get(`https://bigbites-backend.herokuapp.com/product/?page=${page + 1}`)
       .then((result) => {
         if (result.data.result.result.length !== 0) {
           dispatch(setProducts(result.data.result.result));
@@ -121,7 +123,7 @@ const ProductsAdminSide = () => {
 
   const back = () => {
     axios
-      .get(`http://localhost:5000/product/?page=${page - 1}`)
+      .get(`https://bigbites-backend.herokuapp.com/product/?page=${page - 1}`)
       .then((result) => {
         if (result.data.result.result.length !== 0) {
           dispatch(setProducts(result.data.result.result));
@@ -139,7 +141,7 @@ const ProductsAdminSide = () => {
 
   const gatAllCategories = () => {
     axios
-      .get(`http://localhost:5000/category/allCategories`)
+      .get(`https://bigbites-backend.herokuapp.com/category/allCategories`)
       .then((result) => {
         dispatch(setCategories(result.data.result));
         setMessage(result.data.message);
@@ -152,7 +154,7 @@ const ProductsAdminSide = () => {
 
   const getAllTypeOfFood = () => {
     axios
-      .get(`http://localhost:5000/typeOfFood`)
+      .get(`https://bigbites-backend.herokuapp.com/typeOfFood`)
       .then((result) => {
         dispatch(setTypeOfFood(result.data.result));
         setShow(true);
@@ -163,13 +165,16 @@ const ProductsAdminSide = () => {
   };
   const createProduct = () => {
     axios
-      .post(`http://localhost:5000/product/${typesOffoodsState.type_id}`, {
-        productName,
-        description,
-        img,
-        price,
-        category_id,
-      })
+      .post(
+        `https://bigbites-backend.herokuapp.com/product/${typesOffoodsState.type_id}`,
+        {
+          productName,
+          description,
+          img,
+          price,
+          category_id,
+        }
+      )
       .then(() => {
         gatAllproducts();
       })
@@ -179,7 +184,7 @@ const ProductsAdminSide = () => {
   };
   const updateproducttss = (id) => {
     axios
-      .put(`http://localhost:5000/product/update/${id}`, {
+      .put(`https://bigbites-backend.herokuapp.com/product/update/${id}`, {
         productName,
         img,
         description,
@@ -217,7 +222,7 @@ const ProductsAdminSide = () => {
               setShowXbutton(true);
             }}
           >
-            Create Meale
+            Create Meal
           </button>
 
           {showXButton ? (
@@ -229,7 +234,6 @@ const ProductsAdminSide = () => {
                   setShowCreateInput(false);
                   setShowCategory(false);
                   setShowTypeFood(false);
-
                 }}
               >
                 &times;
@@ -284,7 +288,8 @@ const ProductsAdminSide = () => {
               )}
               {showCreateInput ? (
                 <div className="Create_Product_div">
-                  <input className="Create_Product_inputs"
+                  <input
+                    className="Create_Product_inputs"
                     type="text"
                     placeholder="Meal name"
                     onChange={(e) => {
@@ -292,7 +297,7 @@ const ProductsAdminSide = () => {
                     }}
                   />
                   <input
-                  className="Create_Product_inputs"
+                    className="Create_Product_inputs"
                     type="text"
                     placeholder="Image link"
                     onChange={(e) => {
@@ -300,7 +305,7 @@ const ProductsAdminSide = () => {
                     }}
                   />
                   <input
-                  className="Create_Product_inputs"
+                    className="Create_Product_inputs"
                     type="text"
                     placeholder="The description of meal"
                     onChange={(e) => {
@@ -308,7 +313,7 @@ const ProductsAdminSide = () => {
                     }}
                   />
                   <input
-                  className="Create_Product_inputs"
+                    className="Create_Product_inputs"
                     type="text"
                     placeholder="The price"
                     onChange={(e) => {
@@ -334,110 +339,144 @@ const ProductsAdminSide = () => {
             <></>
           )}
 
-          <div className="Products-Container">
+          <div className="Products_Container_admin">
             {show &&
               productsState.products.map((element, index) => {
                 return (
-                  <div className="Product-Container" key={index}>
-                    <div className="product-All-Detiles">
-                      <div className="Product-Img-Dev">
-                        <img className="imgg" src={element.img} />
+                  <div className="Product_Container_Admin" key={index}>
+                    <div className="Product-Img-Dev">
+                      <img className="imgg3" src={element.img} />
+                    </div>
+
+                    <div className="t2">
+                      <div className="product_m">
+                        <div className="pName"> {element.productName}</div>
+                        <div className="desc"> {element.description}</div>
+                        <div className="price">{element.price} JD</div>
                       </div>
-                      <div className="pppp">
-                        <div className="t">
-                          <div className="pName"> {element.productName}</div>
-                          <div className="desc"> {element.description}</div>
-                          <div className="price">{element.price} JD</div>
-                          <button
-                            className="delete"
-                            onClick={() => {
-                              setConfirmation(true);
-                              setShowid(element.id);
-                              setCansel(true);
-                            }}
-                          >
-                            Delete
-                          </button>
 
-                          <button
-                            onClick={() => {
-                              setShowid(element.id);
-                              setShowupdate(true);
-                              setCansel(true);
-                            }}
-                          >
-                            Update
-                          </button>
-
-                          {showupdate && element.id === showid ? (
-                            <div className="update-inputs">
-                              <input
-                                type="text"
-                                placeholder="productName"
-                                onChange={(e) => {
-                                  setProductName(e.target.value);
-                                }}
-                              />
-                              <input
-                                type="text"
-                                placeholder="imge input"
-                                onChange={(e) => {
-                                  setImg(e.target.value);
-                                }}
-                              />
-                              <input
-                                type="text"
-                                placeholder="Desciption input"
-                                onChange={(e) => {
-                                  setDescription(e.target.value);
-                                }}
-                              />
-                              <input
-                                type="text"
-                                placeholder="Price"
-                                onChange={(e) => {
-                                  setPrice(e.target.value);
-                                }}
-                              />
-                              <button
-                                className="submit"
+                      <div className="shaker_update">
+                        <button
+                          onClick={() => {
+                            setConfirmation(true);
+                            setShowid(element.id);
+                            setShowXbutton3(true);
+                            setShowXbutton2(true);
+                          }}
+                        >
+                          Delete
+                        </button>
+                        <div className="delete_dev">
+                          {showXButton3 && element.id === showid ? (
+                            <>
+                            <div> <h5 className="areYS">Are You Sure ?</h5></div>
+                              <button className="No_Yes_btn"
                                 onClick={() => {
-                                  updateproducttss(element.id);
-                                  setShowupdate(false);
-
-                                  console.log(element.id);
-                                }}
-                              >
-                                Submit
-                              </button>
-                            </div>
-                          ) : (
-                            <></>
-                          )}
-                          {confirmation && element.id === showid ? (
-                            <div>
-                              <p>
-                                Are you sure you want to delete the product?
-                              </p>
-                              <button
-                                onClick={() => {
-                                  deleteProductById(element.id);
                                   setConfirmation(false);
+                                  setShowupdate(false);
+                                  setShowXbutton3(false);
+                                  setShowXbutton2(false);
+                                  setCansel(false);
                                 }}
                               >
-                                Confirm
+                                No
                               </button>
-                            </div>
+                            </>
                           ) : (
                             <></>
                           )}
-                          {cansel && element.id === showid ? (
-                            <div>
+                          <div className="sure">
+                            {confirmation && element.id === showid ? (
+                              <div className="sure1">
+                               
+                                <button className="No_Yes_btn"
+                                  onClick={() => {
+                                    deleteProductById(element.id);
+                                    setConfirmation(false);
+                                    setShowXbutton2(false);
+                                    setShowXbutton3(false);
+                                    setCansel(false);
+                                  }}
+                                >
+                                  Yes
+                                </button>
+                              </div>
+                            ) : (
+                              <></>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="shaker_update">
+                        <button
+                          onClick={() => {
+                            setShowid(element.id);
+                            setShowupdate(true);
+                            setCansel(true);
+                            setShowXbutton2(true);
+                          }}
+                        >
+                          Update
+                        </button>
+
+                        <div className="bigDiv2">
+                         
+                          <div className="update-inputs">
+                            {showupdate && element.id === showid ? (
+                              <div className="update_input_3">
+                                
+                                <input
+                                  type="text"
+                                  placeholder="Meal name"
+                                  onChange={(e) => {
+                                    setProductName(e.target.value);
+                                  }}
+                                />
+                                <input
+                                  type="text"
+                                  placeholder="Image linke "
+                                  onChange={(e) => {
+                                    setImg(e.target.value);
+                                  }}
+                                />
+                                <input
+                                  type="text"
+                                  placeholder="Description"
+                                  onChange={(e) => {
+                                    setDescription(e.target.value);
+                                  }}
+                                />
+                                <input
+                                  type="text"
+                                  placeholder="Price"
+                                  onChange={(e) => {
+                                    setPrice(e.target.value);
+                                  }}
+                                />
+
+                                <button
+                                  // className="submit"
+                                  onClick={() => {
+                                    updateproducttss(element.id);
+                                    setShowupdate(false);
+                                    setShowXbutton2(false);
+                                    setShowXbutton3(false);
+                                    setCansel(false);
+                                  }}
+                                >
+                                  Submit
+                                </button>
+                                {cansel && element.id === showid ? (
+                            <div className="afghani">
                               <button
+                                className="xbutton2"
                                 onClick={() => {
                                   setConfirmation(false);
                                   setShowupdate(false);
                                   setCansel(false);
+                                  setShowXbutton3(false);
+                                  setShowXbutton2(false);
                                 }}
                               >
                                 &times;
@@ -446,6 +485,11 @@ const ProductsAdminSide = () => {
                           ) : (
                             <></>
                           )}
+                              </div>
+                            ) : (
+                              <></>
+                            )}
+                          </div>
                         </div>
                       </div>
                     </div>

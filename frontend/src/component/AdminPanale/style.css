@@ -26,6 +26,12 @@
   flex-direction: column;
   align-items: flex-start;
   background-color: rgba(0, 0, 0, 0.068);
+  
+}
+.hello{
+  cursor: pointer;
+  
+
 }
 .admin_sections {
   display: grid;
@@ -107,3 +113,4 @@
   border-radius: 2px solid black;
 
 }
+

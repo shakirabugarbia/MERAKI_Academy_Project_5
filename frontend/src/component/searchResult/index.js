@@ -55,7 +55,7 @@ const SearchResult = () => {
 
   const getProductBySearch = () => {
     axios
-      .get(`http://localhost:5000/product/search?productName=${productName}`)
+      .get(`https://bigbites-backend.herokuapp.com/product/search?productName=${productName}`)
       .then((result) => {
         dispatch(setProducts(result.data.result));
         console.log("hi", result.data.result);
@@ -71,7 +71,7 @@ const SearchResult = () => {
   const addToCart = (String) => {
     axios
       .post(
-        `http://localhost:5000/basket/${String}`,
+        `https://bigbites-backend.herokuapp.com/basket/${String}`,
         {},
         {
           headers: {
