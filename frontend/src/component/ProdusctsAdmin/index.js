@@ -165,13 +165,16 @@ const ProductsAdminSide = () => {
   };
   const createProduct = () => {
     axios
-      .post(`https://bigbites-backend.herokuapp.com/product/${typesOffoodsState.type_id}`, {
-        productName,
-        description,
-        img,
-        price,
-        category_id,
-      })
+      .post(
+        `https://bigbites-backend.herokuapp.com/product/${typesOffoodsState.type_id}`,
+        {
+          productName,
+          description,
+          img,
+          price,
+          category_id,
+        }
+      )
       .then(() => {
         gatAllproducts();
       })
@@ -342,32 +345,32 @@ const ProductsAdminSide = () => {
                 return (
                   <div className="Product_Container_Admin" key={index}>
                     <div className="Product-Img-Dev">
-                      <img className="imgg" src={element.img} />
+                      <img className="imgg3" src={element.img} />
                     </div>
-                    
-                      <div className="t2">
-                        <div className="product_m">
-                          <div className="pName"> {element.productName}</div>
-                          <div className="desc"> {element.description}</div>
-                          <div className="price">{element.price} JD</div>
-                        </div>
 
-                        <div className="Marah_delete">
-                          <button
-                            className="delete"
-                            onClick={() => {
-                              setConfirmation(true);
-                              setShowid(element.id);
-                              setShowXbutton3(true);
-                              setShowXbutton2(true);
-                            }}
-                          >
-                            Delete
-                          </button>
+                    <div className="t2">
+                      <div className="product_m">
+                        <div className="pName"> {element.productName}</div>
+                        <div className="desc"> {element.description}</div>
+                        <div className="price">{element.price} JD</div>
+                      </div>
+
+                      <div className="shaker_update">
+                        <button
+                          onClick={() => {
+                            setConfirmation(true);
+                            setShowid(element.id);
+                            setShowXbutton3(true);
+                            setShowXbutton2(true);
+                          }}
+                        >
+                          Delete
+                        </button>
+                        <div className="delete_dev">
                           {showXButton3 && element.id === showid ? (
                             <>
-                              <button
-                                className="xbutton1"
+                            <div> <h5 className="areYS">Are You Sure ?</h5></div>
+                              <button className="No_Yes_btn"
                                 onClick={() => {
                                   setConfirmation(false);
                                   setShowupdate(false);
@@ -376,7 +379,7 @@ const ProductsAdminSide = () => {
                                   setCansel(false);
                                 }}
                               >
-                                &times;
+                                No
                               </button>
                             </>
                           ) : (
@@ -385,10 +388,8 @@ const ProductsAdminSide = () => {
                           <div className="sure">
                             {confirmation && element.id === showid ? (
                               <div className="sure1">
-                                <p className="are_you_sure">
-                                  Are you sure you want to delete the product?
-                                </p>
-                                <button
+                               
+                                <button className="No_Yes_btn"
                                   onClick={() => {
                                     deleteProductById(element.id);
                                     setConfirmation(false);
@@ -397,100 +398,101 @@ const ProductsAdminSide = () => {
                                     setCansel(false);
                                   }}
                                 >
-                                  Confirm
+                                  Yes
                                 </button>
                               </div>
                             ) : (
                               <></>
                             )}
-
-                          </div>
-                        </div>
-
-                        <div className="shaker_update">
-                          <button
-                            onClick={() => {
-                              setShowid(element.id);
-                              setShowupdate(true);
-                              setCansel(true);
-                              setShowXbutton2(true);
-                            }}
-                          >
-                            Update
-                          </button>
-
-                          <div className="bigDiv2">
-                            {cansel && element.id === showid ? (
-                              <div className="afghani">
-                                <button
-                                  className="xbutton2"
-                                  onClick={() => {
-                                    setConfirmation(false);
-                                    setShowupdate(false);
-                                    setCansel(false);
-                                    setShowXbutton3(false);
-                                    setShowXbutton2(false);
-                                  }}
-                                >
-                                  &times;
-                                </button>
-                              </div>
-                            ) : (
-                              <></>
-                            )}
-                            <div className="update-inputs">
-                              {showupdate && element.id === showid ? (
-                                <div className="update_input_3">
-                                  <input
-                                    type="text"
-                                    placeholder="Meal name"
-                                    onChange={(e) => {
-                                      setProductName(e.target.value);
-                                    }}
-                                  />
-                                  <input
-                                    type="text"
-                                    placeholder="Image linke "
-                                    onChange={(e) => {
-                                      setImg(e.target.value);
-                                    }}
-                                  />
-                                  <input
-                                    type="text"
-                                    placeholder="Description"
-                                    onChange={(e) => {
-                                      setDescription(e.target.value);
-                                    }}
-                                  />
-                                  <input
-                                    type="text"
-                                    placeholder="Price"
-                                    onChange={(e) => {
-                                      setPrice(e.target.value);
-                                    }}
-                                  />
-
-                                  <button
-                                    className="submit"
-                                    onClick={() => {
-                                      updateproducttss(element.id);
-                                      setShowupdate(false);
-                                      setShowXbutton2(false);
-                                      setShowXbutton3(false);
-                                      setCansel(false);
-                                    }}
-                                  >
-                                    Submit
-                                  </button>
-                                </div>
-                              ) : (
-                                <></>
-                              )}
-                            </div>
                           </div>
                         </div>
                       </div>
-                    
+
+                      <div className="shaker_update">
+                        <button
+                          onClick={() => {
+                            setShowid(element.id);
+                            setShowupdate(true);
+                            setCansel(true);
+                            setShowXbutton2(true);
+                          }}
+                        >
+                          Update
+                        </button>
+
+                        <div className="bigDiv2">
+                         
+                          <div className="update-inputs">
+                            {showupdate && element.id === showid ? (
+                              <div className="update_input_3">
+                                
+                                <input
+                                  type="text"
+                                  placeholder="Meal name"
+                                  onChange={(e) => {
+                                    setProductName(e.target.value);
+                                  }}
+                                />
+                                <input
+                                  type="text"
+                                  placeholder="Image linke "
+                                  onChange={(e) => {
+                                    setImg(e.target.value);
+                                  }}
+                                />
+                                <input
+                                  type="text"
+                                  placeholder="Description"
+                                  onChange={(e) => {
+                                    setDescription(e.target.value);
+                                  }}
+                                />
+                                <input
+                                  type="text"
+                                  placeholder="Price"
+                                  onChange={(e) => {
+                                    setPrice(e.target.value);
+                                  }}
+                                />
+
+                                <button
+                                  // className="submit"
+                                  onClick={() => {
+                                    updateproducttss(element.id);
+                                    setShowupdate(false);
+                                    setShowXbutton2(false);
+                                    setShowXbutton3(false);
+                                    setCansel(false);
+                                  }}
+                                >
+                                  Submit
+                                </button>
+                                {cansel && element.id === showid ? (
+                            <div className="afghani">
+                              <button
+                                className="xbutton2"
+                                onClick={() => {
+                                  setConfirmation(false);
+                                  setShowupdate(false);
+                                  setCansel(false);
+                                  setShowXbutton3(false);
+                                  setShowXbutton2(false);
+                                }}
+                              >
+                                &times;
+                              </button>
+                            </div>
+                          ) : (
+                            <></>
+                          )}
+                              </div>
+                            ) : (
+                              <></>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 );
               })}
