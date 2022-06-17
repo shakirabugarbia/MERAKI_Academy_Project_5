@@ -211,7 +211,7 @@ const Basket = () => {
                             onClick={() => {
                               decreaseAndRemoveFromBasket(element.id);
                               dispatch(decreasePrice(element.price));
-                              viewBasket();
+                              // viewBasket();
                             }}
                           >
                             <AiOutlineMinusSquare className="ai" />

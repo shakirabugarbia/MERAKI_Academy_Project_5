@@ -13,7 +13,7 @@ const addAndUpdateToCart = (req, res) => {
     console.log(result);
     if (result.length) {
       result[0].amount = quantity + result[0].amount;
-      const query = `UPDATE basket SET amount=? WHERE product_id=? `;
+      const query = `UPDATE basket SET amount=? WHERE product_id=? AND is_deleted = 0`;
       const data = [result[0].amount, result[0].product_id];
       connection.query(query, data, (err, results) => {
         if (results.affectedRows != 0) {
@@ -35,13 +35,13 @@ const addAndUpdateToCart = (req, res) => {
       const data = [product_id, user_id];
       connection.query(query, data, (err, result) => {
         if (err) {
-        return  res.status(500).json({
+          return res.status(500).json({
             success: false,
             massage: "Server error",
             err: err,
           });
         }
-       return res.status(200).json({
+        return res.status(200).json({
           success: true,
           massage: `Product Added to Basket`,
           result: result,
@@ -92,7 +92,7 @@ const removefromcart = (req, res) => {
         err: error.message,
       });
     } else {
-     return res.status(200).json({
+      return res.status(200).json({
         success: true,
         massage: `Product removed `,
         result: result,
@@ -179,8 +179,6 @@ const emptyCart = (req, res) => {
     }
   });
 };
-
-
 
 module.exports = {
   addAndUpdateToCart,
