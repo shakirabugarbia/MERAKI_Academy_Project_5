@@ -62,24 +62,24 @@ const UserAdminSide = () => {
       {isLoggedIn ? (
         <>
           <table className="tabel">
-            <tr>
-              <th>userName</th>
-              <th>Email</th>
-              <th>phoneNumber</th>
-              <th>Order History</th>
-              <th>User status</th>
-              <th>Change User status</th>
+            <tr >
+              <th>User.Name</th>
+              <th>User.Email</th>
+              <th>Phone.Number</th>
+              <th>Order.History</th>
+              <th>User.Status</th>
+              <th>User.Status</th>
             </tr>
 
             {show &&
               users.map((element, index) => {
                 return (
                   <tr key={index}>
-                    <td>{element.userName}</td>
-                    <td>{element.email}</td>
+                    <td className="tabel">{element.userName}</td>
+                    <td className="tabel">{element.email}</td>
 
-                    <td> {element.phoneNumber}</td>
-                    <td>
+                    <td className="tabel"> {element.phoneNumber}</td>
+                    <td className="tabel">
                       <button
                         className="OrderH"
                         onClick={() => {
