@@ -25,7 +25,9 @@ const ViewTable = () => {
   const navigate = useNavigate();
   const getOrders = () => {
     axios
-      .get(`https://bigbites-backend.herokuapp.com/users/${orderState.id}`)
+      .get(
+        `https://bigbites-backend.herokuapp.com/order/users/${orderState.id}`
+      )
       .then((result) => {
         console.log(result.data.result);
         dispatch(addOrder(result.data.result));
