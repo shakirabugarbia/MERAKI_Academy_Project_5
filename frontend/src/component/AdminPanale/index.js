@@ -31,9 +31,7 @@ const Admin = () => {
               User Section
               <img
                 className="chart_Pic"
-                src="https://i.ibb.co/xfkSCnV/1.png
-          
-          "
+                src="https://i.ibb.co/QnkZ25K/4.png"
                 alt="chart"
                 border="0"
               />
@@ -44,7 +42,8 @@ const Admin = () => {
               Product Section
               <img
                 className="chart_Pic"
-                src="https://i.ibb.co/QnkZ25K/4.png
+                src="https://i.ibb.co/xfkSCnV/1.png
+                
           "
                 alt="chart"
                 border="0"
