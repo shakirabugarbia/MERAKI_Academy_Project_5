@@ -46,19 +46,19 @@ const ViewTable = () => {
     <div className="views">
       {isLoggedIn ? (
         <>
-          <div>
-            <ReactToPrint
-              trigger={() => <button>Print this out!</button>}
+          <div className="CC">
+            <ReactToPrint 
+              trigger={() => <button  className="printer" >Print this out!</button>}
               content={() => componentRef.current}
             />
 
             <table ref={componentRef}>
               {" "}
               <tr>
-                <th>order date</th>
-                <th>productName</th>
-                <th>price</th>
-                <th>amount</th>
+                <th className="BB">order date</th>
+                <th className="BB">productName</th>
+                <th className="BB">price</th>
+                <th className="BB">amount</th>
               </tr>
               {orderState.order.length &&
                 orderState.order.map((element, index) => {
@@ -81,14 +81,7 @@ const ViewTable = () => {
                 })}
             </table>
           </div>
-          <button
-            className="back"
-            onClick={() => {
-              navigate("/UserAdminPanel");
-            }}
-          >
-            Back to user AdminPanel
-          </button>
+         
         </>
       ) : (
         <div>

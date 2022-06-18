@@ -110,7 +110,7 @@ const UserOrder = () => {
       <div className="bttl">
       <ReactToPrint
           trigger={() => <button className="boton">Print <AiOutlinePrinter
-          className="printer"/></button>}
+          /></button>}
           content={() => componentRef.current}
         />
      
