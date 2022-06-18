@@ -278,7 +278,44 @@ const Basket = () => {
               {/*  <PayPal style={{ layout: "horizontal", width: "5rem" }} /> */}
             </div>
             {checkout ? (
+              <>
+               <div class="selection-section">
+           
+               
+               
+                 <div class="item">
+                   <label class="selection-box">
+                     <input
+                       type="checkbox"
+                       class="input"
+                       name="preferences"
+                       value="jollibee"
+                     />
+                     <div class="box">
+                       <div class="label">Delivery</div>
+                       <div class="checkbox"></div>
+                     </div>
+                   </label>
+                 </div>
+         
+                 <div class="item">
+                   <label class="selection-box">
+                     <input
+                       type="checkbox"
+                       class="input"
+                       name="preferences"
+                       value="kfc"
+                     />
+                     <div class="box">
+                       <div class="label">PickUp</div>
+                       <div class="checkbox"></div>
+                     </div>
+                   </label>
+                 </div>
+              
+             </div>
               <PayPal style={{ layout: "horizontal", width: "5rem" }} />
+              </>
             ) : (
               <button
                 onClick={() => {
